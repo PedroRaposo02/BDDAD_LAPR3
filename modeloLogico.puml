@@ -1,0 +1,72 @@
+@startuml domain_model
+
+class Plantas {
+    id: Integer
+    especie: String
+    nome_comum: String
+    variedade: String
+    tipo_plantacao: String
+    data_plantacao: Date
+    poda: String
+    floracao: String
+    colheita: String
+}
+
+class FatorProducao {
+    id: Integer
+    designacao: String
+    fabricante: String
+    formato: String
+    tipo: String
+    aplicacao: String
+    c1: String
+    perc_c1: Float
+    c2: String
+    perc_c2: Float
+    c3: String
+    perc_c3: Float
+    c4: String
+    perc_c4: Float
+}
+
+class ExploracaoAgricula {
+    id: Integer
+    tipo: String    
+    designacao: String
+    area: Float
+    unidade: String
+}
+
+class Culturas {
+    id: Integer
+    id_parcela: Integer
+    id_planta: Integer
+    data_inicial: Date
+    data_final: Date
+    quantidade: Float
+    unidades: String
+}
+
+class Operacoes {
+    id: Integer
+    id_cultura: Integer
+    id_fator_producao: Integer
+    operacao: String
+    modo: String
+    data: Date
+    quantidade: Float
+    unidades: String
+}
+
+class Parcela {
+    id: Integer
+    designacao: String
+}
+
+Plantas "1" -- "n" Culturas : grows
+Culturas "n" -- "1" Parcela : is grown in
+Operacoes "n" -- "1" Culturas : applies to
+Operacoes "n" -- "1" FatorProducao : uses
+Operacoes "n" -- "1" Parcela : is applied in
+
+@enduml
