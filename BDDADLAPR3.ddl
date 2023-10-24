@@ -1,0 +1,11 @@
+CREATE TABLE Plantas (id number(10) GENERATED AS IDENTITY, especie varchar2(50) NOT NULL, nome_comum varchar2(50) NOT NULL, variedade varchar2(50) NOT NULL, tipo_plantacao varchar2(50) NOT NULL, data_plantacao timestamp(0), poda varchar2(70), floracao varchar2(70), colheita varchar2(70), PRIMARY KEY (id));
+CREATE TABLE Operacoes (id number(10) GENERATED AS IDENTITY, operacao varchar2(50) NOT NULL, modo varchar2(50), data timestamp(0) NOT NULL, quantidade float(5), unidades varchar2(50), Culturasid number(10) NOT NULL, FatorProducaoid number(10), Parcelaid number(10) NOT NULL, PRIMARY KEY (id));
+CREATE TABLE ExploracaoAgricola (id number(10) NOT NULL, tipo varchar2(50) NOT NULL, designacao varchar2(50) NOT NULL, area float(5), unidade varchar2(50), PRIMARY KEY (id));
+CREATE TABLE Culturas (id number(10) GENERATED AS IDENTITY, data_inicial timestamp(0), data_final timestamp(0) NOT NULL, quantidade float(5), unidades varchar2(50), Plantasid number(10), Parcelaid number(10) NOT NULL, PRIMARY KEY (id));
+CREATE TABLE FatorProducao (id number(10) GENERATED AS IDENTITY, designacao varchar2(50) NOT NULL, fabricante varchar2(50) NOT NULL, formato varchar2(50) NOT NULL, tipo varchar2(50) NOT NULL, aplicacao varchar2(50) NOT NULL, c1 varchar2(50) NOT NULL, perc_c1 float(5) NOT NULL, c2 varchar2(50), perc_c2 float(5), c3 varchar2(50), perc_c3 float(5), c4 varchar2(50), perc_c4 float(5), PRIMARY KEY (id));
+CREATE TABLE Parcela (id number(10) GENERATED AS IDENTITY, designacao varchar2(50), PRIMARY KEY (id));
+ALTER TABLE Culturas ADD CONSTRAINT FKCulturas744088 FOREIGN KEY (Plantasid) REFERENCES Plantas (id);
+ALTER TABLE Operacoes ADD CONSTRAINT FKOperacoes590896 FOREIGN KEY (Culturasid) REFERENCES Culturas (id);
+ALTER TABLE Culturas ADD CONSTRAINT FKCulturas334190 FOREIGN KEY (Parcelaid) REFERENCES Parcela (id);
+ALTER TABLE Operacoes ADD CONSTRAINT FKOperacoes567275 FOREIGN KEY (FatorProducaoid) REFERENCES FatorProducao (id);
+ALTER TABLE Operacoes ADD CONSTRAINT FKOperacoes62969 FOREIGN KEY (Parcelaid) REFERENCES Parcela (id);
