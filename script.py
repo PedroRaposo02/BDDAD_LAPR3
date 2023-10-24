@@ -1,6 +1,7 @@
 import pandas as pd
 from collections import defaultdict
 import re
+from unidecode import unidecode
 
 
 # Define the CSV file path
@@ -25,17 +26,14 @@ nome_comum = defaultdict(list)
 
 
 def get_nome_variedade_from_cultura(cultura: str, nome_comum: dict):
-    formated_cultura = cultura.strip().lower()
     for nome in nome_comum:
-        formated_nome = nome.strip().lower()
         for variedade in nome_comum[nome]:
-            formated_variedade = variedade.strip().lower()
             if (
-                formated_variedade in formated_cultura
-                and formated_nome in formated_cultura
-            ) or formated_variedade == formated_cultura:
+                variedade in cultura
+                and nome in cultura
+            ) or variedade == cultura:
                 return nome, variedade
-    return ("", "")
+    return "", ""
 
 
 # Open the SQL file
@@ -44,34 +42,46 @@ with open(sql_file_path, "w") as f:
 
     for index, row in df.iterrows():
         # Write INSERT INTO statement for each row
+        nome = unidecode(row["Nome comum"]).title().strip()
+        variedade = unidecode(row["Variedade"]).title().strip()
+        tipo_plantacao = unidecode(row["Tipo Plantação"]).title().strip()
+        sementeira = unidecode(row["Sementeira/Plantação"]).title().strip()
+        poda = unidecode(row["Poda"]).title().strip()
+        floracao = unidecode(row["Floração"]).title().strip()
+        colheita = unidecode(row["Colheita"]).title().strip()
 
         f.write(
             "INSERT INTO Plantas (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');\n".format(
                 row["Espécie"],
-                row["Nome comum"],
-                row["Variedade"],
-                row["Tipo Plantação"],
-                row["Sementeira/Plantação"],
-                row["Poda"],
-                row["Floração"],
-                row["Colheita"],
+                nome,
+                variedade,
+                tipo_plantacao,
+                sementeira,
+                poda,
+                floracao,
+                colheita,
             )
         )
         # save all the entries "nome comum" and "variedade" in a list
-        nome_comum[row["Nome comum"]].append(row["Variedade"])
+        nome_comum[nome].append(variedade)
 
 df = xl.parse("Fator Produção")
 df.fillna("", inplace=True)
 
 with open(sql_file_path, "a") as f:
     for index, row in df.iterrows():
+
+        formato = unidecode(row["Formato"]).title().strip()
+        tipo = unidecode(row["Tipo"]).title().strip()
+        aplicacao = unidecode(row["Aplicação"]).title().strip()
+
         f.write(
             "INSERT INTO FatorProducao (designacao, fabricante, formato, tipo, aplicacao, c1, perc_c1, c2, perc_c2, c3, perc_c3, c4, perc_c4) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');\n".format(
                 row["Designação"],
                 row["Fabricante"],
-                row["Formato"],
-                row["Tipo"],
-                row["Aplicação"],
+                formato,
+                tipo,
+                aplicacao,
                 row["C1"],
                 row["Perc.1"],
                 row["C2"],
@@ -88,11 +98,15 @@ df.fillna("", inplace=True)
 
 with open(sql_file_path, "a") as f:
     for index, row in df.iterrows():
+
+        tipo = unidecode(row["Tipo"]).title().strip()
+        designacao = unidecode(row["Designação"]).title().strip()
+
         f.write(
             "INSERT INTO ExploracaoAgricola (id, tipo, designacao, area, unidade) VALUES ('{}', '{}', '{}', '{}', '{}');\n".format(
                 row["ID"],
-                row["Tipo"],
-                row["Designação"],
+                tipo,
+                designacao,
                 row["Área"],
                 row["Unidade"],
             )
@@ -107,12 +121,12 @@ df["Data Final"] = df["Data Final"].apply(
 
 with open(sql_file_path, "a") as f:
     for index, row in df.iterrows():
-        cultura = row["Cultura"]
-
+        cultura = unidecode(row["Cultura"]).title().strip()
+        
         nome, variedade = get_nome_variedade_from_cultura(cultura, nome_comum)
 
         f.write(
-            "INSERT INTO Culturas (exploracao_agricula_id, planta_id, data_inicial, data_final, quantidade, unidades) VALUES ('{}', {}, TIMESTAMP '{}', {}, '{}', '{}');\n".format(
+            "INSERT INTO Culturas (exploracao_agricola_id, planta_id, data_inicial, data_final, quantidade, unidades) VALUES ('{}', {}, TIMESTAMP '{}', {}, '{}', '{}');\n".format(
                 row["ID"],
                 f"(Select id from Plantas where nome_comum='{nome}' and variedade='{variedade}')",
                 row["Data Inicial"],
@@ -127,19 +141,21 @@ df.fillna("", inplace=True)
 
 with open(sql_file_path, "a") as f:
     for index, row in df.iterrows():
-        cultura = row["Cultura"]
-
-        tuple_planta = get_nome_variedade_from_cultura(cultura, nome_comum)
+        cultura = unidecode(row["Cultura"]).title().strip()
+        nome, variedade = get_nome_variedade_from_cultura(cultura, nome_comum)
+        
+        operacao = unidecode(row["Operação"]).title().strip()
 
         f.write(
-            "INSERT INTO Operacoes (operacao, modo, data, quantidade, unidades, fator_producao_id, exploracao_agricula_id) VALUES ('{}', '{}', {}, '{}', '{}', {}, {});\n".format(
-                row["Operação"],
+            "INSERT INTO Operacoes (operacao, modo, data, quantidade, unidades, fator_producao_id, exploracao_agricola_id, planta_id) VALUES ('{}', '{}', {}, '{}', '{}', {}, {}, {});\n".format(
+                operacao,
                 row["Modo"],
                 f"TIMESTAMP '{row['Data']}'",
                 row["Quantidade"],
                 row["Unidade"],
                 f"(Select id from FatorProducao where designacao='{row['Fator de produção']}')" if row["Fator de produção"] != "" else "''",
                 row["ID Parcela"],
+                f"(Select id from Plantas where nome_comum='{nome}' and variedade='{variedade}')",
             )
         )
 
