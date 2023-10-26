@@ -107,7 +107,7 @@ with open(sql_file_path, "a") as f:
                 row["ID"],
                 tipo,
                 designacao,
-                row["Área"],
+                row["Dimensão"],
                 row["Unidade"],
             )
         )
