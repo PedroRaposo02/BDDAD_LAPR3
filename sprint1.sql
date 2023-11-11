@@ -1,3 +1,5 @@
+Grupo - 327
+
 US BD05: 
 -- ALL OPERATIONS
 Select 
@@ -307,7 +309,6 @@ order by "Número de Operações de Rega" desc;
 
 -- Procedure
 CREATE OR REPLACE PROCEDURE Get_Numero_Operacoes_Rega_By_Parcela_And_Timeframe(
-    exploracao_agricola_name IN EXPLORACAOAGRICOLA.DESIGNACAO%TYPE,
     start_date IN DATE,
     end_date IN DATE
 ) IS
@@ -318,8 +319,7 @@ CREATE OR REPLACE PROCEDURE Get_Numero_Operacoes_Rega_By_Parcela_And_Timeframe(
             count(*) as "Número de Operações de Rega"
         from Operacoes o
         left join ExploracaoAgricola e on o.exploracao_agricola_id = e.id
-        WHERE E.DESIGNACAO = exploracao_agricola_name
-            AND O.data BETWEEN start_date AND end_date
+        WHERE O.data BETWEEN start_date AND end_date
         group by e.designacao, o.operacao
         having o.operacao = 'Rega'
         order by "Número de Operações de Rega" desc;
@@ -344,7 +344,6 @@ end Get_Numero_Operacoes_Rega_By_Parcela_And_Timeframe;
 
 -- Testsing
 DECLARE
-    exploracao_name EXPLORACAOAGRICOLA.DESIGNACAO%TYPE := 'Horta nova';
     start_date DATE := TO_DATE('2021-01-01', 'YYYY-MM-DD');
     end_date DATE := TO_DATE('2029-12-31', 'YYYY-MM-DD');
 BEGIN
