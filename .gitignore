@@ -2,3 +2,5 @@
 *.bak*
 /.vscode
 ~$*
+/*.rar
+/*.zip
