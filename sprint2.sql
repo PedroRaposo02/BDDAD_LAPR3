@@ -17,6 +17,8 @@ Caso de "insucesso", em que não há dados que cumprem os critérios dados
 
 # Gestao de Exploracao Agricola
 
+/*  */
+
 US12:Como Gestor Agricola, quero registar uma operacao de monda
 /*procedure*/
 CREATE OR REPLACE PROCEDURE registar_monda (operacao IN VARCHAR2, modo IN VARCHAR2, data IN DATE, quantidade IN NUMBER, unidades IN VARCHAR2, fator_producao_id IN NUMBER, exploracao_agricola_id IN NUMBER, planta_id IN NUMBER) AS
