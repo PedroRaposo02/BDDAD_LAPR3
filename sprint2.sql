@@ -17,7 +17,7 @@ Caso de "insucesso", em que não há dados que cumprem os critérios dados
 
 # Gestao de Exploracao Agricola
 
-/*  */
+/* enmtrar com nome comum e variedade para descobrir exploracao_agricola_id */
 
 US12:Como Gestor Agricola, quero registar uma operacao de monda
 /*procedure*/
