@@ -15,153 +15,114 @@ Caso de "sucesso", em que são retornados dados
 Caso de "insucesso", em que não há dados que cumprem os critérios dados
 */
 
-# Gestao de Exploracao Agricola
-
-/* enmtrar com nome comum e variedade para descobrir exploracao_agricola_id */
-
 US12:Como Gestor Agricola, quero registar uma operacao de monda
 /*procedure*/
-CREATE OR REPLACE PROCEDURE registar_monda (operacao IN VARCHAR2, modo IN VARCHAR2, data IN DATE, quantidade IN NUMBER, unidades IN VARCHAR2, fator_producao_id IN NUMBER, exploracao_agricola_id IN NUMBER, planta_id IN NUMBER) AS
+CREATE OR REPLACE PROCEDURE registar_operacao_monda (tipo_operacao VARCHAR2, modo VARCHAR2, data DATE, quantidade NUMBER, unidades VARCHAR2, fator_producao_id NUMBER, cultura_id NUMBER) AS
 BEGIN
-    INSERT INTO Operacoes (operacao, modo, data, quantidade, unidades, fator_producao_id, exploracao_agricola_id, planta_id) VALUES (operacao, modo, data, quantidade, unidades, fator_producao_id, exploracao_agricola_id, planta_id);
-    COMMIT;
+    INSERT INTO Operacao (tipo_operacao, modo, data, quantidade, unidades, fator_producao_id, cultura_id) VALUES (tipo_operacao, modo, data, quantidade, unidades, fator_producao_id, cultura_id);
 END;
-/*test procedure*/
+-- Test the procedure
 DECLARE
-    operacao VARCHAR2(20) := 'Monda';
-    modo VARCHAR2(20) := '';
-    data DATE := TO_DATE('2021-10-12', 'YYYY-MM-DD');
-    quantidade NUMBER := 950.0;
-    unidades VARCHAR2(20) := 'kg';
-    fator_producao_id NUMBER := NULL;
-    exploracao_agricola_id NUMBER := 104;
-    planta_id NUMBER;
+  cultura_id NUMBER;
 BEGIN
-    SELECT id INTO planta_id FROM Plantas WHERE nome_comum='Macieira' AND variedade='Fuji';
-    registar_monda(operacao, modo, data, quantidade, unidades, fator_producao_id, exploracao_agricola_id, planta_id);
+  BEGIN
+    SELECT c.id INTO cultura_id 
+    FROM Cultura c 
+    JOIN Planta p ON c.planta_id=p.id 
+    WHERE c.planta_id=(SELECT id FROM Planta WHERE nome_comum='Oliveira' AND variedade='Galega') 
+    AND c.parcela_id=102 
+    AND ((p.tipo_plantacao='Permanente' AND TIMESTAMP '2020-11-10 00:00:00' > c.data_inicial) 
+    OR (p.tipo_plantacao='Temporaria' AND TIMESTAMP '2020-11-10 00:00:00' BETWEEN c.data_inicial AND c.data_final));
+  END;
+  
+  registar_operacao_monda('Monda', '', TIMESTAMP '2020-11-10 00:00:00', '30.0', 'un', '', cultura_id);
 END;
-/*select inserted operacao de monda*/
-SELECT * FROM Operacoes WHERE operacao='Monda' AND planta_id=(SELECT id FROM Plantas WHERE nome_comum='Macieira' AND variedade='Fuji');
+
+/* Select dos inserts testados */
+SELECT * FROM Operacao WHERE tipo_operacao='Monda';
+
+
 
 
 US14:Como Gestor Agricola, quero registar uma operacao de aplicacao de fator de producao
 /*procedure*/
-CREATE OR REPLACE PROCEDURE registar_aplicacao_fator_producao (operacao IN VARCHAR2, modo IN VARCHAR2, data IN DATE, quantidade IN NUMBER, unidades IN VARCHAR2, fator_producao_id IN NUMBER, exploracao_agricola_id IN NUMBER, planta_id IN NUMBER) AS
+CREATE OR REPLACE PROCEDURE registar_operacao_aplicacao_fator_producao (tipo_operacao VARCHAR2, modo VARCHAR2, data DATE, quantidade NUMBER, unidades VARCHAR2, fator_producao_id NUMBER, cultura_id NUMBER) AS
 BEGIN
-    INSERT INTO Operacoes (operacao, modo, data, quantidade, unidades, fator_producao_id, exploracao_agricola_id, planta_id) VALUES (operacao, modo, data, quantidade, unidades, fator_producao_id, exploracao_agricola_id, planta_id);
-    COMMIT;
+    INSERT INTO Operacao (tipo_operacao, modo, data, quantidade, unidades, fator_producao_id, cultura_id) VALUES (tipo_operacao, modo, data, quantidade, unidades, fator_producao_id, cultura_id);
 END;
-/*test procedure*/
-DECLARE
-    operacao VARCHAR2(30) := 'Aplicacao Fitofarmaco';
-    modo VARCHAR2(20) := '';
-    data DATE := TO_DATE('2021-10-12', 'YYYY-MM-DD');
-    quantidade NUMBER := 950.0;
-    unidades VARCHAR2(20) := 'kg';
-    fator_producao_id NUMBER;
-    exploracao_agricola_id NUMBER := 104;
-    planta_id NUMBER;
-BEGIN
-    SELECT id INTO fator_producao_id FROM FatorProducao WHERE designacao='Calda Bordalesa ASCENZA'; 
-    SELECT id INTO planta_id FROM Plantas WHERE nome_comum='Macieira' AND variedade='Fuji';
-    registar_aplicacao_fator_producao(operacao, modo, data, quantidade, unidades, fator_producao_id, exploracao_agricola_id, planta_id);
-END;
-/*select inserted operacao de aplicacao de fator de producao*/
-SELECT * FROM Operacoes WHERE operacao='Aplicacao Fitofarmaco' AND planta_id=(SELECT id FROM Plantas WHERE nome_comum='Macieira' AND variedade='Fuji');
+/*----------------------------------------------------------------*/
+/*testes*/
+EXECUTE registar_operacao_aplicacao_fator_producao('Aplicacao Fator Producao', 'Foliar', TIMESTAMP '2022-12-11 00:00:00', '15.0', 'kg', (Select id from Fator_Producao where designacao='Patentkali'), (Select c.id from Cultura c join Planta p on c.planta_id=p.id where c.planta_id=(Select id from Planta where nome_comum='Oliveira' and variedade='Galega') and c.parcela_id=102 and ((p.tipo_plantacao='Permanente' and TIMESTAMP '2022-12-11 00:00:00' > c.data_inicial) or (p.tipo_plantacao='Temporaria' and TIMESTAMP '2022-12-11 00:00:00' between c.data_inicial and c.data_final))));
+EXECUTE registar_operacao_aplicacao_fator_producao('Aplicacao Fator Producao', 'Foliar', TIMESTAMP '2022-12-11 00:00:00', '10.0', 'kg', (Select id from Fator_Producao where designacao='Patentkali'), (Select c.id from Cultura c join Planta p on c.planta_id=p.id where c.planta_id=(Select id from Planta where nome_comum='Oliveira' and variedade='Picual') and c.parcela_id=102 and ((p.tipo_plantacao='Permanente' and TIMESTAMP '2022-12-11 00:00:00' > c.data_inicial) or (p.tipo_plantacao='Temporaria' and TIMESTAMP '2022-12-11 00:00:00' between c.data_inicial and c.data_final))));
+EXECUTE registar_operacao_aplicacao_fator_producao('Aplicacao Fator Producao', 'Foliar', TIMESTAMP '2022-12-11 00:00:00', '15.0', 'kg', (Select id from Fator_Producao where designacao='Patentkali'), (Select c.id from Cultura c join Planta p on c.planta_id=p.id where c.planta_id=(Select id from Planta where nome_comum='Macieira' and variedade='Royal Gala') and c.parcela_id=104 and ((p.tipo_plantacao='Permanente' and TIMESTAMP '2022-12-11 00:00:00' > c.data_inicial) or (p.tipo_plantacao='Temporaria' and TIMESTAMP '2022-12-11 00:00:00' between c.data_inicial and c.data_final))));
+
+/* Select dos inserts testados */
+SELECT * FROM Operacao WHERE tipo_operacao='Aplicacao Fator Producao';
 
 
 US16:Como Gestor Agricola, pretendo obter a lista dos produtos colhidos numa dada parcela, para cada especie, num dado intervalo de tempo
 /*cursor*/
-CREATE OR REPLACE FUNCTION lista_produtos_colhidos (exploracao_agricola_id IN NUMBER, data_inicio IN DATE, data_fim IN DATE) RETURN SYS_REFCURSOR AS
-    lista SYS_REFCURSOR;
+CREATE OR REPLACE FUNCTION obter_produtos_colhidos_parcela (parcela_id NUMBER, data_inicial DATE, data_final DATE) RETURN SYS_REFCURSOR AS
+    produtos_colhidos SYS_REFCURSOR;
 BEGIN
-    OPEN lista FOR
-        SELECT p.nome_comum, p.variedade, SUM(o.quantidade)
-        FROM Operacoes o, Plantas p
-        WHERE o.exploracao_agricola_id=exploracao_agricola_id
-        AND o.operacao='Colheita'
-        AND o.data BETWEEN data_inicio AND data_fim
-        AND o.planta_id=p.id
-        GROUP BY p.nome_comum, p.variedade;
-    RETURN lista;
+    OPEN produtos_colhidos FOR
+        SELECT p.nome, p.planta_id, p.operacao_id
+        FROM Produto p
+        JOIN Operacao o ON p.operacao_id=o.id
+        JOIN Cultura c ON o.cultura_id=c.id
+        JOIN Planta pl ON c.planta_id=pl.id
+        WHERE o.tipo_operacao='Colheita' AND c.parcela_id=parcela_id AND o.data BETWEEN data_inicial AND data_final;
+    RETURN produtos_colhidos;
 END;
-/*test cursor*/
-DECLARE
-    lista SYS_REFCURSOR;
-    nome_comum VARCHAR2(20);
-    variedade VARCHAR2(20);
-    quantidade NUMBER;
-BEGIN
-    lista := lista_produtos_colhidos(106, TO_DATE('2021-09-01', 'YYYY-MM-DD'), TO_DATE('2021-09-30', 'YYYY-MM-DD'));
-    DBMS_OUTPUT.PUT_LINE('Nome Comum | Variedade | Quantidade');
-    DBMS_OUTPUT.PUT_LINE('---------------------------------');
-    LOOP
-        FETCH lista INTO nome_comum, variedade, quantidade;
-        EXIT WHEN lista%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE(nome_comum || ' | ' || variedade || ' | ' || quantidade);
-    END LOOP;
-    CLOSE lista;
-END;
+/*----------------------------------------------------------------*/
+/*testes*/
+SELECT * FROM TABLE(obter_produtos_colhidos_parcela(102, TIMESTAMP '2022-11-01 00:00:00', TIMESTAMP '2022-12-01 00:00:00'));
+SELECT * FROM TABLE(obter_produtos_colhidos_parcela(104, TIMESTAMP '2022-12-01 00:00:00', TIMESTAMP '2023-01-01 00:00:00'));
+SELECT * FROM TABLE(obter_produtos_colhidos_parcela(106, TIMESTAMP '2022-11-01 00:00:00', TIMESTAMP '2022-12-01 00:00:00'));
+SELECT * FROM TABLE(obter_produtos_colhidos_parcela(107, TIMESTAMP '2022-12-01 00:00:00', TIMESTAMP '2023-01-01 00:00:00'));
 
 
 US18:Como Gestor Agricola, pretendo obter a lista de operacoes realizadas numa dada parcela, para cada tipo de operacao, num dado intervalo de tempo.
 /*cursor*/
-CREATE OR REPLACE FUNCTION lista_operacoes (exploracao_agricola_id IN NUMBER, data_inicio IN DATE, data_fim IN DATE) RETURN SYS_REFCURSOR AS
-    lista SYS_REFCURSOR;
+CREATE OR REPLACE FUNCTION obter_operacoes_parcela (parcela_id NUMBER, data_inicial DATE, data_final DATE) RETURN SYS_REFCURSOR AS
+    operacoes_parcela SYS_REFCURSOR;
 BEGIN
-    OPEN lista FOR
-        SELECT o.operacao, COUNT(o.operacao)
-        FROM Operacoes o
-        WHERE o.exploracao_agricola_id=exploracao_agricola_id
-        AND o.data BETWEEN data_inicio AND data_fim
-        GROUP BY o.operacao;
-    RETURN lista;
+    OPEN operacoes_parcela FOR
+        SELECT o.tipo_operacao, o.modo, o.data, o.quantidade, o.unidades, o.fator_producao_id, o.cultura_id
+        FROM Operacao o
+        JOIN Cultura c ON o.cultura_id=c.id
+        WHERE c.parcela_id=parcela_id AND o.data BETWEEN data_inicial AND data_final;
+    RETURN operacoes_parcela;
 END;
-/*test cursor*/
-DECLARE
-    lista SYS_REFCURSOR;
-    operacao VARCHAR2(20);
-    quantidade NUMBER;
-BEGIN
-    lista := lista_operacoes(106, TO_DATE('2021-09-01', 'YYYY-MM-DD'), TO_DATE('2021-09-30', 'YYYY-MM-DD'));
-    DBMS_OUTPUT.PUT_LINE('Operacao | Quantidade');
-    DBMS_OUTPUT.PUT_LINE('---------------------');
-    LOOP
-        FETCH lista INTO operacao, quantidade;
-        EXIT WHEN lista%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE(operacao || ' | ' || quantidade);
-    END LOOP;
-    CLOSE lista;
-END;
+/*----------------------------------------------------------------*/
+/*testes*/
+SELECT * FROM TABLE(obter_operacoes_parcela(102, TIMESTAMP '2022-11-01 00:00:00', TIMESTAMP '2022-12-01 00:00:00'));
+SELECT * FROM TABLE(obter_operacoes_parcela(104, TIMESTAMP '2022-12-01 00:00:00', TIMESTAMP '2023-01-01 00:00:00'));
+SELECT * FROM TABLE(obter_operacoes_parcela(106, TIMESTAMP '2022-11-01 00:00:00', TIMESTAMP '2022-12-01 00:00:00'));
+SELECT * FROM TABLE(obter_operacoes_parcela(107, TIMESTAMP '2022-12-01 00:00:00', TIMESTAMP '2023-01-01 00:00:00'));
+
+
 
 
 US20:Como Gestor Agricola, pretendo obter os totais de rega mensal de cada parcela, num dado intervalo de tempo.
 /*cursor*/
-CREATE OR REPLACE FUNCTION lista_rega_mensal (exploracao_agricola_id IN NUMBER, data_inicio IN DATE, data_fim IN DATE) RETURN SYS_REFCURSOR AS
-    lista SYS_REFCURSOR;
+CREATE OR REPLACE FUNCTION obter_totais_rega_mensal_parcela (parcela_id NUMBER, data_inicial DATE, data_final DATE) RETURN SYS_REFCURSOR AS
+    totais_rega_mensal_parcela SYS_REFCURSOR;
 BEGIN
-    OPEN lista FOR
-        SELECT TO_CHAR(o.data, 'MM-YYYY'), SUM(o.quantidade)
-        FROM Operacoes o
-        WHERE o.exploracao_agricola_id=exploracao_agricola_id
-        AND o.operacao='Rega'
-        AND o.data BETWEEN data_inicio AND data_fim
-        GROUP BY TO_CHAR(o.data, 'MM-YYYY');
-    RETURN lista;
+    OPEN totais_rega_mensal_parcela FOR
+        SELECT SUM(o.quantidade) AS total_rega, EXTRACT(MONTH FROM o.data) AS mes
+        FROM Operacao o
+        JOIN Cultura c ON o.cultura_id=c.id
+        WHERE o.tipo_operacao='Rega' AND c.parcela_id=parcela_id AND o.data BETWEEN data_inicial AND data_final
+        GROUP BY EXTRACT(MONTH FROM o.data)
+        ORDER BY EXTRACT(MONTH FROM o.data);
+    RETURN totais_rega_mensal_parcela;
 END;
-/*test cursor*/
-DECLARE
-    lista SYS_REFCURSOR;
-    mes VARCHAR2(20);
-    quantidade NUMBER;
-BEGIN
-    lista := lista_rega_mensal(106, TO_DATE('2021-09-01', 'YYYY-MM-DD'), TO_DATE('2021-09-30', 'YYYY-MM-DD'));
-    DBMS_OUTPUT.PUT_LINE('Mes | Quantidade');
-    DBMS_OUTPUT.PUT_LINE('--------------');
-    LOOP
-        FETCH lista INTO mes, quantidade;
-        EXIT WHEN lista%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE(mes || ' | ' || quantidade);
-    END LOOP;
-    CLOSE lista;
-END;
+/*----------------------------------------------------------------*/
+/*testes*/
+SELECT * FROM TABLE(obter_totais_rega_mensal_parcela(102, TIMESTAMP '2022-11-01 00:00:00', TIMESTAMP '2022-12-01 00:00:00'));
+SELECT * FROM TABLE(obter_totais_rega_mensal_parcela(104, TIMESTAMP '2022-12-01 00:00:00', TIMESTAMP '2023-01-01 00:00:00'));
+SELECT * FROM TABLE(obter_totais_rega_mensal_parcela(106, TIMESTAMP '2022-11-01 00:00:00', TIMESTAMP '2022-12-01 00:00:00'));
+SELECT * FROM TABLE(obter_totais_rega_mensal_parcela(107, TIMESTAMP '2022-12-01 00:00:00', TIMESTAMP '2023-01-01 00:00:00'));
+
+
