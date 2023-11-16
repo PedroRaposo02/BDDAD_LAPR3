@@ -1,3 +1,78 @@
+DROP TABLE Planta CASCADE CONSTRAINTS;
+DROP TABLE Operacao CASCADE CONSTRAINTS;
+DROP TABLE Parcela_Agricola CASCADE CONSTRAINTS;
+DROP TABLE Cultura CASCADE CONSTRAINTS;
+DROP TABLE Fator_Producao CASCADE CONSTRAINTS;
+DROP TABLE Produto CASCADE CONSTRAINTS;
+DROP TABLE Componente CASCADE CONSTRAINTS;
+CREATE TABLE Planta (
+  id             number(10) GENERATED AS IDENTITY, 
+  especie        varchar2(50) NOT NULL, 
+  nome_comum     varchar2(50) NOT NULL, 
+  variedade      varchar2(50) NOT NULL, 
+  tipo_plantacao varchar2(50) NOT NULL, 
+  data_plantacao varchar2(50), 
+  poda           varchar2(70), 
+  floracao       varchar2(70), 
+  colheita       varchar2(70), 
+  PRIMARY KEY (id), 
+  CONSTRAINT NomeVariedadeConstraint 
+    UNIQUE (nome_comum, variedade));
+CREATE TABLE Operacao (
+  id                number(10) GENERATED AS IDENTITY, 
+  data              timestamp(0) NOT NULL, 
+  tipo_operacao     varchar2(50) NOT NULL, 
+  modo              varchar2(50), 
+  quantidade        float(5), 
+  unidades          varchar2(50), 
+  cultura_id        number(10) NOT NULL, 
+  fator_producao_id number(10), 
+  PRIMARY KEY (id), 
+  CONSTRAINT UniqueConstraintOperacoes 
+    UNIQUE (data, cultura_id, tipo_operacao));
+CREATE TABLE Parcela_Agricola (
+  id         number(10) NOT NULL, 
+  designacao varchar2(50) NOT NULL UNIQUE, 
+  area       float(5), 
+  unidade    varchar2(50), 
+  PRIMARY KEY (id));
+CREATE TABLE Cultura (
+  id           number(10) GENERATED AS IDENTITY, 
+  data_inicial timestamp(0) NOT NULL, 
+  data_final   timestamp(0), 
+  quantidade   float(5) NOT NULL, 
+  unidades     varchar2(50) NOT NULL, 
+  parcela_id   number(10) NOT NULL, 
+  planta_id    number(10) NOT NULL, 
+  PRIMARY KEY (id), 
+  CONSTRAINT UnqiueIdentifier 
+    UNIQUE (data_inicial, parcela_id, planta_id));
+CREATE TABLE Fator_Producao (
+  id         number(10) GENERATED AS IDENTITY, 
+  designacao varchar2(50) NOT NULL UNIQUE, 
+  fabricante varchar2(50) NOT NULL, 
+  formato    varchar2(50) NOT NULL, 
+  tipo       varchar2(50) NOT NULL, 
+  aplicacao  varchar2(50) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE Produto (
+  id          number(10) GENERATED AS IDENTITY, 
+  nome        varchar2(50) NOT NULL, 
+  planta_id   number(10) NOT NULL, 
+  operacao_id number(10) NOT NULL, 
+  PRIMARY KEY (id));
+CREATE TABLE Componente (
+  fator_producao_id number(10) NOT NULL, 
+  componente        varchar2(20), 
+  percentagem       float(10));
+ALTER TABLE Cultura ADD CONSTRAINT FKCultura385034 FOREIGN KEY (planta_id) REFERENCES Planta (id);
+ALTER TABLE Operacao ADD CONSTRAINT FKOperacao610228 FOREIGN KEY (fator_producao_id) REFERENCES Fator_Producao (id);
+ALTER TABLE Cultura ADD CONSTRAINT FKCultura793187 FOREIGN KEY (parcela_id) REFERENCES Parcela_Agricola (id);
+ALTER TABLE Produto ADD CONSTRAINT FKProduto637620 FOREIGN KEY (planta_id) REFERENCES Planta (id);
+ALTER TABLE Componente ADD CONSTRAINT FKComponente336563 FOREIGN KEY (fator_producao_id) REFERENCES Fator_Producao (id);
+ALTER TABLE Produto ADD CONSTRAINT FKProduto864440 FOREIGN KEY (operacao_id) REFERENCES Operacao (id);
+ALTER TABLE Operacao ADD CONSTRAINT FKOperacao507025 FOREIGN KEY (cultura_id) REFERENCES Cultura (id);
+
 INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('Prunus domestica', 'Ameixoeira', 'Rainha Claudia Caranguejeira', 'Permanente', '', 'Novembro A Dezembro', 'Fevereiro A Marco', 'Julho A Agosto');
 INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('Prunus domestica', 'Ameixoeira', 'President', 'Permanente', '', 'Novembro A Dezembro', 'Fevereiro A Marco', 'Julho A Agosto');
 INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('Prunus domestica', 'Ameixoeira', 'Stanley', 'Permanente', '', 'Novembro A Dezembro', 'Fevereiro A Marco', 'Julho A Agosto');
@@ -94,37 +169,37 @@ INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantac
 INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('Vitis vinifera', 'Videira', 'Dona Maria', 'Permanente', '', 'Dezembro A Janeiro', 'Maio', 'Junho A Agosto');
 INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('Vitis vinifera', 'Videira', 'Cardinal', 'Permanente', '', 'Dezembro A Janeiro', 'Maio', 'Junho A Agosto');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('Calda Bordalesa ASCENZA', 'ASCENZA', 'Po Molhavel', 'Fitofarmaco', 'Fungicida');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Calda Bordalesa ASCENZA', 'CU', '0.2');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Calda Bordalesa ASCENZA'), 'CU', '0.2');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('Enxofre Bayer 80 WG', 'Bayer', 'Po Molhavel', 'Fitofarmaco', 'Fungicida');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Enxofre Bayer 80 WG', 'S', '0.8');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Enxofre Bayer 80 WG'), 'S', '0.8');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('Patentkali', 'K+S', 'Granulado', 'Adubo', 'Adubo Solo');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Patentkali', 'K', '0.249');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Patentkali', 'Mg', '0.06');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Patentkali', 'S', '0.176');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Patentkali'), 'K', '0.249');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Patentkali'), 'Mg', '0.06');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Patentkali'), 'S', '0.176');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('ESTA Kieserit', 'K+S', 'Granulado', 'Adubo', 'Adubo Solo');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = ESTA Kieserit', 'Mg', '0.151');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = ESTA Kieserit', 'S', '0.208');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'ESTA Kieserit'), 'Mg', '0.151');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'ESTA Kieserit'), 'S', '0.208');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('EPSO Microtop', 'K+S', 'Granulado', 'Adubo', 'Adubo Foliar+Fertirrega');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = EPSO Microtop', 'Mg', '0.09');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = EPSO Microtop', 'S', '0.124');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = EPSO Microtop', 'B', '0.009');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = EPSO Microtop', 'Mn', '0.01');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'EPSO Microtop'), 'Mg', '0.09');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'EPSO Microtop'), 'S', '0.124');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'EPSO Microtop'), 'B', '0.009');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'EPSO Microtop'), 'Mn', '0.01');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('EPSO Top', 'K+S', 'Granulado', 'Adubo', 'Adubo Foliar');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = EPSO Top', 'Mg', '0.096');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = EPSO Top', 'S', '0.13');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'EPSO Top'), 'Mg', '0.096');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'EPSO Top'), 'S', '0.13');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('Biocal CaCo3', 'Biocal', 'Granulado', 'Corretor', 'Correcao Solo');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Biocal CaCo3', 'CaCO3', '0.882');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Biocal CaCo3', 'MgCO3', '0.019');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Biocal CaCo3'), 'CaCO3', '0.882');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Biocal CaCo3'), 'MgCO3', '0.019');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('Biocal Composto', 'Biocal', 'Po', 'Corretor', 'Correcao Solo');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Biocal Composto', 'CaCO3', '0.717');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Biocal Composto', 'MgCO3', '0.148');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Biocal Composto', 'MgO', '0.079');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Biocal Composto'), 'CaCO3', '0.717');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Biocal Composto'), 'MgCO3', '0.148');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Biocal Composto'), 'MgO', '0.079');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('Sonata', 'Bayer', 'Liquido', 'Fitofarmaco', 'Fungicida');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Sonata', 'Bacillus pumilus', '0.9774');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Sonata'), 'Bacillus pumilus', '0.9774');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('FLiPPER ', 'Bayer', 'Emulsao De Oleo Em Agua', 'Fitofarmaco', 'Insecticida');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = FLiPPER ', 'Ácidos gordos (na forma de sais de potássio)', '0.478');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'FLiPPER '), 'ï¿½cidos gordos (na forma de sais de potï¿½ssio)', '0.478');
 INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('Requiem Prime', 'Bayer', 'Liquido', 'Fitofarmaco', 'Insecticida');
-INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('Select from FatorProducao where designacao = Requiem Prime', 'Terpenóides', '0.1442');
+INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ((Select id from Fator_Producao where designacao = 'Requiem Prime'), 'Terpenï¿½ides', '0.1442');
 INSERT INTO Parcela_Agricola (id, designacao, area, unidade) VALUES ('101', 'Campo Da Bouca', '1.2', 'ha');
 INSERT INTO Parcela_Agricola (id, designacao, area, unidade) VALUES ('102', 'Campo Grande', '3.0', 'ha');
 INSERT INTO Parcela_Agricola (id, designacao, area, unidade) VALUES ('103', 'Campo Do Poco', '1.5', 'ha');

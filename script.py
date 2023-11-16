@@ -85,14 +85,14 @@ with open(sql_file_path, "a") as f:
             )
         )
         
-        fatorProducaoId = f"Select from FatorProducao where designacao = {row['Designação']}";
+        fatorProducaoId = f"(Select id from Fator_Producao where designacao = '{row['Designação']}')";
         
         c1 = row['C1']
         perc_c1 = row['Perc.1']
         
         if c1 != "" and perc_c1 != "":
             f.write(
-                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('{}', '{}', '{}');\n".format(
+                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ({}, '{}', '{}');\n".format(
                     fatorProducaoId,
                     c1,
                     perc_c1
@@ -103,7 +103,7 @@ with open(sql_file_path, "a") as f:
         perc_c2 = row['Perc.2']
         if c2 != "" and perc_c2 != "":
             f.write(
-                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('{}', '{}', '{}');\n".format(
+                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ({}, '{}', '{}');\n".format(
                     fatorProducaoId,
                     c2,
                     perc_c2
@@ -115,7 +115,7 @@ with open(sql_file_path, "a") as f:
         
         if c3 != "" and perc_c3 != "":
             f.write(
-                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('{}', '{}', '{}');\n".format(
+                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ({}, '{}', '{}');\n".format(
                     fatorProducaoId,
                     c3,
                     perc_c3
@@ -127,7 +127,7 @@ with open(sql_file_path, "a") as f:
         
         if c4 != "" and perc_c4 != "":
             f.write(
-                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ('{}', '{}', '{}');\n".format(
+                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ({}, '{}', '{}');\n".format(
                     fatorProducaoId,
                     c4,
                     perc_c4
