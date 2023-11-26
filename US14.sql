@@ -1,5 +1,3 @@
-US14:Como Gestor Agricola, quero registar uma operacao de aplicacao de fator de producao
-
 CREATE OR REPLACE PROCEDURE REGISTAR_APLICACAO_FATOR_PRODUCAO (
     PARCELA IN VARCHAR2,
     PLANTA_NOME IN VARCHAR2,
@@ -149,3 +147,5 @@ BEGIN
     );
 END;
 /
+
+SELECT * FROM OPERACAO WHERE TIPO_OPERACAO='Aplicacao Fator Producao';

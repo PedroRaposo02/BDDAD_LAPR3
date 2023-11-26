@@ -1,5 +1,3 @@
-US16:Como Gestor Agricola, pretendo obter a lista dos produtos colhidos numa dada parcela, para cada especie, num dado intervalo de tempo
-
 CREATE OR REPLACE FUNCTION LISTA_PRODUTOS_COLHIDOS (
     V_PARCELA IN VARCHAR2,
     V_DATA_INICIAL IN DATE,
@@ -55,8 +53,6 @@ BEGIN
                               || ' | '
                               || QUANTIDADE_KG || ' kg');
     END LOOP;
-
     CLOSE LISTA;
 END;
 /
-

@@ -1,5 +1,3 @@
-US12:Como Gestor Agricola, quero registar uma operacao de monda
-
 CREATE OR REPLACE PROCEDURE REGISTAR_MONDA (PARCELA
                                             IN VARCHAR2,
                                             PLANTA_NOME
@@ -147,6 +145,4 @@ END;
 /
 
 /*see results*/
-SELECT * FROM OPERACAO 
-WHERE TIPO_OPERACAO='Monda';
-```
+SELECT * FROM OPERACAO WHERE TIPO_OPERACAO='Monda';

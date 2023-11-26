@@ -1,5 +1,3 @@
-US18:Como Gestor Agricola, pretendo obter a lista de operacoes realizadas numa dada parcela, para cada tipo de operacao, num dado intervalo de tempo.
-
 CREATE OR REPLACE FUNCTION LISTA_OPERACOES (
     V_PARCELA IN VARCHAR2,
     V_DATA_INICIAL IN DATE,

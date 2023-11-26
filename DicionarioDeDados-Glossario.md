@@ -12,4 +12,25 @@ Na tabela "Culturas" o atributo "unidades" tem de ser do formato ?????
 
 Na tabela "Culturas" o atributo "operacao" deve ser do tipo "Plantação", "Sementeira", "Poda", "Incorporação no solo", "Fertilização" ou "Colheita.
 Na tabela "Operacoes" o atributo "unidades" tem de ser do formato ?????
- 
+
+Guia de Funçoes feitas no Sprint-2
+
+US11- PROCEDURE REGISTAR_SEMEADURA
+
+US12- PROCEDURE REGISTAR_MONDA
+
+US13- PROCEDURE REGISTAR_COLHEITA
+
+US14- PROCEDURE REGISTAR_APLICACAO_FATOR_PRODUCAO
+
+US15- PROCEDURE REGISTAR_PODA
+
+US16- FUNCTION LISTA_PRODUTOS_COLHIDOS
+
+US17- FUNCTION LISTA_FATORES
+
+US18- FUNCTION LISTA_OPERACOES
+
+US19- FUNCTION LISTA_FATORES
+
+US20- FUNCTION LISTA_TOTAL_REGA_MENSAL

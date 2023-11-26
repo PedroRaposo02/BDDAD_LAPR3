@@ -1,5 +1,3 @@
-US20:Como Gestor Agricola, pretendo obter os totais de rega mensal de cada parcela, num dado intervalo de tempo.
-
 CREATE OR REPLACE FUNCTION LISTA_TOTAL_REGA_MENSAL (
     V_PARCELA IN VARCHAR2,
     V_DATA_INICIAL IN DATE,
