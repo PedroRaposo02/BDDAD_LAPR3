@@ -73,6 +73,7 @@ ALTER TABLE Componente ADD CONSTRAINT FKComponente336563 FOREIGN KEY (fator_prod
 ALTER TABLE Produto ADD CONSTRAINT FKProduto864440 FOREIGN KEY (operacao_id) REFERENCES Operacao (id);
 ALTER TABLE Operacao ADD CONSTRAINT FKOperacao507025 FOREIGN KEY (cultura_id) REFERENCES Cultura (id);
 
+
 INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('Prunus domestica', 'Ameixoeira', 'Rainha Claudia Caranguejeira', 'Permanente', '', 'Novembro A Dezembro', 'Fevereiro A Marco', 'Julho A Agosto');
 INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('Prunus domestica', 'Ameixoeira', 'President', 'Permanente', '', 'Novembro A Dezembro', 'Fevereiro A Marco', 'Julho A Agosto');
 INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('Prunus domestica', 'Ameixoeira', 'Stanley', 'Permanente', '', 'Novembro A Dezembro', 'Fevereiro A Marco', 'Julho A Agosto');
