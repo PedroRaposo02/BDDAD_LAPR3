@@ -44,3 +44,7 @@
 - US18- FUNCTION LISTA_OPERACOES
 - US19- FUNCTION LISTA_FATORES
 - US20- FUNCTION LISTA_TOTAL_REGA_MENSAL
+
+## Observações
+
+Plantas como Grand Fay, Canada e Royal Gala não estão adicionadas corretamente. O ficheiro excel possui linhas cuja variedade é "x OU y", estas mesmas não se encontram num formato correto e passam a não ser compatíveis com algumas funcionalidades.
