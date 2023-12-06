@@ -7,8 +7,8 @@ CREATE OR REPLACE FUNCTION LISTA_PRODUTOS_COLHIDOS (
 BEGIN   
     OPEN LISTA FOR
         SELECT
-            P.NOME,
             P.PLANTA_ID,
+            P.NOME,
             SUM(O.QUANTIDADE) AS QUANTIDADE
         FROM
             PRODUTO P
@@ -37,19 +37,19 @@ DECLARE
     NOME          VARCHAR2(20);
     PLANTA_ID     NUMBER;
     QUANTIDADE_KG FLOAT;
-    V_PARCELA     VARCHAR2(20) := 'Campo Grande';
+    V_PARCELA     VARCHAR2(20) := 'Lameiro Da Ponte';
     DATA_INICIAL  DATE := TO_DATE('2015-09-01', 'YYYY-MM-DD');
     DATA_FINAL    DATE := TO_DATE('2023-09-30', 'YYYY-MM-DD');
 BEGIN
     LISTA := LISTA_PRODUTOS_COLHIDOS (V_PARCELA, DATA_INICIAL, DATA_FINAL);
-    dbms_output.put_line ('NOME | PLANTA_ID | QUANTIDADE_KG');
+    dbms_output.put_line ('PLANTA_ID | NOME | QUANTIDADE_KG');
     DBMS_OUTPUT.PUT_LINE ('----------------------------------------------------------------------');
     LOOP
-        FETCH LISTA INTO NOME, PLANTA_ID, QUANTIDADE_KG;
+        FETCH LISTA INTO PLANTA_ID, NOME, QUANTIDADE_KG;
         EXIT WHEN LISTA%NOTFOUND;
-        DBMS_OUTPUT.PUT_LINE (NOME
+        DBMS_OUTPUT.PUT_LINE (PLANTA_ID
                               || ' | '
-                              || PLANTA_ID
+                              || NOME
                               || ' | '
                               || QUANTIDADE_KG || ' kg');
     END LOOP;
