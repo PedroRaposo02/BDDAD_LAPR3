@@ -21,10 +21,12 @@ DROP TABLE Setor CASCADE CONSTRAINTS;
 DROP TABLE Fertirrega CASCADE CONSTRAINTS;
 DROP TABLE Receita_fertirrega CASCADE CONSTRAINTS;
 DROP TABLE FP_Receita CASCADE CONSTRAINTS;
+DROP TABLE Poda CASCADE CONSTRAINTS;
 CREATE TABLE Planta (
   id             number(10) GENERATED AS IDENTITY, 
   nome           varchar2(200) NOT NULL, 
   tipo_planta_id number(10) NOT NULL, 
+  tipo_plantacao varchar2(255) NOT NULL CHECK(tipo_plantacao in ('Temporaria', 'Permanente')), 
   PRIMARY KEY (id));
 CREATE TABLE Operacao (
   id     number(10) GENERATED AS IDENTITY, 
@@ -40,7 +42,6 @@ CREATE TABLE Cultura (
   id           number(10) GENERATED AS IDENTITY, 
   data_inicial timestamp(0) NOT NULL, 
   data_final   timestamp(0), 
-  area         float(10) NOT NULL, 
   parcela_id   number(10) NOT NULL, 
   planta_id    number(10) NOT NULL, 
   setor_id     number(10), 
@@ -81,8 +82,8 @@ CREATE TABLE Monda (
 CREATE TABLE Plantacao (
   operacao_id     number(10) NOT NULL, 
   num_plantas     number(10) NOT NULL, 
-  compasso        number(10) NOT NULL, 
-  distancia_filas number(10) NOT NULL, 
+  compasso        number(10), 
+  distancia_filas number(10), 
   cultura_id      number(10) NOT NULL, 
   PRIMARY KEY (operacao_id));
 CREATE TABLE Rega (
@@ -107,7 +108,7 @@ CREATE TABLE Aplicacao_FP_Solo (
   PRIMARY KEY (operacao_id));
 CREATE TABLE Aplicacao_FP (
   operacao_id number(10) NOT NULL, 
-  area        float(10) NOT NULL, 
+  area        float(10), 
   PRIMARY KEY (operacao_id));
 CREATE TABLE Aplicacao_FP_Cultura (
   operacao_id number(10) NOT NULL, 
@@ -122,7 +123,8 @@ CREATE TABLE FP_Aplicados (
   operacao_id number(10) NOT NULL, 
   fp_id       number(10) NOT NULL, 
   quantidade  number(10) NOT NULL, 
-  PRIMARY KEY (operacao_id));
+  PRIMARY KEY (operacao_id, 
+  fp_id));
 CREATE TABLE Setor (
   id            number(10) GENERATED AS IDENTITY, 
   data_inicial  timestamp(0) NOT NULL, 
@@ -142,6 +144,11 @@ CREATE TABLE FP_Receita (
   receita_id number(10) NOT NULL, 
   fp_id      number(10) NOT NULL, 
   quantidade number(10) NOT NULL);
+CREATE TABLE Poda (
+  operacao_id number(10) NOT NULL, 
+  quantidade  float(10), 
+  cultura_id  number(10) NOT NULL, 
+  PRIMARY KEY (operacao_id));
 ALTER TABLE Cultura ADD CONSTRAINT FKCultura793187 FOREIGN KEY (parcela_id) REFERENCES Parcela_Agricola (id);
 ALTER TABLE Produto ADD CONSTRAINT FKProduto637620 FOREIGN KEY (planta_id) REFERENCES Planta (id);
 ALTER TABLE Componente ADD CONSTRAINT FKComponente336563 FOREIGN KEY (fator_producao_id) REFERENCES Fator_Producao (id);
@@ -173,3 +180,5 @@ ALTER TABLE FP_Receita ADD CONSTRAINT FKFP_Receita922460 FOREIGN KEY (fp_id) REF
 ALTER TABLE Fertirrega ADD CONSTRAINT FKFertirrega159558 FOREIGN KEY (receita) REFERENCES Receita_fertirrega (id);
 ALTER TABLE Fertirrega ADD CONSTRAINT FKFertirrega373004 FOREIGN KEY (operacao_id) REFERENCES Rega (operacao_id);
 ALTER TABLE Cultura ADD CONSTRAINT FKCultura206816 FOREIGN KEY (setor_id) REFERENCES Setor (id);
+ALTER TABLE Poda ADD CONSTRAINT FKPoda823500 FOREIGN KEY (operacao_id) REFERENCES Operacao (id);
+ALTER TABLE Poda ADD CONSTRAINT FKPoda926821 FOREIGN KEY (cultura_id) REFERENCES Cultura (id);
