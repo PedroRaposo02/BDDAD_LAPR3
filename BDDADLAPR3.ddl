@@ -27,8 +27,9 @@ CREATE TABLE Planta (
   tipo_planta_id number(10) NOT NULL, 
   PRIMARY KEY (id));
 CREATE TABLE Operacao (
-  id   number(10) GENERATED AS IDENTITY, 
-  data timestamp(0) NOT NULL, 
+  id     number(10) GENERATED AS IDENTITY, 
+  data   timestamp(0) NOT NULL, 
+  estado varchar2(255) NOT NULL CHECK(estado in ('sucedida', 'anulada', 'pendente')), 
   PRIMARY KEY (id));
 CREATE TABLE Parcela_Agricola (
   id         number(10) NOT NULL, 
@@ -42,7 +43,7 @@ CREATE TABLE Cultura (
   area         float(10) NOT NULL, 
   parcela_id   number(10) NOT NULL, 
   planta_id    number(10) NOT NULL, 
-  setor_id     number(10) NOT NULL, 
+  setor_id     number(10), 
   PRIMARY KEY (id), 
   CONSTRAINT UnqiueIdentifier 
     UNIQUE (data_inicial, parcela_id, planta_id));
@@ -127,7 +128,7 @@ CREATE TABLE Setor (
   data_inicial  timestamp(0) NOT NULL, 
   data_final    timestamp(0), 
   caudal_maximo float(10) NOT NULL, 
-  num_setor     number(10) NOT NULL, 
+  num_setor     number(10) NOT NULL UNIQUE, 
   PRIMARY KEY (id));
 CREATE TABLE Fertirrega (
   operacao_id number(10) NOT NULL, 

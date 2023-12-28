@@ -39,6 +39,21 @@ def get_nome_variedade_from_cultura(cultura: str, nome_comum: dict):
 # Open the SQL file
 with open(sql_file_path, "w") as f:
     # Iterate over each row in the DataFrame
+    
+    f.write(
+        "DECLARE\n"
+        "    v_id_tipo_planta INTEGER;\n"
+        "    v_id_planta INTEGER;\n"
+        "    v_id_fator_producao INTEGER;\n"
+        "    v_id_componente INTEGER;\n"
+        "    v_id_parcela INTEGER;\n"
+        "    v_id_cultura INTEGER;\n"
+        "    v_id_operacao INTEGER;\n"
+        "    v_id_produto INTEGER;\n"
+        "BEGIN\n"
+    )
+    
+    lastNome = ""
 
     for index, row in df.iterrows():
         # Write INSERT INTO statement for each row
@@ -49,17 +64,18 @@ with open(sql_file_path, "w") as f:
         poda = unidecode(row["Poda"]).title().strip()
         floracao = unidecode(row["Floração"]).title().strip()
         colheita = unidecode(row["Colheita"]).title().strip()
+        
+        if nome != lastNome: 
+            f.write(
+                "INSERT INTO Tipo_Planta (nome) VALUES ('{}') RETURNING id INTO v_id_tipo_planta;\n".format(
+                    nome
+                )
+            )
+            lastNome = nome
 
         f.write(
-            "INSERT INTO Planta (especie, nome_comum, variedade, tipo_plantacao, data_plantacao, poda, floracao, colheita) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');\n".format(
-                row["Espécie"],
-                nome,
-                variedade,
-                tipo_plantacao,
-                sementeira,
-                poda,
-                floracao,
-                colheita,
+            "INSERT INTO Planta (nome, tipo_planta_id) VALUES ('{}', v_id_tipo_planta);\n".format(
+                variedade
             )
         )
         # save all the entries "nome comum" and "variedade" in a list
@@ -76,24 +92,20 @@ with open(sql_file_path, "a") as f:
         aplicacao = unidecode(row["Aplicação"]).title().strip()
 
         f.write(
-            "INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('{}', '{}', '{}', '{}', '{}');\n".format(
+            "INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('{}', '{}', '{}', '{}', '{}') RETURNING INTO v_id_fator_producao;\n".format(
                 row["Designação"],
                 row["Fabricante"],
                 formato,
                 tipo,
                 aplicacao
             )
-        )
-        
-        fatorProducaoId = f"(Select id from Fator_Producao where designacao = '{row['Designação']}')";
-        
+        )    
         c1 = row['C1']
         perc_c1 = row['Perc.1']
         
         if c1 != "" and perc_c1 != "":
             f.write(
-                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ({}, '{}', '{}');\n".format(
-                    fatorProducaoId,
+                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES (v_id_fator_producao, '{}', '{}');\n".format(
                     c1,
                     perc_c1
                 )
@@ -103,8 +115,7 @@ with open(sql_file_path, "a") as f:
         perc_c2 = row['Perc.2']
         if c2 != "" and perc_c2 != "":
             f.write(
-                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ({}, '{}', '{}');\n".format(
-                    fatorProducaoId,
+                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES (v_id_fator_producao, '{}', '{}');\n".format(
                     c2,
                     perc_c2
                 )
@@ -115,8 +126,7 @@ with open(sql_file_path, "a") as f:
         
         if c3 != "" and perc_c3 != "":
             f.write(
-                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ({}, '{}', '{}');\n".format(
-                    fatorProducaoId,
+                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES (v_id_fator_producao, '{}', '{}');\n".format(
                     c3,
                     perc_c3
                 )
@@ -127,8 +137,7 @@ with open(sql_file_path, "a") as f:
         
         if c4 != "" and perc_c4 != "":
             f.write(
-                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES ({}, '{}', '{}');\n".format(
-                    fatorProducaoId,
+                "INSERT INTO Componente (fator_producao_id, componente, percentagem) VALUES (v_id_fator_producao, '{}', '{}');\n".format(
                     c4,
                     perc_c4
                 )
@@ -149,11 +158,10 @@ with open(sql_file_path, "a") as f:
         designacao = unidecode(row["Designação"]).title().strip()
 
         f.write(
-            "INSERT INTO Parcela_Agricola (id, designacao, area, unidade) VALUES ('{}', '{}', '{}', '{}');\n".format(
+            "INSERT INTO Parcela_Agricola (id, designacao, area) VALUES ('{}', '{}', '{}');\n".format(
                 row["ID"],
                 designacao,
                 row["Dimensão"],
-                row["Unidade"],
             )
         )
 
@@ -170,7 +178,7 @@ with open(sql_file_path, "a") as f:
         
         nome, variedade = get_nome_variedade_from_cultura(cultura, nome_comum)
         
-        selectPlantaId = f"(Select id from Planta where nome_comum='{nome}' and variedade='{variedade}')"
+        selectPlantaId = f"(Select p.id from Planta p join Tipo_Planta tp on p.tipo_planta_id = tp.id where tp.designacao='{nome}' and p.nome='{variedade}')"
 
         f.write(
             "INSERT INTO Cultura (parcela_id, planta_id, data_inicial, data_final, quantidade, unidades) VALUES ('{}', {}, TIMESTAMP '{}', {}, '{}', '{}');\n".format(
@@ -223,6 +231,10 @@ with open(sql_file_path, "a") as f:
                 plantaId,
                 operacaoId,
             )
+        )
+        
+        f.write(
+            "END;\n"
         )
 
 
