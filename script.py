@@ -182,7 +182,7 @@ with open(sql_file_path, "a") as f:
         f.write(f"Select p.id INTO v_id_planta from Planta p join Tipo_Planta tp on p.tipo_planta_id = tp.id where tp.designacao='{nome}' and p.nome='{variedade}'")
 
         f.write(
-            "INSERT INTO Cultura (parcela_id, planta_id, data_inicial, data_final, quantidade, unidades) VALUES ('{}', v_id_planta, TIMESTAMP '{}', '{}') RETURNING ID INTO v_id_cultura;\n".format(
+            "INSERT INTO Cultura (parcela_id, planta_id, data_inicial, data_final) VALUES ('{}', v_id_planta, TIMESTAMP '{}', '{}') RETURNING ID INTO v_id_cultura;\n".format(
                 row["ID"],
                 row["Data Inicial"],
                 f"DATE '{row['Data Final']}'" if row["Data Final"] != "NULL" else "''",
