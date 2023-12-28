@@ -533,14 +533,3 @@ INSERT INTO OPERACAO (data, tipo_operacao, quantidade, unidades, cultura_id) val
 INSERT INTO OPERACAO (data, tipo_operacao, quantidade, unidades, cultura_id) values (to_date('13/09/2023 07:00', 'DD/MM/YYYY HH24:MI'), 'Rega', 120, 'min', (Select c.id from cultura c left join Planta p on c.planta_id = p.id left join PARCELA_AGRICOLA pa on c.parcela_id = pa.id where p.nome_comum = 'Cenoura' and p.variedade = 'Danvers Half Long' and pa.designacao = 'Campo Novo' and c.data_inicial = to_date('05/07/2023', 'DD/MM/YYYY') and c.DATA_FINAL = to_date('08/10/2023', 'DD/MM/YYYY')));
 INSERT INTO OPERACAO (data, tipo_operacao, quantidade, unidades, cultura_id) values (to_date('20/09/2023 07:00', 'DD/MM/YYYY HH24:MI'), 'Rega', 120, 'min', (Select c.id from cultura c left join Planta p on c.planta_id = p.id left join PARCELA_AGRICOLA pa on c.parcela_id = pa.id where p.nome_comum = 'Cenoura' and p.variedade = 'Danvers Half Long' and pa.designacao = 'Campo Novo' and c.data_inicial = to_date('05/07/2023', 'DD/MM/YYYY') and c.DATA_FINAL = to_date('08/10/2023', 'DD/MM/YYYY')));
 
-
-SELECT * FROM OPERACAO WHERE TIPO_OPERACAO = 'Colheita';
-
-Select * from PARCELA_AGRICOLA WHERE DESIGNACAO LIKE 'Lameiro%';
-Select * from Planta WHERE VARIEDADE LIKE 'Grand%'
-
-Delete From Cultura 
-
-Select c.id from cultura c left join Planta p on c.planta_id = p.id left join PARCELA_AGRICOLA pa on c.parcela_id = pa.id where p.nome_comum = 'Macieira' and p.variedade = 'Jonagored' and pa.designacao = 'Lameiro Da Ponte' and c.data_inicial = to_date('01/05/2017', 'DD/MM/YYYY');
-
-Select * from operacao where tipo_operacao = 'Rega';

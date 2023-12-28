@@ -38,7 +38,7 @@ END;
 /
 
 /*test cursor*/
-DECLARE
+/* DECLARE
     LISTA         SYS_REFCURSOR;
     DESIGNACAO    VARCHAR2(20);
     TIPO          VARCHAR2(20);
@@ -48,6 +48,39 @@ DECLARE
     V_PARCELA     VARCHAR2(20) := 'Campo Grande';
     DATA_INICIAL  DATE := TO_DATE('2015-09-01', 'YYYY-MM-DD');
     DATA_FINAL    DATE := TO_DATE('2023-09-30', 'YYYY-MM-DD');
+BEGIN
+    LISTA := LISTA_FATORES (V_PARCELA, DATA_INICIAL, DATA_FINAL);
+    dbms_output.put_line ('DESIGNACAO | TIPO | COMPONENTE | PERCENTAGEM | QUANTIDADE_KG');
+    DBMS_OUTPUT.PUT_LINE ('----------------------------------------------------------------------');
+    LOOP
+        FETCH LISTA INTO DESIGNACAO, TIPO, COMPONENTE, PERCENTAGEM, QUANTIDADE_KG;
+        EXIT WHEN LISTA%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE (DESIGNACAO
+                              || ' | '
+                              || TIPO
+                              || ' | '
+                              || COMPONENTE
+                              || ' | '
+                              || PERCENTAGEM
+                              || ' | '
+                              || QUANTIDADE_KG || ' kg');
+    END LOOP;
+
+    CLOSE LISTA;
+END;
+/ */
+
+/*test cursor*/
+DECLARE
+    LISTA         SYS_REFCURSOR;
+    DESIGNACAO    VARCHAR2(20);
+    TIPO          VARCHAR2(20);
+    COMPONENTE    VARCHAR2(20);
+    PERCENTAGEM   FLOAT;
+    QUANTIDADE_KG FLOAT;
+    V_PARCELA     VARCHAR2(20) := 'Lameiro Do Moinho';
+    DATA_INICIAL  DATE := TO_DATE('2019-01-01', 'YYYY-MM-DD');
+    DATA_FINAL    DATE := TO_DATE('2023-07-06', 'YYYY-MM-DD');
 BEGIN
     LISTA := LISTA_FATORES (V_PARCELA, DATA_INICIAL, DATA_FINAL);
     dbms_output.put_line ('DESIGNACAO | TIPO | COMPONENTE | PERCENTAGEM | QUANTIDADE_KG');
