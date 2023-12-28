@@ -93,7 +93,7 @@ with open(sql_file_path, "a") as f:
         aplicacao = unidecode(row["Aplicação"]).title().strip()
 
         f.write(
-            "INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('{}', '{}', '{}', '{}', '{}') RETURNING INTO v_id_fator_producao;\n".format(
+            "INSERT INTO Fator_Producao (designacao, fabricante, formato, tipo, aplicacao) VALUES ('{}', '{}', '{}', '{}', '{}') RETURNING id INTO v_id_fator_producao;\n".format(
                 row["Designação"],
                 row["Fabricante"],
                 formato,
@@ -276,7 +276,7 @@ with open(sql_file_path, "a") as f:
             )
         elif operacao == "Colheita":
             f.write(
-                f"INSERT INTO Produto (designacao, planta_id) VALUES ('{nome}', v_id_planta) RETURNING INTO v_id_produto;\n"
+                f"INSERT INTO Produto (designacao, planta_id) VALUES ('{nome}', v_id_planta) RETURNING id INTO v_id_produto;\n"
             )
             
             f.write(
