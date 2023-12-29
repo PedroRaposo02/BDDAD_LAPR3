@@ -6,7 +6,7 @@ CREATE TABLE OPERATIONS_LOG (
     OPERATION_DATE DATE NOT NULL,
     OPERATION_STATE VARCHAR2(200) DEFAULT 'sucedida',
     ADDITIONAL_INFO CLOB,
-    PRIMARY KEY (LOG_ID),
+    PRIMARY KEY (LOG_ID)
 );
 
 CREATE OR REPLACE TRIGGER LOG_SEMEADURA_OPERATION
@@ -24,6 +24,26 @@ BEGIN
         "cultura_id": :NEW.CULTURA_ID,
     };
 
-    INSERT INTO OPERATIONS_LOG (OPERATION_ID, OPERATION_TYPE, OPERATION_DATE, OPERATION_STATE, ADDITIONAL_INFO) VALUES (:NEW.OPERACAO_ID, 'semeadura', v_operation_date, v_operation_state, v_additional_info);
+    INSERT INTO OPERATIONS_LOG (OPERATION_ID, OPERATION_TYPE, OPERATION_DATE, OPERATION_STATE, ADDITIONAL_INFO) VALUES (:NEW.OPERACAO_ID, 'Semeadura', v_operation_date, v_operation_state, v_additional_info);
+END;
+/
+
+CREATE OR REPLACE TRIGGER LOG_COLHEITA_OPERATION
+AFTER INSERT OR UPDATE ON COLHEITA
+FOR EACH ROW
+DECLARE
+    v_operation_date TIMESTAMP;
+    v_operation_state VARCHAR2(200);
+    v_additional_info CLOB;
+BEGIN
+    SELECT DATA, ESTADO INTO v_operation_date, v_operation_state FROM OPERACAO WHERE ID=:NEW.OPERACAO_ID;
+
+    v_additional_info := {
+        "quantidade_colhida": :NEW.QUANTIDADE,
+        "cultura_id": :NEW.CULTURA_ID,
+        "product_id:": :NEW.PRODUTO_ID,
+    };
+
+    INSERT INTO OPERATIONS_LOG (OPERATION_ID, OPERATION_TYPE, OPERATION_DATE, OPERATION_STATE, ADDITIONAL_INFO) VALUES (:NEW.OPERACAO_ID, 'Colheita', v_operation_date, v_operation_state, v_additional_info);
 END;
 /
