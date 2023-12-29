@@ -1,3 +1,5 @@
+DROP TABLE OPERATIONS_LOG;
+
 CREATE TABLE OPERATIONS_LOG (
     LOG_ID NUMBER(10) GENERATED AS IDENTITY,
     LOG_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -9,41 +11,563 @@ CREATE TABLE OPERATIONS_LOG (
     PRIMARY KEY (LOG_ID)
 );
 
-CREATE OR REPLACE TRIGGER LOG_SEMEADURA_OPERATION
-AFTER INSERT OR UPDATE ON SEMEADURA
-FOR EACH ROW
+CREATE OR REPLACE TRIGGER LOG_SEMEADURA_OPERATION AFTER
+    INSERT OR UPDATE ON SEMEADURA FOR EACH ROW
 DECLARE
-    v_operation_date TIMESTAMP;
-    v_operation_state VARCHAR2(200);
-    v_additional_info CLOB;
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
 BEGIN
-    SELECT DATA, ESTADO INTO v_operation_date, v_operation_state FROM OPERACAO WHERE ID=:NEW.OPERACAO_ID;
-
-    v_additional_info := {
-        "quantidade_de_semente": :NEW.QUANTIDADE_SEMENTE,
-        "cultura_id": :NEW.CULTURA_ID,
-    };
-
-    INSERT INTO OPERATIONS_LOG (OPERATION_ID, OPERATION_TYPE, OPERATION_DATE, OPERATION_STATE, ADDITIONAL_INFO) VALUES (:NEW.OPERACAO_ID, 'Semeadura', v_operation_date, v_operation_state, v_additional_info);
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+    V_ADDITIONAL_INFO := '{ "Quantidade de Semente": ' || :NEW.QUANTIDADE_SEMENTE ||
+    ', "Cultura ID": ' || :NEW.CULTURA_ID || '}';
+    INSERT INTO OPERATIONS_LOG (
+        OPERATION_ID,
+        OPERATION_TYPE,
+        OPERATION_DATE,
+        OPERATION_STATE,
+        ADDITIONAL_INFO
+    ) VALUES (
+        :NEW.OPERACAO_ID,
+        'Semeadura',
+        V_OPERATION_DATE,
+        V_OPERATION_STATE,
+        V_ADDITIONAL_INFO
+    );
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
 END;
 /
 
-CREATE OR REPLACE TRIGGER LOG_COLHEITA_OPERATION
-AFTER INSERT OR UPDATE ON COLHEITA
-FOR EACH ROW
+CREATE OR REPLACE TRIGGER LOG_COLHEITA_OPERATION AFTER
+    INSERT OR UPDATE ON COLHEITA FOR EACH ROW
 DECLARE
-    v_operation_date TIMESTAMP;
-    v_operation_state VARCHAR2(200);
-    v_additional_info CLOB;
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
 BEGIN
-    SELECT DATA, ESTADO INTO v_operation_date, v_operation_state FROM OPERACAO WHERE ID=:NEW.OPERACAO_ID;
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+    V_ADDITIONAL_INFO := '{ "Quantidade Colhida": ' || :NEW.QUANTIDADE ||
+    ', "Cultura ID": ' || :NEW.CULTURA_ID ||
+    ', "Produto ID:": ' || :NEW.PRODUTO_ID || '}';
+    
+    INSERT INTO OPERATIONS_LOG (
+        OPERATION_ID,
+        OPERATION_TYPE,
+        OPERATION_DATE,
+        OPERATION_STATE,
+        ADDITIONAL_INFO
+    ) VALUES (
+        :NEW.OPERACAO_ID,
+        'Colheita',
+        V_OPERATION_DATE,
+        V_OPERATION_STATE,
+        V_ADDITIONAL_INFO
+    );
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
 
-    v_additional_info := {
-        "quantidade_colhida": :NEW.QUANTIDADE,
-        "cultura_id": :NEW.CULTURA_ID,
-        "product_id:": :NEW.PRODUTO_ID,
-    };
+CREATE OR REPLACE TRIGGER LOG_MONDA_OPERATION AFTER
+    INSERT OR UPDATE ON MONDA FOR EACH ROW
+DECLARE
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
+BEGIN
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+    V_ADDITIONAL_INFO := '{ "Area": ' || :NEW.AREA ||
+    ', "Cultura ID": ' || :NEW.CULTURA_ID || '}';
+    INSERT INTO OPERATIONS_LOG (
+        OPERATION_ID,
+        OPERATION_TYPE,
+        OPERATION_DATE,
+        OPERATION_STATE,
+        ADDITIONAL_INFO
+    ) VALUES (
+        :NEW.OPERACAO_ID,
+        'Monda',
+        V_OPERATION_DATE,
+        V_OPERATION_STATE,
+        V_ADDITIONAL_INFO
+    );
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
 
-    INSERT INTO OPERATIONS_LOG (OPERATION_ID, OPERATION_TYPE, OPERATION_DATE, OPERATION_STATE, ADDITIONAL_INFO) VALUES (:NEW.OPERACAO_ID, 'Colheita', v_operation_date, v_operation_state, v_additional_info);
+CREATE OR REPLACE TRIGGER LOG_PLANTACAO_OPERATION AFTER
+    INSERT OR UPDATE ON PLANTACAO FOR EACH ROW
+DECLARE
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
+BEGIN
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+
+    V_ADDITIONAL_INFO := '{ "Numero de Plantas": ' || :NEW.num_plantas ||
+    ',"Compasso": ' || :NEW.compasso ||
+    ', "Distancia entre Filas": ' || :NEW.distancia_filas ||
+    ', "Cultura ID": ' || :NEW.CULTURA_ID || '}';
+
+    INSERT INTO OPERATIONS_LOG (
+        OPERATION_ID,
+        OPERATION_TYPE,
+        OPERATION_DATE,
+        OPERATION_STATE,
+        ADDITIONAL_INFO
+    ) VALUES (
+        :NEW.OPERACAO_ID,
+        'Plantacao',
+        V_OPERATION_DATE,
+        V_OPERATION_STATE,
+        V_ADDITIONAL_INFO
+    );
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER LOG_MOVIMENTACAO_SOLO_OPERATION AFTER
+    INSERT OR UPDATE ON MOVIMENTACAO_SOLO FOR EACH ROW
+DECLARE
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
+BEGIN
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+
+    V_ADDITIONAL_INFO := '{ "Area": ' || :NEW.area ||
+    ', "Parcela ID": ' || :NEW.parcela_id || '}';
+
+    INSERT INTO OPERATIONS_LOG (
+        OPERATION_ID,
+        OPERATION_TYPE,
+        OPERATION_DATE,
+        OPERATION_STATE,
+        ADDITIONAL_INFO
+    ) VALUES (
+        :NEW.OPERACAO_ID,
+        'Movimentacao do Solo',
+        V_OPERATION_DATE,
+        V_OPERATION_STATE,
+        V_ADDITIONAL_INFO
+    );
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER LOG_REGA_OPERATION AFTER
+    INSERT OR UPDATE ON REGA FOR EACH ROW
+DECLARE
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
+    V_COUNT           NUMBER(10);
+BEGIN
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+    SELECT
+        COUNT(*) INTO V_COUNT
+    FROM
+        FERTIRREGA
+    WHERE
+        OPERACAO_ID=:NEW.OPERACAO_ID;
+
+    IF V_COUNT = 0 THEN
+        V_ADDITIONAL_INFO := '{ "Duracao": ' || :NEW.duracao ||
+            ', "Setor ID": ' || :NEW.setor_id || '}';
+
+        INSERT INTO OPERATIONS_LOG (
+            OPERATION_ID,
+            OPERATION_TYPE,
+            OPERATION_DATE,
+            OPERATION_STATE,
+            ADDITIONAL_INFO
+        ) VALUES (
+            :NEW.OPERACAO_ID,
+            'Rega',
+            V_OPERATION_DATE,
+            V_OPERATION_STATE,
+            V_ADDITIONAL_INFO
+        );
+    END IF;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER LOG_FERTIRREGA_OPERATION AFTER
+    INSERT OR UPDATE ON FERTIRREGA FOR EACH ROW
+DECLARE
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
+    V_REGA_DURACAO   NUMBER(10);
+    V_REGA_SETOR_ID  NUMBER(10);
+BEGIN
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+
+    SELECT DURACAO, SETOR_ID INTO V_REGA_DURACAO, V_REGA_SETOR_ID FROM REGA WHERE operacao_id = :NEW.OPERACAO_ID;
+
+    V_ADDITIONAL_INFO := '{ "Duracao": ' || V_REGA_DURACAO||
+    ', "Setor ID": ' || V_REGA_SETOR_ID ||
+    ', "Receita ID": ' || :NEW.receita || '}';
+
+    INSERT INTO OPERATIONS_LOG (
+        OPERATION_ID,
+        OPERATION_TYPE,
+        OPERATION_DATE,
+        OPERATION_STATE,
+        ADDITIONAL_INFO
+    ) VALUES (
+        :NEW.OPERACAO_ID,
+        'Fertirrega',
+        V_OPERATION_DATE,
+        V_OPERATION_STATE,
+        V_ADDITIONAL_INFO
+    );
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER LOG_APLICACAO_SOLO_OPERATION AFTER
+    INSERT OR UPDATE ON APLICACAO_FP_SOLO FOR EACH ROW
+DECLARE
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
+    V_AREA            FLOAT(10);
+    TYPE FP_RECORD IS RECORD (
+        DESIGNACAO FATOR_PRODUCAO.DESIGNACAO%TYPE,
+        QUANTIDADE NUMBER(10)
+    );
+    TYPE FP_TABLE IS
+        TABLE OF FP_RECORD INDEX BY BINARY_INTEGER;
+    V_FPS             FP_TABLE;
+    CURSOR C_FPS IS
+    SELECT
+        FP.DESIGNACAO,
+        FPA.QUANTIDADE
+    FROM
+        FATOR_PRODUCAO FP
+        LEFT JOIN FP_APLICADOS FPA
+        ON FP.ID = FPA.FP_ID
+    WHERE
+        FPA.OPERACAO_ID = :NEW.OPERACAO_ID;
+BEGIN
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+    SELECT
+        COALESCE(AREA, NULL) INTO V_AREA
+    FROM
+        APLICACAO_FP
+    WHERE
+        OPERACAO_ID=:NEW.OPERACAO_ID;
+    V_ADDITIONAL_INFO := '{ "Parcela ID": '
+                         || :NEW.PARCELA_ID;
+    IF V_AREA IS NOT NULL THEN
+        V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                             || ', "Area": '
+                             || V_AREA;
+    END IF;
+
+    V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                         || ', "Fatores de Producao": [';
+    OPEN C_FPS;
+    LOOP
+        FETCH C_FPS BULK COLLECT INTO V_FPS LIMIT 100;
+        EXIT WHEN V_FPS.COUNT = 0;
+        FOR I IN 1..V_FPS.COUNT LOOP
+            V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                                 || '{"Designacao": "'
+                                 || V_FPS(I).DESIGNACAO
+                                 || '", "Quantidade": '
+                                 || V_FPS(I).QUANTIDADE
+                                 || '}';
+            IF I < V_FPS.COUNT THEN
+                V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                                     || ', ';
+            END IF;
+        END LOOP;
+    END LOOP;
+
+    CLOSE C_FPS;
+    V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                         || ']}';
+    INSERT INTO OPERATIONS_LOG (
+        OPERATION_ID,
+        OPERATION_TYPE,
+        OPERATION_DATE,
+        OPERATION_STATE,
+        ADDITIONAL_INFO
+    ) VALUES (
+        :NEW.OPERACAO_ID,
+        'Aplicacao no Solo',
+        V_OPERATION_DATE,
+        V_OPERATION_STATE,
+        V_ADDITIONAL_INFO
+    );
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER LOG_APLICACAO_CULTURA_OPERATION AFTER
+    INSERT OR UPDATE ON APLICACAO_FP_CULTURA FOR EACH ROW
+DECLARE
+    V_OPERATION_DATE  TIMESTAMP;
+    V_OPERATION_STATE VARCHAR2(200);
+    V_ADDITIONAL_INFO CLOB;
+    V_AREA            FLOAT(10);
+    V_MODO_AFP        VARCHAR2(200);
+    TYPE FP_RECORD IS RECORD (
+        DESIGNACAO FATOR_PRODUCAO.DESIGNACAO%TYPE,
+        QUANTIDADE NUMBER(10)
+    );
+    TYPE FP_TABLE IS
+        TABLE OF FP_RECORD INDEX BY BINARY_INTEGER;
+    V_FPS             FP_TABLE;
+    CURSOR C_FPS IS
+    SELECT
+        FP.DESIGNACAO,
+        FPA.QUANTIDADE
+    FROM
+        FATOR_PRODUCAO FP
+        LEFT JOIN FP_APLICADOS FPA
+        ON FP.ID = FPA.FP_ID
+    WHERE
+        FPA.OPERACAO_ID = :NEW.OPERACAO_ID;
+BEGIN
+    SELECT
+        DATA,
+        ESTADO INTO V_OPERATION_DATE,
+        V_OPERATION_STATE
+    FROM
+        OPERACAO
+    WHERE
+        ID=:NEW.OPERACAO_ID;
+    SELECT
+        DESIGNACAO INTO V_MODO_AFP
+    FROM
+        MODO_AFP
+    WHERE
+        ID=:NEW.MODO_AFP_ID;
+    SELECT
+        COALESCE(AREA, NULL) INTO V_AREA
+    FROM
+        APLICACAO_FP
+    WHERE
+        OPERACAO_ID=:NEW.OPERACAO_ID;
+    V_ADDITIONAL_INFO := '{"Cultura ID": '
+                         || :NEW.CULTURA_ID;
+    IF V_AREA IS NOT NULL THEN
+        V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                             || ', "Area": '
+                             || V_AREA;
+    END IF;
+
+    V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                         || ', "Fatores de Producao": [';
+    OPEN C_FPS;
+    LOOP
+        FETCH C_FPS BULK COLLECT INTO V_FPS LIMIT 100;
+        EXIT WHEN V_FPS.COUNT = 0;
+        FOR I IN 1..V_FPS.COUNT LOOP
+            V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                                 || '{"Designacao": "'
+                                 || V_FPS(I).DESIGNACAO
+                                 || '", "Quantidade": '
+                                 || V_FPS(I).QUANTIDADE
+                                 || '}';
+            IF I < V_FPS.COUNT THEN
+                V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                                     || ', ';
+            END IF;
+        END LOOP;
+    END LOOP;
+
+    CLOSE C_FPS;
+    V_ADDITIONAL_INFO := V_ADDITIONAL_INFO
+                         || ']}';
+    INSERT INTO OPERATIONS_LOG (
+        OPERATION_ID,
+        OPERATION_TYPE,
+        OPERATION_DATE,
+        OPERATION_STATE,
+        ADDITIONAL_INFO
+    ) VALUES (
+        :NEW.OPERACAO_ID,
+        'Aplicacao na Cultura',
+        V_OPERATION_DATE,
+        V_OPERATION_STATE,
+        V_ADDITIONAL_INFO
+    );
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+--Operaçoes de Colheita
+DECLARE
+    V_ID_PRODUTO    INTEGER;
+    V_ID_OPERACAO   INTEGER;
+    V_ID_PLANTA     INTEGER;
+    V_ID_CULTURA    INTEGER;
+    V_ID_PARCELA    INTEGER;
+    V_OPERACAO_DATA DATE;
+BEGIN
+ --FIRST OPERATION
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-18', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Lameiro Da Ponte';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Royal Gala';
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Maça Royal Gala';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Maça Royal Gala',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            700,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
 END;
 /
