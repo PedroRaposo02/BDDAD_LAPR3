@@ -1474,12 +1474,13 @@ END;
 --Operaçoes de Colheita (LAMEIRO DA PONTE)
 --------------------------------------------------------------------------------
 DECLARE
-    V_ID_PRODUTO    INTEGER;
-    V_ID_OPERACAO   INTEGER;
-    V_ID_PLANTA     INTEGER;
-    V_ID_CULTURA    INTEGER;
-    V_ID_PARCELA    INTEGER;
-    V_OPERACAO_DATA DATE;
+    V_ID_PRODUTO     INTEGER;
+    V_ID_OPERACAO    INTEGER;
+    V_ID_PLANTA      INTEGER;
+    V_ID_TIPO_PLANTA INTEGER;
+    V_ID_CULTURA     INTEGER;
+    V_ID_PARCELA     INTEGER;
+    V_OPERACAO_DATA  DATE;
 BEGIN
  --FIRST OPERATION
     BEGIN
@@ -1496,11 +1497,18 @@ BEGIN
             WHERE
                 DESIGNACAO = 'Lameiro Da Ponte';
             SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
                 ID INTO V_ID_PLANTA
             FROM
                 PLANTA
             WHERE
-                NOME = 'Royal Gala';
+                NOME = 'Royal Gala'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
             SELECT
                 ID INTO V_ID_PRODUTO
             FROM
@@ -1568,11 +1576,18 @@ BEGIN
             WHERE
                 DESIGNACAO = 'Lameiro Da Ponte';
             SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
                 ID INTO V_ID_PLANTA
             FROM
                 PLANTA
             WHERE
-                NOME = 'Royal Gala';
+                NOME = 'Royal Gala'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
             SELECT
                 ID INTO V_ID_PRODUTO
             FROM
@@ -1640,11 +1655,18 @@ BEGIN
             WHERE
                 DESIGNACAO = 'Lameiro Da Ponte';
             SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
                 ID INTO V_ID_PLANTA
             FROM
                 PLANTA
             WHERE
-                NOME = 'Jonagored';
+                NOME = 'Jonagored'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
             SELECT
                 ID INTO V_ID_PRODUTO
             FROM
@@ -1712,11 +1734,18 @@ BEGIN
             WHERE
                 DESIGNACAO = 'Lameiro Da Ponte';
             SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
                 ID INTO V_ID_PLANTA
             FROM
                 PLANTA
             WHERE
-                NOME = 'Jonagored';
+                NOME = 'Jonagored'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
             SELECT
                 ID INTO V_ID_PRODUTO
             FROM
@@ -1784,11 +1813,18 @@ BEGIN
             WHERE
                 DESIGNACAO = 'Lameiro Da Ponte';
             SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
                 ID INTO V_ID_PLANTA
             FROM
                 PLANTA
             WHERE
-                NOME = 'Fuji';
+                NOME = 'Fuji'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
             SELECT
                 ID INTO V_ID_PRODUTO
             FROM
@@ -1856,11 +1892,18 @@ BEGIN
             WHERE
                 DESIGNACAO = 'Lameiro Da Ponte';
             SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
                 ID INTO V_ID_PLANTA
             FROM
                 PLANTA
             WHERE
-                NOME = 'Fuji';
+                NOME = 'Fuji'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
             SELECT
                 ID INTO V_ID_PRODUTO
             FROM
@@ -1931,6 +1974,8 @@ DECLARE
     V_ID_OPERACAO         INTEGER;
     V_ID_CULTURA          INTEGER;
     V_ID_PARCELA_AGRICOLA INTEGER;
+    V_ID_PLANTA           INTEGER;
+    V_ID_TIPO_PLANTA      INTEGER;
 BEGIN
  --1st PLANTACAO
     BEGIN
@@ -1946,18 +1991,24 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Porta Da Loja'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
             ID INTO V_ID_CULTURA
         FROM
             CULTURA
         WHERE
-            PLANTA_ID = (
-                SELECT
-                    ID
-                FROM
-                    PLANTA
-                WHERE
-                    NOME = 'Porta Da Loja'
-            )
+            PLANTA_ID = V_ID_PLANTA
             AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
         INSERT INTO PLANTACAO (
             OPERACAO_ID,
@@ -1991,18 +2042,24 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Malapio'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
             ID INTO V_ID_CULTURA
         FROM
             CULTURA
         WHERE
-            PLANTA_ID = (
-                SELECT
-                    ID
-                FROM
-                    PLANTA
-                WHERE
-                    NOME = 'Malapio'
-            )
+            PLANTA_ID = V_ID_PLANTA
             AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
         INSERT INTO PLANTACAO (
             OPERACAO_ID,
@@ -2036,18 +2093,24 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Pipo De Basto'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
             ID INTO V_ID_CULTURA
         FROM
             CULTURA
         WHERE
-            PLANTA_ID = (
-                SELECT
-                    ID
-                FROM
-                    PLANTA
-                WHERE
-                    NOME = 'Pipo De Basto'
-            )
+            PLANTA_ID = V_ID_PLANTA
             AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
         INSERT INTO PLANTACAO (
             OPERACAO_ID,
@@ -2081,18 +2144,24 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Reinette Ou Canada'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
             ID INTO V_ID_CULTURA
         FROM
             CULTURA
         WHERE
-            PLANTA_ID = (
-                SELECT
-                    ID
-                FROM
-                    PLANTA
-                WHERE
-                    NOME = 'Canada'
-            )
+            PLANTA_ID = V_PLANTA_ID
             AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
         INSERT INTO PLANTACAO (
             OPERACAO_ID,
@@ -2126,18 +2195,24 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Reinette Ou Grand Fay'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
             ID INTO V_ID_CULTURA
         FROM
             CULTURA
         WHERE
-            PLANTA_ID = (
-                SELECT
-                    ID
-                FROM
-                    PLANTA
-                WHERE
-                    NOME = 'Grand Fay'
-            )
+            PLANTA_ID = V_ID_PLANTA
             AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
         INSERT INTO PLANTACAO (
             OPERACAO_ID,
@@ -2171,18 +2246,24 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Gronho Doce'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
             ID INTO V_ID_CULTURA
         FROM
             CULTURA
         WHERE
-            PLANTA_ID = (
-                SELECT
-                    ID
-                FROM
-                    PLANTA
-                WHERE
-                    NOME = 'Gronho Doce'
-            )
+            PLANTA_ID = V_ID_PLANTA
             AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
         INSERT INTO PLANTACAO (
             OPERACAO_ID,
@@ -4031,11 +4112,18 @@ BEGIN
             TO_DATE('2023-09-15', 'YYYY-MM-DD')
         ) RETURNING ID INTO V_ID_OPERACAO;
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Reinette Ou Canada';
+            NOME = 'Reinette Ou Canada'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -4100,11 +4188,18 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Reinette Ou Grand Fay';
+            NOME = 'Reinette Ou Grand Fay'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -4163,11 +4258,18 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Reinette Ou Grand Fay';
+            NOME = 'Reinette Ou Grand Fay'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -4226,11 +4328,18 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Pipo De Basto';
+            NOME = 'Pipo De Basto'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -4289,11 +4398,18 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Pipo De Basto';
+            NOME = 'Pipo De Basto'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -4352,11 +4468,18 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Gronho Doce';
+            NOME = 'Gronho Doce'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -4415,11 +4538,18 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Malapio';
+            NOME = 'Malapio'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -4478,11 +4608,18 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Porta Da Loja';
+            NOME = 'Porta Da Loja'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -4541,11 +4678,18 @@ BEGIN
         WHERE
             DESIGNACAO = 'Lameiro Do Moinho';
         SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Macieira';
+        SELECT
             ID INTO V_ID_PLANTA
         FROM
             PLANTA
         WHERE
-            NOME = 'Porta Da Loja';
+            NOME = 'Porta Da Loja'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         BEGIN
             SELECT
                 ID INTO V_ID_PRODUTO
@@ -5624,70 +5768,1154 @@ END;
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+--------------------------------------------------------------------------------
+-- APLICACAO FATOR PRODUCAO NO SOLO (CAMPO NOVO)
+--------------------------------------------------------------------------------
 
+DECLARE
+    V_ID_OPERACAO         INTEGER;
+    V_ID_FATOR_PRODUCAO   INTEGER;
+    V_ID_PARCELA_AGRICOLA INTEGER;
+    V_ID_MODO_AFP         INTEGER;
+    V_ID_CULTURA          INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-04-01', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'Biocal Composto';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID,
+            AREA
+        ) VALUES (
+            V_ID_OPERACAO,
+            1.1
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        INSERT INTO APLICACAO_FP_SOLO (
+            OPERACAO_ID,
+            PARCELA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_PARCELA_AGRICOLA
+        );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            500
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-03', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'Fertimax Extrume De Cavalo';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID,
+            AREA
+        ) VALUES (
+            V_ID_OPERACAO,
+            1.1
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        INSERT INTO APLICACAO_FP_SOLO (
+            OPERACAO_ID,
+            PARCELA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_PARCELA_AGRICOLA
+        );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            1800
+        );
+    END;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    COMMIT;
+END;
+/
 
 --------------------------------------------------------------------------------
+-- OPERACOES DE SEMEADURA (CAMPO NOVO)
 --------------------------------------------------------------------------------
--- OPERACOES DE REGA SETOR 10
+
+DECLARE
+    V_ID_OPERACAO    INTEGER;
+    V_ID_CULTURA     INTEGER;
+    V_ID_PARCELA     INTEGER;
+    V_ID_PLANTA      INTEGER;
+    V_ID_TIPO_PLANTA INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-04-05', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_PARCELA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Cenoura';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Sugarsnax Hybrid'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA;
+        INSERT INTO SEMEADURA (
+            OPERACAO_ID,
+            QUANTIDADE_SEMENTE,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            1.2,
+            V_ID_CULTURA
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-04-06', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_PARCELA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Abobora';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO TIPO_PLANTA (
+                DESIGNACAO
+            ) VALUES (
+                'Abobora'
+            ) RETURNING ID INTO V_ID_TIPO_PLANTA;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Manteiga'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA;
+            INSERT INTO SEMEADURA (
+                OPERACAO_ID,
+                QUANTIDADE_SEMENTE,
+                CULTURA_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                1.5,
+                V_ID_CULTURA
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-05', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_PARCELA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Cenoura';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Danvers Half Long'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA;
+        INSERT INTO SEMEADURA (
+            OPERACAO_ID,
+            QUANTIDADE_SEMENTE,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            1.2,
+            V_ID_CULTURA
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-10-12', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_PARCELA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Tremoco';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Amarelo'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO TIPO_PLANTA (
+                DESIGNACAO
+            ) VALUES (
+                'Tremoco'
+            ) RETURNING ID INTO V_ID_TIPO_PLANTA;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO SEMEADURA (
+                OPERACAO_ID,
+                QUANTIDADE_SEMENTE,
+                CULTURA_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                32,
+                V_ID_CULTURA
+            );
+    END;
+
+    COMMIT;
+END;
+/
+
 --------------------------------------------------------------------------------
+-- OPERACAO DE PLANTACAO (CAMPO NOVO)
 --------------------------------------------------------------------------------
+
+DECLARE
+    V_ID_OPERACAO         INTEGER;
+    V_ID_CULTURA          INTEGER;
+    V_ID_PARCELA_AGRICOLA INTEGER;
+    V_ID_PLANTA           INTEGER;
+    V_ID_TIPO_PLANTA      INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-05-08', 'YYYY-MM-DD')
+        )RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Cenoura';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Sugarsnax Hybrid'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        INSERT INTO MONDA (
+            OPERACAO_ID,
+            AREA,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            0.5,
+            V_ID_CULTURA
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-05-20', 'YYYY-MM-DD')
+        )RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Abobora';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO TIPO_PLANTA (
+                DESIGNACAO
+            ) VALUES (
+                'Abobora'
+            ) RETURNING ID INTO V_ID_TIPO_PLANTA;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Manteiga'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+            INSERT INTO MONDA (
+                OPERACAO_ID,
+                AREA,
+                CULTURA_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                0.6,
+                V_ID_CULTURA
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-20', 'YYYY-MM-DD')
+        )RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Abobora';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO TIPO_PLANTA (
+                DESIGNACAO
+            ) VALUES (
+                'Abobora'
+            ) RETURNING ID INTO V_ID_TIPO_PLANTA;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Manteiga'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+            INSERT INTO MONDA (
+                OPERACAO_ID,
+                AREA,
+                CULTURA_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                0.6,
+                V_ID_CULTURA
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-08', 'YYYY-MM-DD')
+        )RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Cenoura';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Danvers Half Long'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        INSERT INTO MONDA (
+            OPERACAO_ID,
+            AREA,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            0.5,
+            V_ID_CULTURA
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+-- OPERACOES DE COLHEITA (CAMPO NOVO)
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_PRODUTO     INTEGER;
+    V_ID_OPERACAO    INTEGER;
+    V_ID_PLANTA      INTEGER;
+    V_ID_TIPO_PLANTA INTEGER;
+    V_ID_CULTURA     INTEGER;
+    V_ID_PARCELA     INTEGER;
+    V_OPERACAO_DATA  DATE;
+BEGIN
+ --FIRST OPERATION
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-14', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Cenoura';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Sugarsnax Hybrid'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Cenoura Sugarsnax Hybrid';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Cenoura Sugarsnax Hybrid',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            1500,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-28', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Cenoura';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Sugarsnax Hybrid'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Cenoura Sugarsnax Hybrid';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Cenoura Sugarsnax Hybrid',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            2500,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-15', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Abobora';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Manteiga'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Abobora Manteiga';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Abobora Manteiga',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            8000,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-25', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Abobora';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Manteiga'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Abobora Manteiga';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Abobora Manteiga',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            5000,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-18', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Cenoura';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Danvers Half Long'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Cenoura Danvers Half Long';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Cenoura Danvers Half Long',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            900,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-22', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Cenoura';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Danvers Half Long'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Cenoura Danvers Half Long';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Cenoura Danvers Half Long',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            1500,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-10-05', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Cenoura';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Danvers Half Long'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Cenoura Danvers Half Long';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Cenoura Danvers Half Long',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            1200,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+-- OPERACOES DE MOBILIZACAO DO SOLO (CAMPO NOVO)
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_PARCELA  INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-04', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_PARCELA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        INSERT INTO MOVIMENTACAO_SOLO (
+            OPERACAO_ID,
+            AREA,
+            PARCELA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            0.5,
+            V_ID_PARCELA
+        );
+    END;
+
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-10-10', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_PARCELA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        INSERT INTO MOVIMENTACAO_SOLO (
+            OPERACAO_ID,
+            AREA,
+            PARCELA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            1.1,
+            V_ID_PARCELA
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+ -- OPERACOES DE REGA SETOR 10
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
 DECLARE
     V_ID_OPERACAO INTEGER;
     V_ID_SETOR    INTEGER;
