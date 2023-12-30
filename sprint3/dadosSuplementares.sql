@@ -1115,11 +1115,10 @@ END;
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
---Operaçoes de Colheita (LAMEIRO DA PONTE)
+--Operaçoes de Rega (LAMEIRO DA PONTE)
 --------------------------------------------------------------------------------
 DECLARE
     V_ID_OPERACAO INTEGER;
-    V_ID_REGA     INTEGER;
     V_ID_SETOR    INTEGER;
 BEGIN
     BEGIN
@@ -3593,7 +3592,8 @@ BEGIN
                 'Foliar'
             ) RETURNING ID INTO V_ID_MODO_AFP;
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
             INSERT INTO APLICACAO_FP_CULTURA (
                 OPERACAO_ID,
                 CULTURA_ID,
@@ -3670,9 +3670,9 @@ BEGIN
             ) VALUES (
                 'Foliar'
             ) RETURNING ID INTO V_ID_MODO_AFP;
-            WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
             INSERT INTO APLICACAO_FP_CULTURA (
                 OPERACAO_ID,
                 CULTURA_ID,
@@ -3749,9 +3749,9 @@ BEGIN
             ) VALUES (
                 'Foliar'
             ) RETURNING ID INTO V_ID_MODO_AFP;
-            WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
             INSERT INTO APLICACAO_FP_CULTURA (
                 OPERACAO_ID,
                 CULTURA_ID,
@@ -3828,9 +3828,9 @@ BEGIN
             ) VALUES (
                 'Foliar'
             ) RETURNING ID INTO V_ID_MODO_AFP;
-            WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
             INSERT INTO APLICACAO_FP_CULTURA (
                 OPERACAO_ID,
                 CULTURA_ID,
@@ -3907,9 +3907,9 @@ BEGIN
             ) VALUES (
                 'Foliar'
             ) RETURNING ID INTO V_ID_MODO_AFP;
-            WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
             INSERT INTO APLICACAO_FP_CULTURA (
                 OPERACAO_ID,
                 CULTURA_ID,
@@ -3986,9 +3986,9 @@ BEGIN
             ) VALUES (
                 'Foliar'
             ) RETURNING ID INTO V_ID_MODO_AFP;
-            WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
             INSERT INTO APLICACAO_FP_CULTURA (
                 OPERACAO_ID,
                 CULTURA_ID,
@@ -4589,6 +4589,2460 @@ BEGIN
         WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
                                   ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- CAMPO GRANDE
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+-- OPERACAO DE PLANTACAO (CAMPO GRANDE)
+--------------------------------------------------------------------------------
+
+DECLARE
+    V_ID_OPERACAO         INTEGER;
+    V_ID_CULTURA          INTEGER;
+    V_ID_PARCELA_AGRICOLA INTEGER;
+    V_ID_PLANTA           INTEGER;
+    V_ID_TIPO_PLANTA      INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2016-10-12', 'YYYY-MM-DD')
+        )RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Arbequina'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        INSERT INTO PLANTACAO (
+            OPERACAO_ID,
+            NUM_PLANTAS,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            40,
+            V_ID_CULTURA
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+-- OPERACOES DE APLICACAO DE FATOR DE PRODUCAO EM CULTURA (CAMPO GRANDE)
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO         INTEGER;
+    V_ID_FATOR_PRODUCAO   INTEGER;
+    V_ID_PARCELA_AGRICOLA INTEGER;
+    V_ID_MODO_AFP         INTEGER;
+    V_ID_CULTURA          INTEGER;
+    V_ID_PLANTA           INTEGER;
+    V_ID_TIPO_PLANTA      INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2021-01-13', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Picual'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                120
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2021-01-12', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Galega'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                180
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2021-01-12', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Arbequina'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                240
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2022-01-12', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Picual'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                120
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2022-01-12', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Galega'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                180
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2022-01-13', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Arbequina'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                240
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-01-12', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Picual'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                120
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-01-12', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Galega'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                180
+            );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-01-12', 'YYYY-MM-DD')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_FATOR_PRODUCAO
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = 'BIOFERTIL N6';
+        INSERT INTO APLICACAO_FP (
+            OPERACAO_ID
+        ) VALUES (
+            V_ID_OPERACAO
+        );
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Grande';
+        SELECT
+            ID INTO V_ID_TIPO_PLANTA
+        FROM
+            TIPO_PLANTA
+        WHERE
+            DESIGNACAO = 'Oliveira';
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Arbequina'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        SELECT
+            ID INTO V_ID_MODO_AFP
+        FROM
+            MODO_AFP
+        WHERE
+            DESIGNACAO = 'Foliar';
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            INSERT INTO MODO_AFP (
+                DESIGNACAO
+            ) VALUES (
+                'Foliar'
+            ) RETURNING ID INTO V_ID_MODO_AFP;
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO APLICACAO_FP_CULTURA (
+                OPERACAO_ID,
+                CULTURA_ID,
+                MODO_AFP_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_CULTURA,
+                V_ID_MODO_AFP
+            );
+            INSERT INTO FP_APLICADOS (
+                OPERACAO_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_OPERACAO,
+                V_ID_FATOR_PRODUCAO,
+                240
+            );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+-- OPERACOES DE COLHEITA (CAMPO GRANDE)
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_PRODUTO    INTEGER;
+    V_ID_OPERACAO   INTEGER;
+    V_ID_PLANTA     INTEGER;
+    V_ID_CULTURA    INTEGER;
+    V_ID_PARCELA    INTEGER;
+    V_OPERACAO_DATA DATE;
+BEGIN
+ --FIRST OPERATION
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-11-02', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Arbequina';
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Azeitona Arbequina';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Azeitona Arbequina',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            400,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-11-05', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Picual';
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Azeitona Picual';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Azeitona Picual',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            300,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-11-08', 'YYYY-MM-DD')
+        ) RETURNING ID, DATA INTO V_ID_OPERACAO, V_OPERACAO_DATA;
+        BEGIN
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Galega';
+            SELECT
+                ID INTO V_ID_PRODUTO
+            FROM
+                PRODUTO
+            WHERE
+                DESIGNACAO = 'Azeitona Galega';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO PRODUTO (
+                    DESIGNACAO,
+                    PLANTA_ID
+                ) VALUES (
+                    'Azeitona Galega',
+                    V_ID_PLANTA
+                ) RETURNING ID INTO V_ID_PRODUTO;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            C.ID INTO V_ID_CULTURA
+        FROM
+            CULTURA          C
+            JOIN PLANTA P
+            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID=PA.ID
+        WHERE
+            C.PLANTA_ID=V_ID_PLANTA
+            AND C.PARCELA_ID=V_ID_PARCELA
+            AND ((P.TIPO_PLANTACAO='Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL)
+            OR (P.TIPO_PLANTACAO='Temporaria'
+            AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
+            AND C.DATA_FINAL))
+            AND ROWNUM = 1;
+        INSERT INTO COLHEITA (
+            OPERACAO_ID,
+            QUANTIDADE,
+            PRODUTO_ID,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            350,
+            V_ID_PRODUTO,
+            V_ID_CULTURA
+        );
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- CAMPO NOVO
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- OPERACOES DE REGA SETOR 10
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_SETOR    INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-17 05:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            30,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-17 05:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            30,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-17 05:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            60,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-04 06:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-18 05:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            30,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-10-02 05:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            60,
+            V_ID_SETOR
+        );
+    END;
+
+    COMMIT;
+END;
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+ -- OPERACOES DE REGA SETOR 22
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_SETOR    INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-05-13 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-02 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-01 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-08 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            180,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-22 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            180,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-29 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            180,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-05 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            150,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-17 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            150,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-24 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-02 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-18 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- OPERACOES DE REGA SETOR 42
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_SETOR    INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-12 06:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            60,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-19 06:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            60,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-08 04:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-22 04:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            150,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-05 21:30', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-19 21:30', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-26 21:30', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-31 21:30', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-05 21:30', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- OPERACOES DE REGA SETOR 41
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_SETOR    INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-02 07:30', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-09 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-16 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-23 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-30 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-07 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-14 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-21 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-28 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-06 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-13 07:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-20 07:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- OPERACOES DE FERTIRREGA SETOR 10
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_SETOR    INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-02 06:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            60,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-02 06:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-02 05:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 10;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            180,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- OPERACOES DE FERTIRREGA SETOR 22
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_SETOR    INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-16 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-15 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            180,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            11
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-10 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            150,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-09-09 23:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 22;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- OPERACOES DE FERTIRREGA SETOR 42
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_SETOR    INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-06-30 04:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            11
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-15 04:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-29 04:00', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            150,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            11
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-08-12 21:30', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 42;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
+    END;
+
+    COMMIT;
+END;
+/
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- OPERACOES DE FERTIRREGA SETOR 41
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DECLARE
+    V_ID_OPERACAO INTEGER;
+    V_ID_SETOR    INTEGER;
+BEGIN
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-05-20 07:30', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            11
+        );
+    END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        INSERT INTO OPERACAO (
+            DATA
+        ) VALUES (
+            TO_DATE('2023-07-09 06:20', 'YYYY-MM-DD HH24:MI')
+        ) RETURNING ID INTO V_ID_OPERACAO;
+        SELECT
+            ID INTO V_ID_SETOR
+        FROM
+            SETOR
+        WHERE
+            NUM_SETOR = 41;
+        INSERT INTO REGA (
+            OPERACAO_ID,
+            DURACAO,
+            SETOR_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            120,
+            V_ID_SETOR
+        );
+        INSERT INTO FERTIRREGA (
+            OPERACAO_ID,
+            RECEITA
+        ) VALUES (
+            V_ID_OPERACAO,
+            10
+        );
     END;
 
     COMMIT;
