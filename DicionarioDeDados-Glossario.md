@@ -48,3 +48,8 @@
 ## Observações
 
 Plantas como Grand Fay, Canada e Royal Gala não estão adicionadas corretamente. O ficheiro excel possui linhas cuja variedade é "x OU y", estas mesmas não se encontram num formato correto e passam a não ser compatíveis com algumas funcionalidades.
+
+
+
+A linha 945 do ficheiro "dadosSuplementares.sql" tem de ser eliminada. Apenas serviu para conseguir correr sem erros, sendo que foram criadas 4 tipos de plantas e 4 plantas iguais. (com respetivos ids: 15,16,17,18)
+
