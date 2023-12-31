@@ -1,0 +1,15 @@
+CREATE OR REPLACE TRIGGER prevent_delete
+BEFORE DELETE ON OPERATIONS_LOG
+FOR EACH ROW
+BEGIN
+  RAISE_APPLICATION_ERROR(-20001, 'You are not allowed to delete from this table!');
+END;
+/
+
+CREATE OR REPLACE TRIGGER prevent_update
+BEFORE UPDATE ON OPERATIONS_LOG
+FOR EACH ROW
+BEGIN
+  RAISE_APPLICATION_ERROR(-20001, 'You are not allowed to update this table!');
+END;
+/
