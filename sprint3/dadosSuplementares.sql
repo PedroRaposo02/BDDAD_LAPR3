@@ -3527,15 +3527,6 @@ BEGIN
             MODO_AFP
         WHERE
             DESIGNACAO = 'Solo';
-        INSERT INTO APLICACAO_FP_CULTURA (
-            OPERACAO_ID,
-            CULTURA_ID,
-            MODO_AFP_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_CULTURA,
-            V_ID_MODO_AFP
-        );
         INSERT INTO FP_APLICADOS (
             OPERACAO_ID,
             FP_ID,
@@ -3544,6 +3535,15 @@ BEGIN
             V_ID_OPERACAO,
             V_ID_FATOR_PRODUCAO,
             120
+        );
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
     END;
  --------------------------------------------------------------------------------
@@ -3596,15 +3596,6 @@ BEGIN
             MODO_AFP
         WHERE
             DESIGNACAO = 'Solo';
-        INSERT INTO APLICACAO_FP_CULTURA (
-            OPERACAO_ID,
-            CULTURA_ID,
-            MODO_AFP_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_CULTURA,
-            V_ID_MODO_AFP
-        );
         INSERT INTO FP_APLICADOS (
             OPERACAO_ID,
             FP_ID,
@@ -3613,6 +3604,15 @@ BEGIN
             V_ID_OPERACAO,
             V_ID_FATOR_PRODUCAO,
             150
+        );
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
     END;
  --------------------------------------------------------------------------------
@@ -6061,18 +6061,21 @@ BEGIN
         WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO SEMEADURA (
-                OPERACAO_ID,
-                QUANTIDADE_SEMENTE,
-                CULTURA_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                32,
-                V_ID_CULTURA
-            );
     END;
 
+    INSERT INTO SEMEADURA (
+        OPERACAO_ID,
+        QUANTIDADE_SEMENTE,
+        CULTURA_ID
+    ) VALUES (
+        V_ID_OPERACAO,
+        32,
+        V_ID_CULTURA
+    );
     COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
 END;
 /
 
@@ -6910,12 +6913,12 @@ BEGIN
 END;
 /
 
- --------------------------------------------------------------------------------
- --------------------------------------------------------------------------------
- --------------------------------------------------------------------------------
- -- OPERACOES DE REGA SETOR 10
- --------------------------------------------------------------------------------
- --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-- OPERACOES DE REGA SETOR 10
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 DECLARE
     V_ID_OPERACAO INTEGER;
     V_ID_SETOR    INTEGER;
