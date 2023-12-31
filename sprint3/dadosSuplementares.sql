@@ -2433,6 +2433,8 @@ BEGIN
             100
         );
     END;
+    COMMIT;
+    END;
  --------------------------------------------------------------------------------
     BEGIN
         INSERT INTO OPERACAO (
@@ -3617,477 +3619,495 @@ BEGIN
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-05-15', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Epso Microtop';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Lameiro Do Moinho';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Porta Da Loja'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+            SELECT
+                ID INTO V_ID_MODO_AFP
+            FROM
+                MODO_AFP
+            WHERE
+                DESIGNACAO = 'Foliar';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO MODO_AFP (
+                    DESIGNACAO
+                ) VALUES (
+                    'Foliar'
+                ) RETURNING ID INTO V_ID_MODO_AFP;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2023-05-15', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Epso Microtop';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Porta Da Loja'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                5
-            );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            5
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-05-15', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Epso Microtop';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Lameiro Do Moinho';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Malapio'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+            SELECT
+                ID INTO V_ID_MODO_AFP
+            FROM
+                MODO_AFP
+            WHERE
+                DESIGNACAO = 'Foliar';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO MODO_AFP (
+                    DESIGNACAO
+                ) VALUES (
+                    'Foliar'
+                ) RETURNING ID INTO V_ID_MODO_AFP;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2023-05-15', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Epso Microtop';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Malapio'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                2
-            );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            2
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-05-15', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Epso Microtop';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Lameiro Do Moinho';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Pipo De Basto'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+            SELECT
+                ID INTO V_ID_MODO_AFP
+            FROM
+                MODO_AFP
+            WHERE
+                DESIGNACAO = 'Foliar';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO MODO_AFP (
+                    DESIGNACAO
+                ) VALUES (
+                    'Foliar'
+                ) RETURNING ID INTO V_ID_MODO_AFP;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2023-05-15', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Epso Microtop';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Pipo De Basto'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                4
-            );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            4
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-05-15', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Epso Microtop';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Lameiro Do Moinho';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Reinette Ou Canada'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+            SELECT
+                ID INTO V_ID_MODO_AFP
+            FROM
+                MODO_AFP
+            WHERE
+                DESIGNACAO = 'Foliar';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO MODO_AFP (
+                    DESIGNACAO
+                ) VALUES (
+                    'Foliar'
+                ) RETURNING ID INTO V_ID_MODO_AFP;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2023-05-15', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Epso Microtop';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Reinette Ou Canada'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                3
-            );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            3
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-05-15', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Epso Microtop';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Lameiro Do Moinho';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Reinette Ou Grand Fay'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+            SELECT
+                ID INTO V_ID_MODO_AFP
+            FROM
+                MODO_AFP
+            WHERE
+                DESIGNACAO = 'Foliar';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO MODO_AFP (
+                    DESIGNACAO
+                ) VALUES (
+                    'Foliar'
+                ) RETURNING ID INTO V_ID_MODO_AFP;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2023-05-15', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Epso Microtop';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Reinette Ou Grand Fay'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                4
-            );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            4
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-05-15', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Epso Microtop';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Lameiro Do Moinho';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Macieira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Gronho Doce'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            SELECT
+                ID INTO V_ID_CULTURA
+            FROM
+                CULTURA
+            WHERE
+                PLANTA_ID = V_ID_PLANTA
+                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+            SELECT
+                ID INTO V_ID_MODO_AFP
+            FROM
+                MODO_AFP
+            WHERE
+                DESIGNACAO = 'Foliar';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO MODO_AFP (
+                    DESIGNACAO
+                ) VALUES (
+                    'Foliar'
+                ) RETURNING ID INTO V_ID_MODO_AFP;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2023-05-15', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Epso Microtop';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Gronho Doce'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                5
-            );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            5
+        );
     END;
 
     COMMIT;
@@ -4816,715 +4836,751 @@ DECLARE
     V_ID_TIPO_PLANTA      INTEGER;
 BEGIN
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2021-01-13', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Picual'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
+                                 || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2021-01-13', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Picual'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                120
-            );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            120
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2021-01-12', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Galega'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
+                                 || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2021-01-12', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Galega'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            180
+        );
+    END;
+ --------------------------------------------------------------------------------
+
+ /*
+    BEGIN
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
             ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
+                TO_DATE('2021-01-12', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
             ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
+                V_ID_OPERACAO
             );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Arbequina'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
+        );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            240
+        );
+    END;
+    */
+ --------------------------------------------------------------------------------
+    BEGIN
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
             ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                180
+                TO_DATE('2022-01-12', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
             );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Picual'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
+                                 || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
+        );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            120
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2022-01-12', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Galega'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
+                                 || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2021-01-12', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Arbequina'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            180
+        );
+    END;
+ --------------------------------------------------------------------------------
+
+ /*
+    BEGIN
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
             ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
+                TO_DATE('2022-01-13', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
             ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
+                V_ID_OPERACAO
             );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Arbequina'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
+        );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            240
+        );
+    END;
+    */
+ --------------------------------------------------------------------------------
+    BEGIN
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
             ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                240
+                TO_DATE('2023-01-12', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
             );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Picual'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
+                                 || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
+        );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            120
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-01-12', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Galega'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
+                                 || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2022-01-12', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Picual'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                120
-            );
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            180
+        );
     END;
  --------------------------------------------------------------------------------
+
+ /*
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-01-12', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_FATOR_PRODUCAO
+            FROM
+                FATOR_PRODUCAO
+            WHERE
+                DESIGNACAO = 'Biofertil N6';
+            INSERT INTO APLICACAO_FP (
+                OPERACAO_ID
+            ) VALUES (
+                V_ID_OPERACAO
+            );
+            SELECT
+                ID INTO V_ID_PARCELA_AGRICOLA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Grande';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Oliveira';
+            SELECT
+                ID INTO V_ID_PLANTA
+            FROM
+                PLANTA
+            WHERE
+                NOME = 'Arbequina'
+                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+            
+            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+            DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
+            BEGIN
+                SELECT
+                    ID INTO V_ID_MODO_AFP
+                FROM
+                    MODO_AFP
+                WHERE
+                    DESIGNACAO = 'Foliar'
+                    AND ROWNUM = 1;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    INSERT INTO MODO_AFP (
+                        DESIGNACAO
+                    ) VALUES (
+                        'Foliar'
+                    ) RETURNING ID INTO V_ID_MODO_AFP;
+            END;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        INSERT INTO APLICACAO_FP_CULTURA (
+            OPERACAO_ID,
+            CULTURA_ID,
+            MODO_AFP_ID
         ) VALUES (
-            TO_DATE('2022-01-12', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_CULTURA,
+            V_ID_MODO_AFP
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Galega'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                180
-            );
-    END;
- --------------------------------------------------------------------------------
-    BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        INSERT INTO FP_APLICADOS (
+            OPERACAO_ID,
+            FP_ID,
+            QUANTIDADE
         ) VALUES (
-            TO_DATE('2022-01-13', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
+            V_ID_OPERACAO,
+            V_ID_FATOR_PRODUCAO,
+            240
         );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Arbequina'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                240
-            );
     END;
- --------------------------------------------------------------------------------
-    BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-01-12', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
-        );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Picual'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                120
-            );
-    END;
- --------------------------------------------------------------------------------
-    BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-01-12', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
-        );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Galega'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                180
-            );
-    END;
- --------------------------------------------------------------------------------
-    BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-01-12', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'BIOFERTIL N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
-        );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Grande';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Oliveira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Arbequina'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Foliar';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO MODO_AFP (
-                DESIGNACAO
-            ) VALUES (
-                'Foliar'
-            ) RETURNING ID INTO V_ID_MODO_AFP;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            INSERT INTO APLICACAO_FP_CULTURA (
-                OPERACAO_ID,
-                CULTURA_ID,
-                MODO_AFP_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_CULTURA,
-                V_ID_MODO_AFP
-            );
-            INSERT INTO FP_APLICADOS (
-                OPERACAO_ID,
-                FP_ID,
-                QUANTIDADE
-            ) VALUES (
-                V_ID_OPERACAO,
-                V_ID_FATOR_PRODUCAO,
-                240
-            );
-    END;
+*/
 
     COMMIT;
 END;
@@ -5924,56 +5980,60 @@ BEGIN
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-04-06', 'YYYY-MM-DD')
+            ) RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_PARCELA
+            FROM
+                PARCELA_AGRICOLA
+            WHERE
+                DESIGNACAO = 'Campo Novo';
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Abobora'
+                AND ROWNUM = 1;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO TIPO_PLANTA (
+                    DESIGNACAO
+                ) VALUES (
+                    'Abobora'
+                ) RETURNING ID INTO V_ID_TIPO_PLANTA;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Manteiga'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA;
+        INSERT INTO SEMEADURA (
+            OPERACAO_ID,
+            QUANTIDADE_SEMENTE,
+            CULTURA_ID
         ) VALUES (
-            TO_DATE('2023-04-06', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_PARCELA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Campo Novo';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Abobora';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO TIPO_PLANTA (
-                DESIGNACAO
-            ) VALUES (
-                'Abobora'
-            ) RETURNING ID INTO V_ID_TIPO_PLANTA;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            SELECT
-                ID INTO V_ID_PLANTA
-            FROM
-                PLANTA
-            WHERE
-                NOME = 'Manteiga'
-                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            SELECT
-                ID INTO V_ID_CULTURA
-            FROM
-                CULTURA
-            WHERE
-                PLANTA_ID = V_ID_PLANTA
-                AND PARCELA_ID = V_ID_PARCELA;
-            INSERT INTO SEMEADURA (
-                OPERACAO_ID,
-                QUANTIDADE_SEMENTE,
-                CULTURA_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                1.5,
-                V_ID_CULTURA
-            );
+            V_ID_OPERACAO,
+            1.5,
+            V_ID_CULTURA
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -6061,17 +6121,17 @@ BEGIN
         WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            INSERT INTO SEMEADURA (
+                OPERACAO_ID,
+                QUANTIDADE_SEMENTE,
+                CULTURA_ID
+            ) VALUES (
+                V_ID_OPERACAO,
+                32,
+                V_ID_CULTURA
+            );
     END;
 
-    INSERT INTO SEMEADURA (
-        OPERACAO_ID,
-        QUANTIDADE_SEMENTE,
-        CULTURA_ID
-    ) VALUES (
-        V_ID_OPERACAO,
-        32,
-        V_ID_CULTURA
-    );
     COMMIT;
 EXCEPTION
     WHEN OTHERS THEN
@@ -6080,7 +6140,7 @@ END;
 /
 
 --------------------------------------------------------------------------------
--- OPERACAO DE PLANTACAO (CAMPO NOVO)
+-- OPERACAO DE MONDA (CAMPO NOVO)
 --------------------------------------------------------------------------------
 
 DECLARE
@@ -6131,112 +6191,120 @@ BEGIN
             0.5,
             V_ID_CULTURA
         );
+        END;
+ --------------------------------------------------------------------------------
+    BEGIN
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-05-20', 'YYYY-MM-DD')
+            )RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Abobora'
+                AND ROWNUM = 1;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO TIPO_PLANTA (
+                    DESIGNACAO
+                ) VALUES (
+                    'Abobora'
+                ) RETURNING ID INTO V_ID_TIPO_PLANTA;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
+        SELECT
+            ID INTO V_ID_PLANTA
+        FROM
+            PLANTA
+        WHERE
+            NOME = 'Manteiga'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+        SELECT
+            ID INTO V_ID_PARCELA_AGRICOLA
+        FROM
+            PARCELA_AGRICOLA
+        WHERE
+            DESIGNACAO = 'Campo Novo';
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        INSERT INTO MONDA (
+            OPERACAO_ID,
+            AREA,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            0.6,
+            V_ID_CULTURA
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-05-20', 'YYYY-MM-DD')
-        )RETURNING ID INTO V_ID_OPERACAO;
+        BEGIN
+            INSERT INTO OPERACAO (
+                DATA
+            ) VALUES (
+                TO_DATE('2023-06-20', 'YYYY-MM-DD')
+            )RETURNING ID INTO V_ID_OPERACAO;
+            SELECT
+                ID INTO V_ID_TIPO_PLANTA
+            FROM
+                TIPO_PLANTA
+            WHERE
+                DESIGNACAO = 'Abobora'
+                AND ROWNUM = 1;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                INSERT INTO TIPO_PLANTA (
+                    DESIGNACAO
+                ) VALUES (
+                    'Abobora'
+                ) RETURNING ID INTO V_ID_TIPO_PLANTA;
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+        END;
+
         SELECT
-            ID INTO V_ID_TIPO_PLANTA
+            ID INTO V_ID_PLANTA
         FROM
-            TIPO_PLANTA
+            PLANTA
         WHERE
-            DESIGNACAO = 'Abobora';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO TIPO_PLANTA (
-                DESIGNACAO
-            ) VALUES (
-                'Abobora'
-            ) RETURNING ID INTO V_ID_TIPO_PLANTA;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            SELECT
-                ID INTO V_ID_PLANTA
-            FROM
-                PLANTA
-            WHERE
-                NOME = 'Manteiga'
-                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            SELECT
-                ID INTO V_ID_PARCELA_AGRICOLA
-            FROM
-                PARCELA_AGRICOLA
-            WHERE
-                DESIGNACAO = 'Campo Novo';
-            SELECT
-                ID INTO V_ID_CULTURA
-            FROM
-                CULTURA
-            WHERE
-                PLANTA_ID = V_ID_PLANTA
-                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-            INSERT INTO MONDA (
-                OPERACAO_ID,
-                AREA,
-                CULTURA_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                0.6,
-                V_ID_CULTURA
-            );
-    END;
- --------------------------------------------------------------------------------
-    BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-06-20', 'YYYY-MM-DD')
-        )RETURNING ID INTO V_ID_OPERACAO;
+            NOME = 'Manteiga'
+            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
         SELECT
-            ID INTO V_ID_TIPO_PLANTA
+            ID INTO V_ID_PARCELA_AGRICOLA
         FROM
-            TIPO_PLANTA
+            PARCELA_AGRICOLA
         WHERE
-            DESIGNACAO = 'Abobora';
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            INSERT INTO TIPO_PLANTA (
-                DESIGNACAO
-            ) VALUES (
-                'Abobora'
-            ) RETURNING ID INTO V_ID_TIPO_PLANTA;
-        WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-            SELECT
-                ID INTO V_ID_PLANTA
-            FROM
-                PLANTA
-            WHERE
-                NOME = 'Manteiga'
-                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            SELECT
-                ID INTO V_ID_PARCELA_AGRICOLA
-            FROM
-                PARCELA_AGRICOLA
-            WHERE
-                DESIGNACAO = 'Campo Novo';
-            SELECT
-                ID INTO V_ID_CULTURA
-            FROM
-                CULTURA
-            WHERE
-                PLANTA_ID = V_ID_PLANTA
-                AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-            INSERT INTO MONDA (
-                OPERACAO_ID,
-                AREA,
-                CULTURA_ID
-            ) VALUES (
-                V_ID_OPERACAO,
-                0.6,
-                V_ID_CULTURA
-            );
+            DESIGNACAO = 'Campo Novo';
+        SELECT
+            ID INTO V_ID_CULTURA
+        FROM
+            CULTURA
+        WHERE
+            PLANTA_ID = V_ID_PLANTA
+            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+        INSERT INTO MONDA (
+            OPERACAO_ID,
+            AREA,
+            CULTURA_ID
+        ) VALUES (
+            V_ID_OPERACAO,
+            0.6,
+            V_ID_CULTURA
+        );
     END;
  --------------------------------------------------------------------------------
     BEGIN
