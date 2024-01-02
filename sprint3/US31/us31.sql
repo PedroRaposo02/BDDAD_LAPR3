@@ -1,43 +1,112 @@
+--US31 Registar uma receita de fertirrega para usar em operações de rega.
+
 CREATE OR REPLACE PROCEDURE CREATE_RECEITA_FERTIRREGA (
-    p_num_receita IN RECEITA_FERTIRREGA.NUM_RECEITA%TYPE,
-    p_designacao IN FATOR_PRODUCAO.DESIGNACAO%TYPE,
-    p_fabricante IN FATOR_PRODUCAO.FABRICANTE%TYPE,
-    p_quantidade IN FP_RECEITA.QUANTIDADE%TYPE
-) AS 
-    v_id_receita_fertirrega INTEGER;
-    v_id_fp_receita INTEGER;
+    V_NUM_RECEITA IN RECEITA_FERTIRREGA.NUM_RECEITA%TYPE,
+    V_DESIGNACAO IN FATOR_PRODUCAO.DESIGNACAO%TYPE,
+    V_FABRICANTE IN FATOR_PRODUCAO.FABRICANTE%TYPE,
+    V_QUANTIDADE IN FP_RECEITA.QUANTIDADE%TYPE
+) AS
+    V_ID_RECEITA_FERTIRREGA INTEGER;
+    V_ID_FP_RECEITA         INTEGER;
 BEGIN
-    -- Create RECEITA_FERTIRREGA
-    INSERT INTO RECEITA_FERTIRREGA (NUM_RECEITA)
-    VALUES (p_num_receita)
-    RETURNING ID INTO v_id_receita_fertirrega;
+    BEGIN
+        BEGIN
+            INSERT INTO RECEITA_FERTIRREGA (
+                NUM_RECEITA
+            ) VALUES (
+                V_NUM_RECEITA
+            ) RETURNING ID INTO V_ID_RECEITA_FERTIRREGA;
+        EXCEPTION
+            WHEN DUP_VAL_ON_INDEX THEN
+                SELECT
+                    ID INTO V_ID_RECEITA_FERTIRREGA
+                FROM
+                    RECEITA_FERTIRREGA
+                WHERE
+                    NUM_RECEITA = V_NUM_RECEITA;
+        END;
 
-    -- Get  ID of FATOR_PRODUCAO 
-    SELECT ID INTO v_id_fp_receita
-    FROM FATOR_PRODUCAO
-    WHERE DESIGNACAO = p_designacao AND FABRICANTE = p_fabricante;
-
-    -- Associate FATOR_PRODUCAO with FP_RECEITA and RECEITA_FERTIRREGA
-    INSERT INTO FP_RECEITA (RECEITA_ID, FP_ID, QUANTIDADE)
-    VALUES (v_id_receita_fertirrega, v_id_fp_receita, p_quantidade);
+        SELECT
+            ID INTO V_ID_FP_RECEITA
+        FROM
+            FATOR_PRODUCAO
+        WHERE
+            DESIGNACAO = V_DESIGNACAO
+            AND FABRICANTE = V_FABRICANTE;
+        INSERT INTO FP_RECEITA (
+            RECEITA_ID,
+            FP_ID,
+            QUANTIDADE
+        ) VALUES (
+            V_ID_RECEITA_FERTIRREGA,
+            V_ID_FP_RECEITA,
+            V_QUANTIDADE
+        );
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20001, 'Fator de produção não existe');
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+                                 ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+    END;
 
     COMMIT;
-EXCEPTION
-    WHEN OTHERS THEN
-      ROLLBACK;
-      RAISE;
-END CreateFertigationRecipe;
-/
-
-
-
-BEGIN
-    CreateFertigationRecipe(13, 'Tecniferti Mol', 'Tecniferti', 60);
 END;
 /
 
+--create view to test procedure, for RECEITA_FERTIRREGA WHERE ID=13 OR ID=14
+CREATE OR REPLACE VIEW RECEITA_FERTIRREGA_TEST AS
+    SELECT
+        NUM_RECEITA,
+        DESIGNACAO,
+        FABRICANTE,
+        QUANTIDADE
+    FROM
+        RECEITA_FERTIRREGA
+        JOIN FP_RECEITA
+        ON RECEITA_FERTIRREGA.ID = FP_RECEITA.RECEITA_ID JOIN FATOR_PRODUCAO
+        ON FP_RECEITA.FP_ID = FATOR_PRODUCAO.ID
+    WHERE
+        NUM_RECEITA = 13
+        OR NUM_RECEITA = 14;
 
+--USING RECEITA_FERTIRREGA_TEST TO VIEW DATA
+SELECT
+    *
+FROM
+    RECEITA_FERTIRREGA_TEST;
+
+--INSERTING DATA USING PROCEDURE
 BEGIN
-    Create(13, 'Kiplant Allgrip', 'Asfertglobal', 2);
+    CREATE_RECEITA_FERTIRREGA(13, 'Epso Top', 'K+S', 30);
 END;
 /
+
+BEGIN
+    CREATE_RECEITA_FERTIRREGA(13, 'Solusop 52', 'K+S', 25);
+END;
+/
+
+BEGIN
+    CREATE_RECEITA_FERTIRREGA(14, 'Floracal Flow Sl', 'Plymag', 25);
+END;
+/
+
+/*
+--remove all data from RECEITA_FERTIRREGA
+DELETE FROM FP_RECEITA
+WHERE RECEITA_ID IN (
+    SELECT ID FROM RECEITA_FERTIRREGA
+    WHERE NUM_RECEITA = 13 OR NUM_RECEITA = 14
+);
+DELETE FROM RECEITA_FERTIRREGA
+WHERE NUM_RECEITA = 13 OR NUM_RECEITA = 14;
+*/
+
+--USING RECEITA_FERTIRREGA_TEST TO VIEW DATA
+SELECT
+    *
+FROM
+    RECEITA_FERTIRREGA_TEST;
+
+
