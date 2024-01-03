@@ -20,8 +20,8 @@ BEGIN
                 'Abobora'
             ) RETURNING ID INTO V_ID_TIPO_PLANTA;
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
 
     BEGIN
@@ -74,8 +74,8 @@ BEGIN
                 1.1
             );
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
 
     COMMIT;
@@ -426,6 +426,14 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -998,6 +1006,14 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -1113,7 +1129,6 @@ END;
 -- LAMEIRO DA PONTE
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-
 --------------------------------------------------------------------------------
 --Operaçoes de Rega (LAMEIRO DA PONTE)
 --------------------------------------------------------------------------------
@@ -1525,8 +1540,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -1534,16 +1549,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -1558,8 +1573,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --SECOND OPERATION
     BEGIN
@@ -1604,8 +1619,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -1613,16 +1628,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -1637,8 +1652,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --THIRD OPERATION
     BEGIN
@@ -1683,8 +1698,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -1692,16 +1707,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -1716,8 +1731,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --FOURTH OPERATION
     BEGIN
@@ -1762,8 +1777,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -1771,16 +1786,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -1795,8 +1810,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --FIFTH OPERATION
     BEGIN
@@ -1841,8 +1856,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -1850,16 +1865,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -1874,8 +1889,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --SIXTH OPERATION
     BEGIN
@@ -1920,8 +1935,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -1929,16 +1944,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -1953,8 +1968,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
 
     COMMIT;
@@ -1966,7 +1981,6 @@ END;
 --LAMEIRO DO MOINHO
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-
 --------------------------------------------------------------------------------
 -- OPERACOES DE PLANTACAO (LAMEIRO DO MOINHO)
 --------------------------------------------------------------------------------
@@ -2025,8 +2039,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --2nd PLANTACAO
     BEGIN
@@ -2076,8 +2090,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --3rd PLANTACAO
     BEGIN
@@ -2127,8 +2141,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --4th PLANTACAO
     BEGIN
@@ -2161,7 +2175,7 @@ BEGIN
         FROM
             CULTURA
         WHERE
-            PLANTA_ID = V_PLANTA_ID
+            PLANTA_ID = V_ID_PLANTA
             AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
         INSERT INTO PLANTACAO (
             OPERACAO_ID,
@@ -2178,8 +2192,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --5th PLANTACAO
     BEGIN
@@ -2229,8 +2243,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --6th PLANTACAO
     BEGIN
@@ -2280,8 +2294,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
 
     COMMIT;
@@ -2291,13 +2305,9 @@ END;
 --------------------------------------------------------------------------------
 -- OPERACOES DE APLICAÇAO FATOR DE PRODUCAO (LAMEIRO DO MOINHO)
 --------------------------------------------------------------------------------
-
-
-
 --------------------------------------------------------------------------------
 -- APLICACAO FATOR PRODUCAO NO SOLO (LAMEIRO DO MOINHO)
 --------------------------------------------------------------------------------
-
 DECLARE
     V_ID_OPERACAO         INTEGER;
     V_ID_FATOR_PRODUCAO   INTEGER;
@@ -2347,13 +2357,20 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
 --------------------------------------------------------------------------------
 -- APLICACAO FATOR PRODUCAO NA CULTURA (LAMEIRO DO MOINHO)
 --------------------------------------------------------------------------------
-
 DECLARE
     V_ID_OPERACAO         INTEGER;
     V_ID_FATOR_PRODUCAO   INTEGER;
@@ -2432,8 +2449,8 @@ BEGIN
             V_ID_FATOR_PRODUCAO,
             100
         );
-    END;
-    COMMIT;
+        END;
+        COMMIT;
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -2507,75 +2524,75 @@ BEGIN
  --------------------------------------------------------------------------------
 
  /*
-    BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2020-01-06', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Fertimax Extrume De Cavalo';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
-        );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Pipo De Basto'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Solo';
-        INSERT INTO APLICACAO_FP_CULTURA (
-            OPERACAO_ID,
-            CULTURA_ID,
-            MODO_AFP_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_CULTURA,
-            V_ID_MODO_AFP
-        );
-        INSERT INTO FP_APLICADOS (
-            OPERACAO_ID,
-            FP_ID,
-            QUANTIDADE
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_FATOR_PRODUCAO,
-            80
-        );
-    END;
-*/
+BEGIN
+INSERT INTO OPERACAO (
+DATA
+) VALUES (
+TO_DATE('2020-01-06', 'YYYY-MM-DD')
+) RETURNING ID INTO V_ID_OPERACAO;
+SELECT
+ID INTO V_ID_FATOR_PRODUCAO
+FROM
+FATOR_PRODUCAO
+WHERE
+DESIGNACAO = 'Fertimax Extrume De Cavalo';
+INSERT INTO APLICACAO_FP (
+OPERACAO_ID
+) VALUES (
+V_ID_OPERACAO
+);
+SELECT
+ID INTO V_ID_PARCELA_AGRICOLA
+FROM
+PARCELA_AGRICOLA
+WHERE
+DESIGNACAO = 'Lameiro Do Moinho';
+SELECT
+ID INTO V_ID_TIPO_PLANTA
+FROM
+TIPO_PLANTA
+WHERE
+DESIGNACAO = 'Macieira';
+SELECT
+ID INTO V_ID_PLANTA
+FROM
+PLANTA
+WHERE
+NOME = 'Pipo De Basto'
+AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+SELECT
+ID INTO V_ID_CULTURA
+FROM
+CULTURA
+WHERE
+PLANTA_ID = V_ID_PLANTA
+AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+SELECT
+ID INTO V_ID_MODO_AFP
+FROM
+MODO_AFP
+WHERE
+DESIGNACAO = 'Solo';
+INSERT INTO APLICACAO_FP_CULTURA (
+OPERACAO_ID,
+CULTURA_ID,
+MODO_AFP_ID
+) VALUES (
+V_ID_OPERACAO,
+V_ID_CULTURA,
+V_ID_MODO_AFP
+);
+INSERT INTO FP_APLICADOS (
+OPERACAO_ID,
+FP_ID,
+QUANTIDADE
+) VALUES (
+V_ID_OPERACAO,
+V_ID_FATOR_PRODUCAO,
+80
+);
+END;
+ */
  --------------------------------------------------------------------------------
     BEGIN
         INSERT INTO OPERACAO (
@@ -2924,75 +2941,75 @@ BEGIN
  --------------------------------------------------------------------------------
 
  /*
-    BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2021-01-08', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Fertimax Extrume De Cavalo';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
-        );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Pipo De Basto'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Solo';
-        INSERT INTO APLICACAO_FP_CULTURA (
-            OPERACAO_ID,
-            CULTURA_ID,
-            MODO_AFP_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_CULTURA,
-            V_ID_MODO_AFP
-        );
-        INSERT INTO FP_APLICADOS (
-            OPERACAO_ID,
-            FP_ID,
-            QUANTIDADE
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_FATOR_PRODUCAO,
-            120
-        );
-    END;
-*/
+BEGIN
+INSERT INTO OPERACAO (
+DATA
+) VALUES (
+TO_DATE('2021-01-08', 'YYYY-MM-DD')
+) RETURNING ID INTO V_ID_OPERACAO;
+SELECT
+ID INTO V_ID_FATOR_PRODUCAO
+FROM
+FATOR_PRODUCAO
+WHERE
+DESIGNACAO = 'Fertimax Extrume De Cavalo';
+INSERT INTO APLICACAO_FP (
+OPERACAO_ID
+) VALUES (
+V_ID_OPERACAO
+);
+SELECT
+ID INTO V_ID_PARCELA_AGRICOLA
+FROM
+PARCELA_AGRICOLA
+WHERE
+DESIGNACAO = 'Lameiro Do Moinho';
+SELECT
+ID INTO V_ID_TIPO_PLANTA
+FROM
+TIPO_PLANTA
+WHERE
+DESIGNACAO = 'Macieira';
+SELECT
+ID INTO V_ID_PLANTA
+FROM
+PLANTA
+WHERE
+NOME = 'Pipo De Basto'
+AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+SELECT
+ID INTO V_ID_CULTURA
+FROM
+CULTURA
+WHERE
+PLANTA_ID = V_ID_PLANTA
+AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+SELECT
+ID INTO V_ID_MODO_AFP
+FROM
+MODO_AFP
+WHERE
+DESIGNACAO = 'Solo';
+INSERT INTO APLICACAO_FP_CULTURA (
+OPERACAO_ID,
+CULTURA_ID,
+MODO_AFP_ID
+) VALUES (
+V_ID_OPERACAO,
+V_ID_CULTURA,
+V_ID_MODO_AFP
+);
+INSERT INTO FP_APLICADOS (
+OPERACAO_ID,
+FP_ID,
+QUANTIDADE
+) VALUES (
+V_ID_OPERACAO,
+V_ID_FATOR_PRODUCAO,
+120
+);
+END;
+ */
  --------------------------------------------------------------------------------
     BEGIN
         INSERT INTO OPERACAO (
@@ -3341,75 +3358,75 @@ BEGIN
  --------------------------------------------------------------------------------
 
  /*
-    BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2022-01-15', 'YYYY-MM-DD')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_FATOR_PRODUCAO
-        FROM
-            FATOR_PRODUCAO
-        WHERE
-            DESIGNACAO = 'Biofertil N6';
-        INSERT INTO APLICACAO_FP (
-            OPERACAO_ID
-        ) VALUES (
-            V_ID_OPERACAO
-        );
-        SELECT
-            ID INTO V_ID_PARCELA_AGRICOLA
-        FROM
-            PARCELA_AGRICOLA
-        WHERE
-            DESIGNACAO = 'Lameiro Do Moinho';
-        SELECT
-            ID INTO V_ID_TIPO_PLANTA
-        FROM
-            TIPO_PLANTA
-        WHERE
-            DESIGNACAO = 'Macieira';
-        SELECT
-            ID INTO V_ID_PLANTA
-        FROM
-            PLANTA
-        WHERE
-            NOME = 'Pipo De Basto'
-            AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-        SELECT
-            ID INTO V_ID_CULTURA
-        FROM
-            CULTURA
-        WHERE
-            PLANTA_ID = V_ID_PLANTA
-            AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
-        SELECT
-            ID INTO V_ID_MODO_AFP
-        FROM
-            MODO_AFP
-        WHERE
-            DESIGNACAO = 'Solo';
-        INSERT INTO APLICACAO_FP_CULTURA (
-            OPERACAO_ID,
-            CULTURA_ID,
-            MODO_AFP_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_CULTURA,
-            V_ID_MODO_AFP
-        );
-        INSERT INTO FP_APLICADOS (
-            OPERACAO_ID,
-            FP_ID,
-            QUANTIDADE
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_FATOR_PRODUCAO,
-            120
-        );
-    END;
-*/
+BEGIN
+INSERT INTO OPERACAO (
+DATA
+) VALUES (
+TO_DATE('2022-01-15', 'YYYY-MM-DD')
+) RETURNING ID INTO V_ID_OPERACAO;
+SELECT
+ID INTO V_ID_FATOR_PRODUCAO
+FROM
+FATOR_PRODUCAO
+WHERE
+DESIGNACAO = 'Biofertil N6';
+INSERT INTO APLICACAO_FP (
+OPERACAO_ID
+) VALUES (
+V_ID_OPERACAO
+);
+SELECT
+ID INTO V_ID_PARCELA_AGRICOLA
+FROM
+PARCELA_AGRICOLA
+WHERE
+DESIGNACAO = 'Lameiro Do Moinho';
+SELECT
+ID INTO V_ID_TIPO_PLANTA
+FROM
+TIPO_PLANTA
+WHERE
+DESIGNACAO = 'Macieira';
+SELECT
+ID INTO V_ID_PLANTA
+FROM
+PLANTA
+WHERE
+NOME = 'Pipo De Basto'
+AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
+SELECT
+ID INTO V_ID_CULTURA
+FROM
+CULTURA
+WHERE
+PLANTA_ID = V_ID_PLANTA
+AND PARCELA_ID = V_ID_PARCELA_AGRICOLA;
+SELECT
+ID INTO V_ID_MODO_AFP
+FROM
+MODO_AFP
+WHERE
+DESIGNACAO = 'Solo';
+INSERT INTO APLICACAO_FP_CULTURA (
+OPERACAO_ID,
+CULTURA_ID,
+MODO_AFP_ID
+) VALUES (
+V_ID_OPERACAO,
+V_ID_CULTURA,
+V_ID_MODO_AFP
+);
+INSERT INTO FP_APLICADOS (
+OPERACAO_ID,
+FP_ID,
+QUANTIDADE
+) VALUES (
+V_ID_OPERACAO,
+V_ID_FATOR_PRODUCAO,
+120
+);
+END;
+ */
  --------------------------------------------------------------------------------
     BEGIN
         INSERT INTO OPERACAO (
@@ -3676,8 +3693,8 @@ BEGIN
                     'Foliar'
                 ) RETURNING ID INTO V_ID_MODO_AFP;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -3758,8 +3775,8 @@ BEGIN
                     'Foliar'
                 ) RETURNING ID INTO V_ID_MODO_AFP;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -3840,8 +3857,8 @@ BEGIN
                     'Foliar'
                 ) RETURNING ID INTO V_ID_MODO_AFP;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -3922,8 +3939,8 @@ BEGIN
                     'Foliar'
                 ) RETURNING ID INTO V_ID_MODO_AFP;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -4004,8 +4021,8 @@ BEGIN
                     'Foliar'
                 ) RETURNING ID INTO V_ID_MODO_AFP;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -4086,8 +4103,8 @@ BEGIN
                     'Foliar'
                 ) RETURNING ID INTO V_ID_MODO_AFP;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -4111,6 +4128,14 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -4161,8 +4186,8 @@ BEGIN
                     V_ID_PLANTA
                 );
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4191,8 +4216,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --2nd COLHEITA
     BEGIN
@@ -4237,8 +4262,8 @@ BEGIN
                     V_ID_PLANTA
                 );
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4261,8 +4286,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --3rd COLHEITA
     BEGIN
@@ -4307,8 +4332,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4331,8 +4356,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --4th COLHEITA
     BEGIN
@@ -4377,8 +4402,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4401,8 +4426,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --5th COLHEITA
     BEGIN
@@ -4447,8 +4472,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4471,8 +4496,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --6th COLHEITA
     BEGIN
@@ -4517,8 +4542,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4541,8 +4566,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --7th COLHEITA
     BEGIN
@@ -4587,8 +4612,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4611,8 +4636,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --8th COLHEITA
     BEGIN
@@ -4657,8 +4682,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4681,8 +4706,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --9th COLHEITA
     BEGIN
@@ -4727,8 +4752,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -4751,11 +4776,19 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -4764,11 +4797,9 @@ END;
 -- CAMPO GRANDE
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-
 --------------------------------------------------------------------------------
 -- OPERACAO DE PLANTACAO (CAMPO GRANDE)
 --------------------------------------------------------------------------------
-
 DECLARE
     V_ID_OPERACAO         INTEGER;
     V_ID_CULTURA          INTEGER;
@@ -4781,7 +4812,7 @@ BEGIN
             DATA
         ) VALUES (
             TO_DATE('2016-10-12', 'YYYY-MM-DD')
-        )RETURNING ID INTO V_ID_OPERACAO;
+        ) RETURNING ID INTO V_ID_OPERACAO;
         SELECT
             ID INTO V_ID_TIPO_PLANTA
         FROM
@@ -4872,9 +4903,9 @@ BEGIN
             WHERE
                 NOME = 'Picual'
                 AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
-                                 || V_ID_CULTURA);
+            V_ID_CULTURA := FETCH_CULTURA_ID ( V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD') );
+            DBMS_OUTPUT.PUT_LINE ('CULTURA ID: '
+                                  || V_ID_CULTURA);
             BEGIN
                 SELECT
                     ID INTO V_ID_MODO_AFP
@@ -4893,8 +4924,8 @@ BEGIN
             END;
         EXCEPTION
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -4954,9 +4985,9 @@ BEGIN
             WHERE
                 NOME = 'Galega'
                 AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
-                                 || V_ID_CULTURA);
+            V_ID_CULTURA := FETCH_CULTURA_ID ( V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD') );
+            DBMS_OUTPUT.PUT_LINE ('CULTURA ID: '
+                                  || V_ID_CULTURA);
             BEGIN
                 SELECT
                     ID INTO V_ID_MODO_AFP
@@ -4975,8 +5006,8 @@ BEGIN
             END;
         EXCEPTION
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -5001,88 +5032,88 @@ BEGIN
  --------------------------------------------------------------------------------
 
  /*
-    BEGIN
-        BEGIN
-            INSERT INTO OPERACAO (
-                DATA
-            ) VALUES (
-                TO_DATE('2021-01-12', 'YYYY-MM-DD')
-            ) RETURNING ID INTO V_ID_OPERACAO;
-            SELECT
-                ID INTO V_ID_FATOR_PRODUCAO
-            FROM
-                FATOR_PRODUCAO
-            WHERE
-                DESIGNACAO = 'Biofertil N6';
-            INSERT INTO APLICACAO_FP (
-                OPERACAO_ID
-            ) VALUES (
-                V_ID_OPERACAO
-            );
-            SELECT
-                ID INTO V_ID_PARCELA_AGRICOLA
-            FROM
-                PARCELA_AGRICOLA
-            WHERE
-                DESIGNACAO = 'Campo Grande';
-            SELECT
-                ID INTO V_ID_TIPO_PLANTA
-            FROM
-                TIPO_PLANTA
-            WHERE
-                DESIGNACAO = 'Oliveira';
-            SELECT
-                ID INTO V_ID_PLANTA
-            FROM
-                PLANTA
-            WHERE
-                NOME = 'Arbequina'
-                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
-            BEGIN
-                SELECT
-                    ID INTO V_ID_MODO_AFP
-                FROM
-                    MODO_AFP
-                WHERE
-                    DESIGNACAO = 'Foliar'
-                    AND ROWNUM = 1;
-            EXCEPTION
-                WHEN NO_DATA_FOUND THEN
-                    INSERT INTO MODO_AFP (
-                        DESIGNACAO
-                    ) VALUES (
-                        'Foliar'
-                    ) RETURNING ID INTO V_ID_MODO_AFP;
-            END;
-        EXCEPTION
-            WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-        END;
+BEGIN
+BEGIN
+INSERT INTO OPERACAO (
+DATA
+) VALUES (
+TO_DATE('2021-01-12', 'YYYY-MM-DD')
+) RETURNING ID INTO V_ID_OPERACAO;
+SELECT
+ID INTO V_ID_FATOR_PRODUCAO
+FROM
+FATOR_PRODUCAO
+WHERE
+DESIGNACAO = 'Biofertil N6';
+INSERT INTO APLICACAO_FP (
+OPERACAO_ID
+) VALUES (
+V_ID_OPERACAO
+);
+SELECT
+ID INTO V_ID_PARCELA_AGRICOLA
+FROM
+PARCELA_AGRICOLA
+WHERE
+DESIGNACAO = 'Campo Grande';
+SELECT
+ID INTO V_ID_TIPO_PLANTA
+FROM
+TIPO_PLANTA
+WHERE
+DESIGNACAO = 'Oliveira';
+SELECT
+ID INTO V_ID_PLANTA
+FROM
+PLANTA
+WHERE
+NOME = 'Arbequina'
+AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
 
-        INSERT INTO APLICACAO_FP_CULTURA (
-            OPERACAO_ID,
-            CULTURA_ID,
-            MODO_AFP_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_CULTURA,
-            V_ID_MODO_AFP
-        );
-        INSERT INTO FP_APLICADOS (
-            OPERACAO_ID,
-            FP_ID,
-            QUANTIDADE
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_FATOR_PRODUCAO,
-            240
-        );
-    END;
-    */
+V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
+BEGIN
+SELECT
+ID INTO V_ID_MODO_AFP
+FROM
+MODO_AFP
+WHERE
+DESIGNACAO = 'Foliar'
+AND ROWNUM = 1;
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+INSERT INTO MODO_AFP (
+DESIGNACAO
+) VALUES (
+'Foliar'
+) RETURNING ID INTO V_ID_MODO_AFP;
+END;
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+|| DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+END;
+
+INSERT INTO APLICACAO_FP_CULTURA (
+OPERACAO_ID,
+CULTURA_ID,
+MODO_AFP_ID
+) VALUES (
+V_ID_OPERACAO,
+V_ID_CULTURA,
+V_ID_MODO_AFP
+);
+INSERT INTO FP_APLICADOS (
+OPERACAO_ID,
+FP_ID,
+QUANTIDADE
+) VALUES (
+V_ID_OPERACAO,
+V_ID_FATOR_PRODUCAO,
+240
+);
+END;
+ */
  --------------------------------------------------------------------------------
     BEGIN
         BEGIN
@@ -5121,9 +5152,9 @@ BEGIN
             WHERE
                 NOME = 'Picual'
                 AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
-                                 || V_ID_CULTURA);
+            V_ID_CULTURA := FETCH_CULTURA_ID ( V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD') );
+            DBMS_OUTPUT.PUT_LINE ('CULTURA ID: '
+                                  || V_ID_CULTURA);
             BEGIN
                 SELECT
                     ID INTO V_ID_MODO_AFP
@@ -5142,8 +5173,8 @@ BEGIN
             END;
         EXCEPTION
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -5203,9 +5234,9 @@ BEGIN
             WHERE
                 NOME = 'Galega'
                 AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
-                                 || V_ID_CULTURA);
+            V_ID_CULTURA := FETCH_CULTURA_ID ( V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD') );
+            DBMS_OUTPUT.PUT_LINE ('CULTURA ID: '
+                                  || V_ID_CULTURA);
             BEGIN
                 SELECT
                     ID INTO V_ID_MODO_AFP
@@ -5224,8 +5255,8 @@ BEGIN
             END;
         EXCEPTION
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -5250,88 +5281,88 @@ BEGIN
  --------------------------------------------------------------------------------
 
  /*
-    BEGIN
-        BEGIN
-            INSERT INTO OPERACAO (
-                DATA
-            ) VALUES (
-                TO_DATE('2022-01-13', 'YYYY-MM-DD')
-            ) RETURNING ID INTO V_ID_OPERACAO;
-            SELECT
-                ID INTO V_ID_FATOR_PRODUCAO
-            FROM
-                FATOR_PRODUCAO
-            WHERE
-                DESIGNACAO = 'Biofertil N6';
-            INSERT INTO APLICACAO_FP (
-                OPERACAO_ID
-            ) VALUES (
-                V_ID_OPERACAO
-            );
-            SELECT
-                ID INTO V_ID_PARCELA_AGRICOLA
-            FROM
-                PARCELA_AGRICOLA
-            WHERE
-                DESIGNACAO = 'Campo Grande';
-            SELECT
-                ID INTO V_ID_TIPO_PLANTA
-            FROM
-                TIPO_PLANTA
-            WHERE
-                DESIGNACAO = 'Oliveira';
-            SELECT
-                ID INTO V_ID_PLANTA
-            FROM
-                PLANTA
-            WHERE
-                NOME = 'Arbequina'
-                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
-            BEGIN
-                SELECT
-                    ID INTO V_ID_MODO_AFP
-                FROM
-                    MODO_AFP
-                WHERE
-                    DESIGNACAO = 'Foliar'
-                    AND ROWNUM = 1;
-            EXCEPTION
-                WHEN NO_DATA_FOUND THEN
-                    INSERT INTO MODO_AFP (
-                        DESIGNACAO
-                    ) VALUES (
-                        'Foliar'
-                    ) RETURNING ID INTO V_ID_MODO_AFP;
-            END;
-        EXCEPTION
-            WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-        END;
+BEGIN
+BEGIN
+INSERT INTO OPERACAO (
+DATA
+) VALUES (
+TO_DATE('2022-01-13', 'YYYY-MM-DD')
+) RETURNING ID INTO V_ID_OPERACAO;
+SELECT
+ID INTO V_ID_FATOR_PRODUCAO
+FROM
+FATOR_PRODUCAO
+WHERE
+DESIGNACAO = 'Biofertil N6';
+INSERT INTO APLICACAO_FP (
+OPERACAO_ID
+) VALUES (
+V_ID_OPERACAO
+);
+SELECT
+ID INTO V_ID_PARCELA_AGRICOLA
+FROM
+PARCELA_AGRICOLA
+WHERE
+DESIGNACAO = 'Campo Grande';
+SELECT
+ID INTO V_ID_TIPO_PLANTA
+FROM
+TIPO_PLANTA
+WHERE
+DESIGNACAO = 'Oliveira';
+SELECT
+ID INTO V_ID_PLANTA
+FROM
+PLANTA
+WHERE
+NOME = 'Arbequina'
+AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
 
-        INSERT INTO APLICACAO_FP_CULTURA (
-            OPERACAO_ID,
-            CULTURA_ID,
-            MODO_AFP_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_CULTURA,
-            V_ID_MODO_AFP
-        );
-        INSERT INTO FP_APLICADOS (
-            OPERACAO_ID,
-            FP_ID,
-            QUANTIDADE
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_FATOR_PRODUCAO,
-            240
-        );
-    END;
-    */
+V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
+BEGIN
+SELECT
+ID INTO V_ID_MODO_AFP
+FROM
+MODO_AFP
+WHERE
+DESIGNACAO = 'Foliar'
+AND ROWNUM = 1;
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+INSERT INTO MODO_AFP (
+DESIGNACAO
+) VALUES (
+'Foliar'
+) RETURNING ID INTO V_ID_MODO_AFP;
+END;
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+|| DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+END;
+
+INSERT INTO APLICACAO_FP_CULTURA (
+OPERACAO_ID,
+CULTURA_ID,
+MODO_AFP_ID
+) VALUES (
+V_ID_OPERACAO,
+V_ID_CULTURA,
+V_ID_MODO_AFP
+);
+INSERT INTO FP_APLICADOS (
+OPERACAO_ID,
+FP_ID,
+QUANTIDADE
+) VALUES (
+V_ID_OPERACAO,
+V_ID_FATOR_PRODUCAO,
+240
+);
+END;
+ */
  --------------------------------------------------------------------------------
     BEGIN
         BEGIN
@@ -5370,9 +5401,9 @@ BEGIN
             WHERE
                 NOME = 'Picual'
                 AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
-                                 || V_ID_CULTURA);
+            V_ID_CULTURA := FETCH_CULTURA_ID ( V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD') );
+            DBMS_OUTPUT.PUT_LINE ('CULTURA ID: '
+                                  || V_ID_CULTURA);
             BEGIN
                 SELECT
                     ID INTO V_ID_MODO_AFP
@@ -5391,8 +5422,8 @@ BEGIN
             END;
         EXCEPTION
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -5452,9 +5483,9 @@ BEGIN
             WHERE
                 NOME = 'Galega'
                 AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: '
-                                 || V_ID_CULTURA);
+            V_ID_CULTURA := FETCH_CULTURA_ID ( V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD') );
+            DBMS_OUTPUT.PUT_LINE ('CULTURA ID: '
+                                  || V_ID_CULTURA);
             BEGIN
                 SELECT
                     ID INTO V_ID_MODO_AFP
@@ -5473,8 +5504,8 @@ BEGIN
             END;
         EXCEPTION
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         INSERT INTO APLICACAO_FP_CULTURA (
@@ -5499,88 +5530,88 @@ BEGIN
  --------------------------------------------------------------------------------
 
  /*
-    BEGIN
-        BEGIN
-            INSERT INTO OPERACAO (
-                DATA
-            ) VALUES (
-                TO_DATE('2023-01-12', 'YYYY-MM-DD')
-            ) RETURNING ID INTO V_ID_OPERACAO;
-            SELECT
-                ID INTO V_ID_FATOR_PRODUCAO
-            FROM
-                FATOR_PRODUCAO
-            WHERE
-                DESIGNACAO = 'Biofertil N6';
-            INSERT INTO APLICACAO_FP (
-                OPERACAO_ID
-            ) VALUES (
-                V_ID_OPERACAO
-            );
-            SELECT
-                ID INTO V_ID_PARCELA_AGRICOLA
-            FROM
-                PARCELA_AGRICOLA
-            WHERE
-                DESIGNACAO = 'Campo Grande';
-            SELECT
-                ID INTO V_ID_TIPO_PLANTA
-            FROM
-                TIPO_PLANTA
-            WHERE
-                DESIGNACAO = 'Oliveira';
-            SELECT
-                ID INTO V_ID_PLANTA
-            FROM
-                PLANTA
-            WHERE
-                NOME = 'Arbequina'
-                AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
-            
-            V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
-            DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
-            BEGIN
-                SELECT
-                    ID INTO V_ID_MODO_AFP
-                FROM
-                    MODO_AFP
-                WHERE
-                    DESIGNACAO = 'Foliar'
-                    AND ROWNUM = 1;
-            EXCEPTION
-                WHEN NO_DATA_FOUND THEN
-                    INSERT INTO MODO_AFP (
-                        DESIGNACAO
-                    ) VALUES (
-                        'Foliar'
-                    ) RETURNING ID INTO V_ID_MODO_AFP;
-            END;
-        EXCEPTION
-            WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-        END;
+BEGIN
+BEGIN
+INSERT INTO OPERACAO (
+DATA
+) VALUES (
+TO_DATE('2023-01-12', 'YYYY-MM-DD')
+) RETURNING ID INTO V_ID_OPERACAO;
+SELECT
+ID INTO V_ID_FATOR_PRODUCAO
+FROM
+FATOR_PRODUCAO
+WHERE
+DESIGNACAO = 'Biofertil N6';
+INSERT INTO APLICACAO_FP (
+OPERACAO_ID
+) VALUES (
+V_ID_OPERACAO
+);
+SELECT
+ID INTO V_ID_PARCELA_AGRICOLA
+FROM
+PARCELA_AGRICOLA
+WHERE
+DESIGNACAO = 'Campo Grande';
+SELECT
+ID INTO V_ID_TIPO_PLANTA
+FROM
+TIPO_PLANTA
+WHERE
+DESIGNACAO = 'Oliveira';
+SELECT
+ID INTO V_ID_PLANTA
+FROM
+PLANTA
+WHERE
+NOME = 'Arbequina'
+AND TIPO_PLANTA_ID = V_ID_TIPO_PLANTA;
 
-        INSERT INTO APLICACAO_FP_CULTURA (
-            OPERACAO_ID,
-            CULTURA_ID,
-            MODO_AFP_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_CULTURA,
-            V_ID_MODO_AFP
-        );
-        INSERT INTO FP_APLICADOS (
-            OPERACAO_ID,
-            FP_ID,
-            QUANTIDADE
-        ) VALUES (
-            V_ID_OPERACAO,
-            V_ID_FATOR_PRODUCAO,
-            240
-        );
-    END;
-*/
+V_ID_CULTURA := FETCH_CULTURA_ID(V_ID_PLANTA, V_ID_PARCELA_AGRICOLA, TO_DATE('2017-05-01', 'YYYY-MM-DD'));
+DBMS_OUTPUT.PUT_LINE('CULTURA ID: ' || V_ID_CULTURA);
+BEGIN
+SELECT
+ID INTO V_ID_MODO_AFP
+FROM
+MODO_AFP
+WHERE
+DESIGNACAO = 'Foliar'
+AND ROWNUM = 1;
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+INSERT INTO MODO_AFP (
+DESIGNACAO
+) VALUES (
+'Foliar'
+) RETURNING ID INTO V_ID_MODO_AFP;
+END;
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
+|| DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+END;
+
+INSERT INTO APLICACAO_FP_CULTURA (
+OPERACAO_ID,
+CULTURA_ID,
+MODO_AFP_ID
+) VALUES (
+V_ID_OPERACAO,
+V_ID_CULTURA,
+V_ID_MODO_AFP
+);
+INSERT INTO FP_APLICADOS (
+OPERACAO_ID,
+FP_ID,
+QUANTIDADE
+) VALUES (
+V_ID_OPERACAO,
+V_ID_FATOR_PRODUCAO,
+240
+);
+END;
+ */
 
     COMMIT;
 END;
@@ -5633,8 +5664,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -5642,16 +5673,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -5666,8 +5697,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -5705,8 +5736,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -5714,16 +5745,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -5738,8 +5769,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -5777,8 +5808,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -5786,16 +5817,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -5810,11 +5841,19 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -5823,11 +5862,9 @@ END;
 -- CAMPO NOVO
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-
 --------------------------------------------------------------------------------
 -- APLICACAO FATOR PRODUCAO NO SOLO (CAMPO NOVO)
 --------------------------------------------------------------------------------
-
 DECLARE
     V_ID_OPERACAO         INTEGER;
     V_ID_FATOR_PRODUCAO   INTEGER;
@@ -5928,7 +5965,6 @@ END;
 --------------------------------------------------------------------------------
 -- OPERACOES DE SEMEADURA (CAMPO NOVO)
 --------------------------------------------------------------------------------
-
 DECLARE
     V_ID_OPERACAO    INTEGER;
     V_ID_CULTURA     INTEGER;
@@ -6007,8 +6043,8 @@ BEGIN
                     'Abobora'
                 ) RETURNING ID INTO V_ID_TIPO_PLANTA;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6119,8 +6155,8 @@ BEGIN
                 'Tremoco'
             ) RETURNING ID INTO V_ID_TIPO_PLANTA;
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                 || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
             INSERT INTO SEMEADURA (
                 OPERACAO_ID,
                 QUANTIDADE_SEMENTE,
@@ -6142,7 +6178,6 @@ END;
 --------------------------------------------------------------------------------
 -- OPERACAO DE MONDA (CAMPO NOVO)
 --------------------------------------------------------------------------------
-
 DECLARE
     V_ID_OPERACAO         INTEGER;
     V_ID_CULTURA          INTEGER;
@@ -6155,7 +6190,7 @@ BEGIN
             DATA
         ) VALUES (
             TO_DATE('2023-05-08', 'YYYY-MM-DD')
-        )RETURNING ID INTO V_ID_OPERACAO;
+        ) RETURNING ID INTO V_ID_OPERACAO;
         SELECT
             ID INTO V_ID_TIPO_PLANTA
         FROM
@@ -6191,7 +6226,7 @@ BEGIN
             0.5,
             V_ID_CULTURA
         );
-        END;
+    END;
  --------------------------------------------------------------------------------
     BEGIN
         BEGIN
@@ -6199,7 +6234,7 @@ BEGIN
                 DATA
             ) VALUES (
                 TO_DATE('2023-05-20', 'YYYY-MM-DD')
-            )RETURNING ID INTO V_ID_OPERACAO;
+            ) RETURNING ID INTO V_ID_OPERACAO;
             SELECT
                 ID INTO V_ID_TIPO_PLANTA
             FROM
@@ -6215,8 +6250,8 @@ BEGIN
                     'Abobora'
                 ) RETURNING ID INTO V_ID_TIPO_PLANTA;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6256,7 +6291,7 @@ BEGIN
                 DATA
             ) VALUES (
                 TO_DATE('2023-06-20', 'YYYY-MM-DD')
-            )RETURNING ID INTO V_ID_OPERACAO;
+            ) RETURNING ID INTO V_ID_OPERACAO;
             SELECT
                 ID INTO V_ID_TIPO_PLANTA
             FROM
@@ -6272,8 +6307,8 @@ BEGIN
                     'Abobora'
                 ) RETURNING ID INTO V_ID_TIPO_PLANTA;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6312,7 +6347,7 @@ BEGIN
             DATA
         ) VALUES (
             TO_DATE('2023-08-08', 'YYYY-MM-DD')
-        )RETURNING ID INTO V_ID_OPERACAO;
+        ) RETURNING ID INTO V_ID_OPERACAO;
         SELECT
             ID INTO V_ID_TIPO_PLANTA
         FROM
@@ -6351,6 +6386,14 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -6409,8 +6452,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6418,16 +6461,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -6442,8 +6485,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -6488,8 +6531,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6497,16 +6540,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -6521,8 +6564,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -6567,8 +6610,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6576,16 +6619,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -6600,8 +6643,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -6646,8 +6689,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6655,16 +6698,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -6679,8 +6722,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -6725,8 +6768,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6734,16 +6777,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -6758,8 +6801,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -6804,8 +6847,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6813,16 +6856,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -6837,8 +6880,8 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
  --------------------------------------------------------------------------------
     BEGIN
@@ -6883,8 +6926,8 @@ BEGIN
                     V_ID_PLANTA
                 ) RETURNING ID INTO V_ID_PRODUTO;
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_STACK
-                                     || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+                DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                       || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
         END;
 
         SELECT
@@ -6892,16 +6935,16 @@ BEGIN
         FROM
             CULTURA          C
             JOIN PLANTA P
-            ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
-            ON C.PARCELA_ID=PA.ID
+            ON C.PLANTA_ID = P.ID JOIN PARCELA_AGRICOLA PA
+            ON C.PARCELA_ID = PA.ID
         WHERE
-            C.PLANTA_ID=V_ID_PLANTA
-            AND C.PARCELA_ID=V_ID_PARCELA
-            AND ((P.TIPO_PLANTACAO='Permanente'
-            AND V_OPERACAO_DATA > C.DATA_INICIAL)
-            OR (P.TIPO_PLANTACAO='Temporaria'
+            C.PLANTA_ID = V_ID_PLANTA
+            AND C.PARCELA_ID = V_ID_PARCELA
+            AND ( ( P.TIPO_PLANTACAO = 'Permanente'
+            AND V_OPERACAO_DATA > C.DATA_INICIAL )
+            OR ( P.TIPO_PLANTACAO = 'Temporaria'
             AND V_OPERACAO_DATA BETWEEN C.DATA_INICIAL
-            AND C.DATA_FINAL))
+            AND C.DATA_FINAL ) )
             AND ROWNUM = 1;
         INSERT INTO COLHEITA (
             OPERACAO_ID,
@@ -6916,11 +6959,19 @@ BEGIN
         );
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE( DBMS_UTILITY.FORMAT_ERROR_STACK
-                                  || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
+            DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                                   || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -7130,6 +7181,14 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
  --------------------------------------------------------------------------------
  --------------------------------------------------------------------------------
@@ -7394,6 +7453,14 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -7614,6 +7681,14 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -7903,6 +7978,14 @@ BEGIN
     END;
 
     COMMIT;
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: DUPLICATE VALUE ON INDEX' );
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE ( 'ERRO: NO DATA FOUND' );
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE ( DBMS_UTILITY.FORMAT_ERROR_STACK
+                               || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE );
 END;
 /
 
@@ -7916,93 +7999,15 @@ DECLARE
     V_ID_SETOR    INTEGER;
 BEGIN
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-06-02 06:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 10;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            60,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-06-02 06:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 10, P_DURACAO => 60, P_NUM_RECEITA => 10 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-07-02 06:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 10;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            120,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-07-02 06:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 10, P_DURACAO => 120, P_NUM_RECEITA => 10 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-08-02 05:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 10;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            180,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-08-02 05:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 10, P_DURACAO => 180, P_NUM_RECEITA => 10 );
     END;
 
     COMMIT;
@@ -8019,123 +8024,19 @@ DECLARE
     V_ID_SETOR    INTEGER;
 BEGIN
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-06-16 23:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 22;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            120,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-06-16 23:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 22, P_DURACAO => 120, P_NUM_RECEITA => 10 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-07-15 23:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 22;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            180,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            11
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-07-15 23:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 22, P_DURACAO => 180, P_NUM_RECEITA => 11 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-08-10 23:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 22;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            150,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-08-10 23:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 22, P_DURACAO => 150, P_NUM_RECEITA => 10 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-09-09 23:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 22;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            120,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-08-10 23:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 22, P_DURACAO => 120, P_NUM_RECEITA => 10 );
     END;
 
     COMMIT;
@@ -8152,123 +8053,19 @@ DECLARE
     V_ID_SETOR    INTEGER;
 BEGIN
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-06-30 04:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 42;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            120,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            11
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-08-10 23:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 42, P_DURACAO => 120, P_NUM_RECEITA => 11 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-07-15 04:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 42;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            120,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-07-15 04:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 42, P_DURACAO => 120, P_NUM_RECEITA => 10 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-07-29 04:00', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 42;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            150,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            11
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-07-29 04:00', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 42, P_DURACAO => 150, P_NUM_RECEITA => 11 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-08-12 21:30', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 42;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            120,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-08-12 21:30', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 42, P_DURACAO => 120, P_NUM_RECEITA => 10 );
     END;
 
     COMMIT;
@@ -8285,63 +8082,11 @@ DECLARE
     V_ID_SETOR    INTEGER;
 BEGIN
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-05-20 07:30', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 41;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            120,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            11
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-05-20 07:30', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 41, P_DURACAO => 120, P_NUM_RECEITA => 11 );
     END;
  --------------------------------------------------------------------------------
     BEGIN
-        INSERT INTO OPERACAO (
-            DATA
-        ) VALUES (
-            TO_DATE('2023-07-09 06:20', 'YYYY-MM-DD HH24:MI')
-        ) RETURNING ID INTO V_ID_OPERACAO;
-        SELECT
-            ID INTO V_ID_SETOR
-        FROM
-            SETOR
-        WHERE
-            NUM_SETOR = 41;
-        INSERT INTO REGA (
-            OPERACAO_ID,
-            DURACAO,
-            SETOR_ID
-        ) VALUES (
-            V_ID_OPERACAO,
-            120,
-            V_ID_SETOR
-        );
-        INSERT INTO FERTIRREGA (
-            OPERACAO_ID,
-            RECEITA
-        ) VALUES (
-            V_ID_OPERACAO,
-            10
-        );
+        PKG_REGA.REGISTAR_REGA ( P_DATA => TO_DATE('2023-07-09 06:20', 'YYYY-MM-DD HH24:MI'), P_NUM_SETOR => 41, P_DURACAO => 120, P_NUM_RECEITA => 10 );
     END;
 
     COMMIT;

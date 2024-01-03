@@ -14,6 +14,17 @@ Nesta US foram criados dois procedures para registar uma operacao de rega, um pa
 ![Exemplo de rega](./img/exemplo_query_rega.png)
 
 ### Procedure de fertirrega
-![Procedure de fertirrega](./img/procedure_fertirrega.png)
-![Exemplo de fertirrega](./img/exemplo_teste_fertirrega.png)
-![Exemplo de fertirrega](./img/exemplo_query_fertirrega.png)
+![Procedure de fertirrega](./img/procedure_fertirrega_1.png)
+![Procedure de fertirrega](./img/procedure_fertirrega_2.png)
+
+## Testes
+### Caso de Sucesso
+![Exemplo de rega](./img/caso_sucesso.png)
+![Exemplo de rega](./img/query_caso_sucesso.png)
+![Exemplo de rega](./img/rega_caso_sucesso.png)
+![Exemplo de rega](./img/APF1_caso_sucesso.png)
+![Exemplo de rega](./img/APF2_caso_sucesso.png)
+
+### Caso de Insucesso
+![Exemplo de rega](./img/caso_insucesso.png)
+![Exemplo de rega](./img/resultado_caso_insucesso.png)

@@ -300,7 +300,7 @@ with open(sql_file_path, "a") as f:
         # fetch the cultura id
         writeBlock(
             f,
-            f"SELECT c.id INTO v_id_cultura from Cultura c join Planta p on c.planta_id=p.id join Parcela_Agricola pa on c.parcela_id=pa.id where c.planta_id=v_id_planta and c.parcela_id={parcelaId} and ((p.tipo_plantacao='Permanente' and TIMESTAMP '{data}' > c.data_inicial) or (p.tipo_plantacao='Temporaria' and TIMESTAMP '{data}' between c.data_inicial and c.data_final));\n",
+            f"SELECT c.id INTO v_id_cultura from Cultura c join Planta p on c.planta_id=p.id join Parcela_Agricola pa on c.parcela_id=pa.id where c.planta_id=v_id_planta and c.parcela_id={parcelaId} and ((p.tipo_plantacao='Permanente' and TIMESTAMP '{data}' > c.data_inicial) or (p.tipo_plantacao='Temporaria' and TIMESTAMP '{data}' between c.data_inicial and c.data_final)) and rownum=1;\n",
         )
 
         quantidade = row["Quantidade"]

@@ -17,7 +17,6 @@ DROP TABLE Aplicacao_FP CASCADE CONSTRAINTS;
 DROP TABLE Aplicacao_FP_Cultura CASCADE CONSTRAINTS;
 DROP TABLE FP_Aplicados CASCADE CONSTRAINTS;
 DROP TABLE Setor CASCADE CONSTRAINTS;
-DROP TABLE Fertirrega CASCADE CONSTRAINTS;
 DROP TABLE Receita_fertirrega CASCADE CONSTRAINTS;
 DROP TABLE FP_Receita CASCADE CONSTRAINTS;
 DROP TABLE Poda CASCADE CONSTRAINTS;
@@ -120,7 +119,7 @@ CREATE TABLE Aplicacao_FP_Cultura (
 CREATE TABLE FP_Aplicados (
   operacao_id number(10) NOT NULL, 
   fp_id       number(10) NOT NULL, 
-  quantidade  number(10) NOT NULL, 
+  quantidade  float(10) NOT NULL, 
   PRIMARY KEY (operacao_id, 
   fp_id));
 CREATE TABLE Setor (
@@ -130,10 +129,6 @@ CREATE TABLE Setor (
   caudal_maximo float(10) NOT NULL, 
   num_setor     number(10) NOT NULL UNIQUE, 
   PRIMARY KEY (id));
-CREATE TABLE Fertirrega (
-  operacao_id number(10) NOT NULL, 
-  receita     number(10) NOT NULL, 
-  PRIMARY KEY (operacao_id));
 CREATE TABLE Receita_fertirrega (
   id          number(10) GENERATED AS IDENTITY, 
   num_receita number(10) NOT NULL UNIQUE, 
@@ -179,8 +174,6 @@ ALTER TABLE FP_Aplicados ADD CONSTRAINT FKFP_Aplicad389859 FOREIGN KEY (fp_id) R
 ALTER TABLE Rega ADD CONSTRAINT FKRega591594 FOREIGN KEY (setor_id) REFERENCES Setor (id);
 ALTER TABLE FP_Receita ADD CONSTRAINT FKFP_Receita91311 FOREIGN KEY (receita_id) REFERENCES Receita_fertirrega (id);
 ALTER TABLE FP_Receita ADD CONSTRAINT FKFP_Receita922460 FOREIGN KEY (fp_id) REFERENCES Fator_Producao (id);
-ALTER TABLE Fertirrega ADD CONSTRAINT FKFertirrega159558 FOREIGN KEY (receita) REFERENCES Receita_fertirrega (id);
-ALTER TABLE Fertirrega ADD CONSTRAINT FKFertirrega373004 FOREIGN KEY (operacao_id) REFERENCES Rega (operacao_id);
 ALTER TABLE Cultura ADD CONSTRAINT FKCultura206816 FOREIGN KEY (setor_id) REFERENCES Setor (id);
 ALTER TABLE Poda ADD CONSTRAINT FKPoda823500 FOREIGN KEY (operacao_id) REFERENCES Operacao (id);
 ALTER TABLE Poda ADD CONSTRAINT FKPoda926821 FOREIGN KEY (cultura_id) REFERENCES Cultura (id);

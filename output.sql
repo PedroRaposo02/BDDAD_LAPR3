@@ -43,7 +43,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira President: '
+      DBMS_OUTPUT.PUT_LINE('Error in President Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -60,7 +60,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Stanley: '
+      DBMS_OUTPUT.PUT_LINE('Error in Stanley Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -77,7 +77,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Angeleno Ameixoeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Angeleno: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -94,7 +94,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Black Beauty: '
+      DBMS_OUTPUT.PUT_LINE('Error in Black Beauty Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -128,7 +128,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Black Gold: '
+      DBMS_OUTPUT.PUT_LINE('Error in Black Gold Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -145,7 +145,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Black Diamond: '
+      DBMS_OUTPUT.PUT_LINE('Error in Black Diamond Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -162,7 +162,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Black Amber Ameixoeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Black Amber: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -196,7 +196,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Fortuna Ameixoeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Fortuna: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -213,7 +213,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Friar: '
+      DBMS_OUTPUT.PUT_LINE('Error in Friar Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -230,7 +230,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira El Dorado: '
+      DBMS_OUTPUT.PUT_LINE('Error in El Dorado Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -298,7 +298,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Laetitia Ameixoeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Laetitia: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -332,7 +332,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Mirabelle De Nancy Ameixoeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Mirabelle De Nancy: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -366,7 +366,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Red Beaut: '
+      DBMS_OUTPUT.PUT_LINE('Error in Red Beaut Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -383,7 +383,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Santa Rosa Ameixoeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Santa Rosa: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -400,7 +400,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Shiro: '
+      DBMS_OUTPUT.PUT_LINE('Error in Shiro Ameixoeira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -417,7 +417,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Sungold Ameixoeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Ameixoeira Sungold: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -524,7 +524,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Maillot Jaune Damasqueiro: '
+      DBMS_OUTPUT.PUT_LINE('Error in Damasqueiro Maillot Jaune: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -541,7 +541,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Polonais Damasqueiro: '
+      DBMS_OUTPUT.PUT_LINE('Error in Damasqueiro Polonais: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -563,7 +563,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Akane: '
+      DBMS_OUTPUT.PUT_LINE('Error in Akane Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -580,7 +580,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Belgolden: '
+      DBMS_OUTPUT.PUT_LINE('Error in Belgolden Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -614,7 +614,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Casa Nova De Alcobaca: '
+      DBMS_OUTPUT.PUT_LINE('Error in Casa Nova De Alcobaca Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -631,7 +631,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Erovan: '
+      DBMS_OUTPUT.PUT_LINE('Error in Erovan Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -648,7 +648,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Fuji Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -665,7 +665,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Granny Smith: '
+      DBMS_OUTPUT.PUT_LINE('Error in Granny Smith Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -682,7 +682,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Golden Delicious: '
+      DBMS_OUTPUT.PUT_LINE('Error in Golden Delicious Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -699,7 +699,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Hi-Early: '
+      DBMS_OUTPUT.PUT_LINE('Error in Hi-Early Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -716,7 +716,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Jonagored: '
+      DBMS_OUTPUT.PUT_LINE('Error in Jonagored Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -733,7 +733,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Lysgolden: '
+      DBMS_OUTPUT.PUT_LINE('Error in Lysgolden Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -750,7 +750,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Mutsu: '
+      DBMS_OUTPUT.PUT_LINE('Error in Mutsu Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -767,7 +767,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Porta Da Loja: '
+      DBMS_OUTPUT.PUT_LINE('Error in Porta Da Loja Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -784,7 +784,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Reinette Ou Canada: '
+      DBMS_OUTPUT.PUT_LINE('Error in Reinette Ou Canada Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -801,7 +801,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Reinette Ou Grand Fay: '
+      DBMS_OUTPUT.PUT_LINE('Error in Reinette Ou Grand Fay Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -818,7 +818,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Riscadinha De Palmela: '
+      DBMS_OUTPUT.PUT_LINE('Error in Riscadinha De Palmela Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -835,7 +835,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala: '
+      DBMS_OUTPUT.PUT_LINE('Error in Royal Gala Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -852,7 +852,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Redchief: '
+      DBMS_OUTPUT.PUT_LINE('Error in Redchief Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -869,7 +869,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Starking: '
+      DBMS_OUTPUT.PUT_LINE('Error in Starking Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -886,7 +886,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Summer Red: '
+      DBMS_OUTPUT.PUT_LINE('Error in Summer Red Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -903,7 +903,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira WellSpur Delicious: '
+      DBMS_OUTPUT.PUT_LINE('Error in WellSpur Delicious Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -920,7 +920,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Noiva: '
+      DBMS_OUTPUT.PUT_LINE('Error in Noiva Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -954,7 +954,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Camoesa Rosa: '
+      DBMS_OUTPUT.PUT_LINE('Error in Camoesa Rosa Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -988,7 +988,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Gronho Doce: '
+      DBMS_OUTPUT.PUT_LINE('Error in Gronho Doce Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1022,7 +1022,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Pinova: '
+      DBMS_OUTPUT.PUT_LINE('Error in Pinova Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1039,7 +1039,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Pardo Lindo: '
+      DBMS_OUTPUT.PUT_LINE('Error in Pardo Lindo Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1073,7 +1073,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Prima: '
+      DBMS_OUTPUT.PUT_LINE('Error in Prima Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1090,7 +1090,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Querina: '
+      DBMS_OUTPUT.PUT_LINE('Error in Querina Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1107,7 +1107,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Vista Bella: '
+      DBMS_OUTPUT.PUT_LINE('Error in Vista Bella Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1124,7 +1124,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Golden Smoothee: '
+      DBMS_OUTPUT.PUT_LINE('Error in Golden Smoothee Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1141,7 +1141,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Golden Suprema: '
+      DBMS_OUTPUT.PUT_LINE('Error in Golden Suprema Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1158,7 +1158,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Gloster 69: '
+      DBMS_OUTPUT.PUT_LINE('Error in Gloster 69 Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1175,7 +1175,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Freedom: '
+      DBMS_OUTPUT.PUT_LINE('Error in Freedom Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1338,7 +1338,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Sugarsnax Hybrid Cenoura: '
+      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Sugarsnax Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1372,7 +1372,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Scarlet Nantes Cenoura: '
+      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Scarlet Nantes: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1394,7 +1394,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo: '
+      DBMS_OUTPUT.PUT_LINE('Error in Amarelo Tremoco: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1411,7 +1411,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Branco: '
+      DBMS_OUTPUT.PUT_LINE('Error in Branco Tremoco: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1450,7 +1450,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam: '
+      DBMS_OUTPUT.PUT_LINE('Error in Doce Golden Bantam Milho: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1472,7 +1472,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nabo Greleiro Senhora Conceicao: '
+      DBMS_OUTPUT.PUT_LINE('Error in Senhora Conceicao Nabo Greleiro: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1494,7 +1494,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Cobrancosa Oliveira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Cobrancosa: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1511,7 +1511,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Arbequina: '
+      DBMS_OUTPUT.PUT_LINE('Error in Arbequina Oliveira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1562,7 +1562,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Picual Oliveira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1596,7 +1596,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Conserva De Elvas: '
+      DBMS_OUTPUT.PUT_LINE('Error in Conserva De Elvas Oliveira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1635,7 +1635,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nabo S. Cosme: '
+      DBMS_OUTPUT.PUT_LINE('Error in S. Cosme Nabo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1657,7 +1657,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Dona Maria Videira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -1674,7 +1674,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Cardinal Videira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2301,7 +2301,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 101: '
+      DBMS_OUTPUT.PUT_LINE('Error in Amarelo 101 Tremoco: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2329,7 +2329,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam 101: '
+      DBMS_OUTPUT.PUT_LINE('Error in Doce Golden Bantam Milho 101: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2357,7 +2357,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 101: '
+      DBMS_OUTPUT.PUT_LINE('Error in Amarelo 101 Tremoco: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2385,7 +2385,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam 101: '
+      DBMS_OUTPUT.PUT_LINE('Error in Doce Golden Bantam Milho 101: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2441,7 +2441,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103: '
+      DBMS_OUTPUT.PUT_LINE('Error in Amarelo 103 Tremoco: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2497,7 +2497,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103: '
+      DBMS_OUTPUT.PUT_LINE('Error in Amarelo 103 Tremoco: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2553,7 +2553,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103: '
+      DBMS_OUTPUT.PUT_LINE('Error in Amarelo 103 Tremoco: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2597,7 +2597,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Galega Oliveira 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Galega Oliveira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2641,7 +2641,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Picual Oliveira 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2669,7 +2669,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Scarlet Nantes 106 Cenoura: '
+      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Scarlet Nantes 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2697,7 +2697,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nelson Hybrid 106 Cenoura: '
+      DBMS_OUTPUT.PUT_LINE('Error in Nelson Hybrid Cenoura 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2725,7 +2725,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nabo 106 S. Cosme: '
+      DBMS_OUTPUT.PUT_LINE('Error in S. Cosme Nabo 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2753,7 +2753,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 106 Sugarsnax Hybrid Cenoura: '
+      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Sugarsnax Hybrid 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2781,7 +2781,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Danvers Half Long 106 Cenoura: '
+      DBMS_OUTPUT.PUT_LINE('Error in Danvers Half Long Cenoura 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2809,7 +2809,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nabo 106 S. Cosme: '
+      DBMS_OUTPUT.PUT_LINE('Error in S. Cosme Nabo 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2837,7 +2837,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 106 Sugarsnax Hybrid Cenoura: '
+      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Sugarsnax Hybrid 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2865,7 +2865,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nelson Hybrid 106 Cenoura: '
+      DBMS_OUTPUT.PUT_LINE('Error in Nelson Hybrid Cenoura 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2893,7 +2893,7 @@ BEGIN
     ) RETURNING ID INTO V_ID_CULTURA;
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nabo Greleiro Senhora Conceicao 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Senhora Conceicao Nabo Greleiro 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2937,7 +2937,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Macieira Jonagored: '
+      DBMS_OUTPUT.PUT_LINE('Error in 104 Jonagored Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -2981,7 +2981,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Fuji 104 Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3025,7 +3025,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Macieira Royal Gala: '
+      DBMS_OUTPUT.PUT_LINE('Error in Royal Gala 104 Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3069,7 +3069,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Macieira Royal Gala: '
+      DBMS_OUTPUT.PUT_LINE('Error in Royal Gala 104 Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3113,7 +3113,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Dona Maria Videira 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in Videira Dona Maria 107: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3157,7 +3157,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 107 Cardinal Videira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Videira Cardinal 107: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3199,6 +3199,22 @@ BEGIN
     WHERE
       TP.DESIGNACAO='Oliveira'
       AND P.NOME='Galega';
+    SELECT
+      C.ID INTO V_ID_CULTURA
+    FROM
+      CULTURA          C
+      JOIN PLANTA P
+      ON C.PLANTA_ID=P.ID JOIN PARCELA_AGRICOLA PA
+      ON C.PARCELA_ID=PA.ID
+    WHERE
+      C.PLANTA_ID=V_ID_PLANTA
+      AND C.PARCELA_ID=102
+      AND ((P.TIPO_PLANTACAO='Permanente'
+      AND TIMESTAMP '2016-10-06 00:00:00' > C.DATA_INICIAL)
+      OR (P.TIPO_PLANTACAO='Temporaria'
+      AND TIMESTAMP '2016-10-06 00:00:00' BETWEEN C.DATA_INICIAL
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PLANTACAO (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3210,7 +3226,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Plantacao Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega 102 Plantacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3246,7 +3262,8 @@ BEGIN
       AND TIMESTAMP '2016-10-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2016-10-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PLANTACAO (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3258,7 +3275,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Plantacao Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Plantacao Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3294,7 +3311,8 @@ BEGIN
       AND TIMESTAMP '2017-01-07 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2017-01-07 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PLANTACAO (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3306,7 +3324,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Plantacao Macieira Jonagored 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Jonagored Plantacao 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3342,7 +3360,8 @@ BEGIN
       AND TIMESTAMP '2017-01-08 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2017-01-08 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PLANTACAO (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3354,7 +3373,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Plantacao 104 Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fuji Plantacao 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3390,7 +3409,8 @@ BEGIN
       AND TIMESTAMP '2017-01-08 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2017-01-08 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PLANTACAO (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3402,7 +3422,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Plantacao 104 Macieira Royal Gala: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Plantacao 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3438,7 +3458,8 @@ BEGIN
       AND TIMESTAMP '2017-11-04 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2017-11-04 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3450,7 +3471,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega Poda 102: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3486,7 +3507,8 @@ BEGIN
       AND TIMESTAMP '2017-11-04 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2017-11-04 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3498,7 +3520,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Poda Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3534,7 +3556,8 @@ BEGIN
       AND TIMESTAMP '2017-12-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2017-12-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -3577,7 +3600,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Fertilizacao Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega 102 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3613,7 +3636,8 @@ BEGIN
       AND TIMESTAMP '2017-12-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2017-12-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -3651,7 +3675,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Fertilizacao Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Oliveira Picual Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3687,7 +3711,8 @@ BEGIN
       AND TIMESTAMP '2018-01-07 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-01-07 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3735,7 +3760,8 @@ BEGIN
       AND TIMESTAMP '2018-01-08 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-01-08 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3747,7 +3773,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Poda Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda 104 Macieira Fuji: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3783,7 +3809,8 @@ BEGIN
       AND TIMESTAMP '2018-01-08 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-01-08 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3795,7 +3822,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Poda 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3831,7 +3858,8 @@ BEGIN
       AND TIMESTAMP '2018-01-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-01-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PLANTACAO (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3843,7 +3871,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Plantacao 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Videira Dona Maria Plantacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3879,7 +3907,8 @@ BEGIN
       AND TIMESTAMP '2018-01-11 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-01-11 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PLANTACAO (
       OPERACAO_ID,
       CULTURA_ID,
@@ -3891,7 +3920,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Plantacao Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Videira Cardinal Plantacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -3927,7 +3956,8 @@ BEGIN
       AND TIMESTAMP '2018-02-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-02-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -3965,7 +3995,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Jonagored Fertilizacao 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Jonagored 104 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4001,7 +4031,8 @@ BEGIN
       AND TIMESTAMP '2018-02-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-02-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -4039,7 +4070,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Fertilizacao Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fuji 104 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4075,7 +4106,8 @@ BEGIN
       AND TIMESTAMP '2018-02-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-02-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -4113,7 +4145,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Fertilizacao 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala 104 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4149,7 +4181,8 @@ BEGIN
       AND TIMESTAMP '2018-11-17 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-11-17 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4161,7 +4194,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega Poda 102: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4197,7 +4230,8 @@ BEGIN
       AND TIMESTAMP '2018-11-17 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-11-17 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4209,7 +4243,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Poda Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4245,7 +4279,8 @@ BEGIN
       AND TIMESTAMP '2018-12-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-12-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PLANTACAO (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4257,7 +4292,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Plantacao 104 Macieira Royal Gala: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Plantacao 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4293,7 +4328,8 @@ BEGIN
       AND TIMESTAMP '2018-12-16 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-12-16 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4305,7 +4341,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4341,7 +4377,8 @@ BEGIN
       AND TIMESTAMP '2018-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2018-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4353,7 +4390,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4389,7 +4426,8 @@ BEGIN
       AND TIMESTAMP '2019-01-07 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-01-07 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4437,7 +4475,8 @@ BEGIN
       AND TIMESTAMP '2019-01-08 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-01-08 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4449,7 +4488,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Poda Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda 104 Macieira Fuji: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4485,7 +4524,8 @@ BEGIN
       AND TIMESTAMP '2019-01-08 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-01-08 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4497,7 +4537,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Poda 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4533,7 +4573,8 @@ BEGIN
       AND TIMESTAMP '2019-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -4556,7 +4597,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4592,7 +4633,8 @@ BEGIN
       AND TIMESTAMP '2019-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -4615,7 +4657,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4651,7 +4693,8 @@ BEGIN
       AND TIMESTAMP '2019-02-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-02-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -4689,7 +4732,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Jonagored Fertilizacao 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Jonagored 104 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4725,7 +4768,8 @@ BEGIN
       AND TIMESTAMP '2019-02-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-02-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -4763,7 +4807,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Fertilizacao Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fuji 104 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4799,7 +4843,8 @@ BEGIN
       AND TIMESTAMP '2019-02-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-02-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -4837,7 +4882,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Fertilizacao 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala 104 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4873,7 +4918,8 @@ BEGIN
       AND TIMESTAMP '2019-11-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-11-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4885,7 +4931,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega Poda 102: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4921,7 +4967,8 @@ BEGIN
       AND TIMESTAMP '2019-11-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-11-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4933,7 +4980,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Poda Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -4969,7 +5016,8 @@ BEGIN
       AND TIMESTAMP '2019-12-16 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-12-16 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -4981,7 +5029,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5017,7 +5065,8 @@ BEGIN
       AND TIMESTAMP '2019-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2019-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5029,7 +5078,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5065,7 +5114,8 @@ BEGIN
       AND TIMESTAMP '2020-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -5088,7 +5138,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5124,7 +5174,8 @@ BEGIN
       AND TIMESTAMP '2020-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -5147,7 +5198,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5183,7 +5234,8 @@ BEGIN
       AND TIMESTAMP '2020-03-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-03-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5195,7 +5247,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Scarlet Nantes 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Scarlet Nantes Sementeira 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5231,7 +5283,8 @@ BEGIN
       AND TIMESTAMP '2020-03-30 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-03-30 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -5305,7 +5358,8 @@ BEGIN
       AND TIMESTAMP '2020-04-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-04-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5317,7 +5371,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C 103 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C Sementeira 103: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5353,7 +5407,8 @@ BEGIN
       AND TIMESTAMP '2020-05-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-05-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -5374,7 +5429,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Scarlet Nantes 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Scarlet Nantes Colheita 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5410,7 +5465,8 @@ BEGIN
       AND TIMESTAMP '2020-05-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-05-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -5431,7 +5487,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Scarlet Nantes 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Scarlet Nantes Colheita 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5467,7 +5523,8 @@ BEGIN
       AND TIMESTAMP '2020-06-02 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-06-02 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5479,7 +5536,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Nelson Hybrid 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira Cenoura Nelson Hybrid 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5515,7 +5572,8 @@ BEGIN
       AND TIMESTAMP '2020-08-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-08-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -5536,7 +5594,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Milho Mas 24.C 103: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C Colheita 103: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5572,7 +5630,8 @@ BEGIN
       AND TIMESTAMP '2020-08-28 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-08-28 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -5593,7 +5652,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Nelson Hybrid 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Nelson Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5629,7 +5688,8 @@ BEGIN
       AND TIMESTAMP '2020-09-07 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-09-07 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -5650,7 +5710,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Nelson Hybrid 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Nelson Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5686,7 +5746,8 @@ BEGIN
       AND TIMESTAMP '2020-09-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-09-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5698,7 +5759,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nabo S. Cosme 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Nabo S. Cosme Sementeira 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5734,7 +5795,8 @@ BEGIN
       AND TIMESTAMP '2020-10-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-10-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5746,7 +5808,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 101 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira 101 Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5782,7 +5844,8 @@ BEGIN
       AND TIMESTAMP '2020-10-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-10-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5794,7 +5857,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira 103 Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5830,7 +5893,8 @@ BEGIN
       AND TIMESTAMP '2020-11-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-11-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5842,7 +5906,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega Poda 102: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5878,7 +5942,8 @@ BEGIN
       AND TIMESTAMP '2020-11-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-11-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5890,7 +5955,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Poda Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -5926,7 +5991,8 @@ BEGIN
       AND TIMESTAMP '2020-11-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-11-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -5983,7 +6049,8 @@ BEGIN
       AND TIMESTAMP '2020-12-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -5995,7 +6062,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Poda 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6031,7 +6098,8 @@ BEGIN
       AND TIMESTAMP '2020-12-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -6079,7 +6147,8 @@ BEGIN
       AND TIMESTAMP '2020-12-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -6117,7 +6186,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Fertilizacao Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega 102 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6153,7 +6222,8 @@ BEGIN
       AND TIMESTAMP '2020-12-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -6191,7 +6261,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Fertilizacao Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Oliveira Picual Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6227,7 +6297,8 @@ BEGIN
       AND TIMESTAMP '2020-12-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -6275,7 +6346,8 @@ BEGIN
       AND TIMESTAMP '2020-12-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -6287,7 +6359,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Poda Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda 104 Macieira Fuji: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6323,7 +6395,8 @@ BEGIN
       AND TIMESTAMP '2020-12-16 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-16 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -6335,7 +6408,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6371,7 +6444,8 @@ BEGIN
       AND TIMESTAMP '2020-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -6428,7 +6502,8 @@ BEGIN
       AND TIMESTAMP '2020-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2020-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -6440,7 +6515,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6476,7 +6551,8 @@ BEGIN
       AND TIMESTAMP '2021-01-04 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-01-04 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -6533,7 +6609,8 @@ BEGIN
       AND TIMESTAMP '2021-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -6556,7 +6633,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6592,7 +6669,8 @@ BEGIN
       AND TIMESTAMP '2021-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -6615,7 +6693,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6651,7 +6729,8 @@ BEGIN
       AND TIMESTAMP '2021-03-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-03-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -6663,7 +6742,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Sugarsnax Hybrid 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira 106 Cenoura Sugarsnax Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6699,7 +6778,8 @@ BEGIN
       AND TIMESTAMP '2021-03-14 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-03-14 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO MOVIMENTACAO_SOLO (
       OPERACAO_ID,
       PARCELA_ID,
@@ -6711,7 +6791,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103 Incorporacao No Solo: '
+      DBMS_OUTPUT.PUT_LINE('Error in 103 Incorporacao No Solo Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6747,7 +6827,8 @@ BEGIN
       AND TIMESTAMP '2021-03-30 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-03-30 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO MOVIMENTACAO_SOLO (
       OPERACAO_ID,
       PARCELA_ID,
@@ -6759,7 +6840,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 101 Incorporacao No Solo: '
+      DBMS_OUTPUT.PUT_LINE('Error in 101 Incorporacao No Solo Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6795,7 +6876,8 @@ BEGIN
       AND TIMESTAMP '2021-04-03 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-04-03 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -6807,7 +6889,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C 103 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C Sementeira 103: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6843,7 +6925,8 @@ BEGIN
       AND TIMESTAMP '2021-04-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-04-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -6855,7 +6938,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam 101 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam Sementeira 101: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6891,7 +6974,8 @@ BEGIN
       AND TIMESTAMP '2021-05-02 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-05-02 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -6934,7 +7018,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fertilizacao 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in 104 Fertilizacao Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -6970,7 +7054,8 @@ BEGIN
       AND TIMESTAMP '2021-05-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-05-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -6991,7 +7076,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Sugarsnax Hybrid 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Sugarsnax Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7027,7 +7112,8 @@ BEGIN
       AND TIMESTAMP '2021-05-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-05-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7048,7 +7134,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Sugarsnax Hybrid 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Sugarsnax Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7084,7 +7170,8 @@ BEGIN
       AND TIMESTAMP '2021-06-02 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-06-02 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -7096,7 +7183,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Danvers Half Long 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira 106 Cenoura Danvers Half Long: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7132,7 +7219,8 @@ BEGIN
       AND TIMESTAMP '2021-07-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-07-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7153,7 +7241,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Videira Dona Maria Colheita: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7189,7 +7277,8 @@ BEGIN
       AND TIMESTAMP '2021-07-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-07-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7210,7 +7299,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Videira Dona Maria Colheita: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7246,7 +7335,8 @@ BEGIN
       AND TIMESTAMP '2021-08-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-08-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7267,7 +7357,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita 101 Milho Doce Golden Bantam: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam Colheita 101: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7303,7 +7393,8 @@ BEGIN
       AND TIMESTAMP '2021-08-24 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-08-24 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7324,7 +7415,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Colheita 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7360,7 +7451,8 @@ BEGIN
       AND TIMESTAMP '2021-08-25 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-08-25 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7381,7 +7473,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Milho Mas 24.C 103: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C Colheita 103: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7417,7 +7509,8 @@ BEGIN
       AND TIMESTAMP '2021-08-28 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-08-28 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7438,7 +7531,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Danvers Half Long 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Danvers Half Long: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7474,7 +7567,8 @@ BEGIN
       AND TIMESTAMP '2021-09-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-09-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7495,7 +7589,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Colheita 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7531,7 +7625,8 @@ BEGIN
       AND TIMESTAMP '2021-09-07 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-09-07 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7552,7 +7647,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Danvers Half Long 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Danvers Half Long: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7588,7 +7683,8 @@ BEGIN
       AND TIMESTAMP '2021-09-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-09-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7645,7 +7741,8 @@ BEGIN
       AND TIMESTAMP '2021-09-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-09-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -7657,7 +7754,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nabo S. Cosme 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Nabo S. Cosme Sementeira 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7693,7 +7790,8 @@ BEGIN
       AND TIMESTAMP '2021-09-23 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-09-23 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7750,7 +7848,8 @@ BEGIN
       AND TIMESTAMP '2021-10-03 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-10-03 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -7762,7 +7861,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 101 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira 101 Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7798,7 +7897,8 @@ BEGIN
       AND TIMESTAMP '2021-10-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-10-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -7810,7 +7910,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira 103 Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7846,7 +7946,8 @@ BEGIN
       AND TIMESTAMP '2021-10-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-10-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7867,7 +7968,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Colheita Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fuji Colheita 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7903,7 +8004,8 @@ BEGIN
       AND TIMESTAMP '2021-11-03 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-11-03 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7924,7 +8026,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Colheita Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fuji Colheita 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -7960,7 +8062,8 @@ BEGIN
       AND TIMESTAMP '2021-11-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-11-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -7981,7 +8084,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega 102 Colheita: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8017,7 +8120,8 @@ BEGIN
       AND TIMESTAMP '2021-11-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-11-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -8038,7 +8142,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Colheita Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8074,7 +8178,8 @@ BEGIN
       AND TIMESTAMP '2021-11-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-11-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -8131,7 +8236,8 @@ BEGIN
       AND TIMESTAMP '2021-11-17 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-11-17 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8143,7 +8249,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega Poda 102: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8179,7 +8285,8 @@ BEGIN
       AND TIMESTAMP '2021-11-17 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-11-17 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8191,7 +8298,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Poda Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8227,7 +8334,8 @@ BEGIN
       AND TIMESTAMP '2021-11-28 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-11-28 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8239,7 +8347,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Poda 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8275,7 +8383,8 @@ BEGIN
       AND TIMESTAMP '2021-12-03 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-12-03 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8323,7 +8432,8 @@ BEGIN
       AND TIMESTAMP '2021-12-16 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-12-16 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8335,7 +8445,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8371,7 +8481,8 @@ BEGIN
       AND TIMESTAMP '2021-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8383,7 +8494,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Poda Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda 104 Macieira Fuji: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8419,7 +8530,8 @@ BEGIN
       AND TIMESTAMP '2021-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -8476,7 +8588,8 @@ BEGIN
       AND TIMESTAMP '2021-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2021-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8488,7 +8601,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8524,7 +8637,8 @@ BEGIN
       AND TIMESTAMP '2022-01-04 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-01-04 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -8581,7 +8695,8 @@ BEGIN
       AND TIMESTAMP '2022-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -8604,7 +8719,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8640,7 +8755,8 @@ BEGIN
       AND TIMESTAMP '2022-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -8663,7 +8779,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8699,7 +8815,8 @@ BEGIN
       AND TIMESTAMP '2022-03-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-03-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8711,7 +8828,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Sugarsnax Hybrid 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira 106 Cenoura Sugarsnax Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8747,7 +8864,8 @@ BEGIN
       AND TIMESTAMP '2022-03-19 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-03-19 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO MOVIMENTACAO_SOLO (
       OPERACAO_ID,
       PARCELA_ID,
@@ -8759,7 +8877,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103 Incorporacao No Solo: '
+      DBMS_OUTPUT.PUT_LINE('Error in 103 Incorporacao No Solo Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8795,7 +8913,8 @@ BEGIN
       AND TIMESTAMP '2022-04-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-04-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO MOVIMENTACAO_SOLO (
       OPERACAO_ID,
       PARCELA_ID,
@@ -8807,7 +8926,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 101 Incorporacao No Solo: '
+      DBMS_OUTPUT.PUT_LINE('Error in 101 Incorporacao No Solo Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8843,7 +8962,8 @@ BEGIN
       AND TIMESTAMP '2022-04-08 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-04-08 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8855,7 +8975,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C 103 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C Sementeira 103: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8891,7 +9011,8 @@ BEGIN
       AND TIMESTAMP '2022-04-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-04-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -8903,7 +9024,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam 101 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam Sementeira 101: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8939,7 +9060,8 @@ BEGIN
       AND TIMESTAMP '2022-05-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-05-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -8960,7 +9082,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Sugarsnax Hybrid 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Sugarsnax Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -8996,7 +9118,8 @@ BEGIN
       AND TIMESTAMP '2022-05-13 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-05-13 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -9034,7 +9157,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fertilizacao 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in 104 Fertilizacao Macieira: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9070,7 +9193,8 @@ BEGIN
       AND TIMESTAMP '2022-05-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-05-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9091,7 +9215,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Sugarsnax Hybrid 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Sugarsnax Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9127,7 +9251,8 @@ BEGIN
       AND TIMESTAMP '2022-05-30 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-05-30 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -9139,7 +9264,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Cenoura Nelson Hybrid 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira Cenoura Nelson Hybrid 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9175,7 +9300,8 @@ BEGIN
       AND TIMESTAMP '2022-07-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-07-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9196,7 +9322,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Videira Dona Maria Colheita: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9232,7 +9358,8 @@ BEGIN
       AND TIMESTAMP '2022-07-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-07-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9253,7 +9380,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Videira Dona Maria Colheita: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9289,7 +9416,8 @@ BEGIN
       AND TIMESTAMP '2022-08-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-08-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9310,7 +9438,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Colheita Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9346,7 +9474,8 @@ BEGIN
       AND TIMESTAMP '2022-08-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-08-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9367,7 +9496,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Colheita Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9403,7 +9532,8 @@ BEGIN
       AND TIMESTAMP '2022-08-17 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-08-17 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9424,7 +9554,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita 101 Milho Doce Golden Bantam: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Doce Golden Bantam Colheita 101: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9460,7 +9590,8 @@ BEGIN
       AND TIMESTAMP '2022-08-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-08-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9481,7 +9612,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Milho Mas 24.C 103: '
+      DBMS_OUTPUT.PUT_LINE('Error in Milho Mas 24.C Colheita 103: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9517,7 +9648,8 @@ BEGIN
       AND TIMESTAMP '2022-08-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-08-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9538,7 +9670,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Colheita 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9574,7 +9706,8 @@ BEGIN
       AND TIMESTAMP '2022-08-24 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-08-24 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9595,7 +9728,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Nelson Hybrid 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Nelson Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9631,7 +9764,8 @@ BEGIN
       AND TIMESTAMP '2022-09-05 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-09-05 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9652,7 +9786,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Cenoura Nelson Hybrid 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita 106 Cenoura Nelson Hybrid: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9688,7 +9822,8 @@ BEGIN
       AND TIMESTAMP '2022-09-07 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-09-07 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9709,7 +9844,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Colheita 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Colheita Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9745,7 +9880,8 @@ BEGIN
       AND TIMESTAMP '2022-09-11 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-09-11 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9802,7 +9938,8 @@ BEGIN
       AND TIMESTAMP '2022-09-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-09-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9859,7 +9996,8 @@ BEGIN
       AND TIMESTAMP '2022-09-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-09-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -9871,7 +10009,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Nabo Greleiro Senhora Conceicao 106 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Nabo Greleiro Senhora Conceicao Sementeira 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9907,7 +10045,8 @@ BEGIN
       AND TIMESTAMP '2022-10-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-10-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO SEMEADURA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -9919,7 +10058,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103 Sementeira: '
+      DBMS_OUTPUT.PUT_LINE('Error in Sementeira 103 Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -9955,7 +10094,8 @@ BEGIN
       AND TIMESTAMP '2022-10-17 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-10-17 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -9976,7 +10116,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Colheita Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fuji Colheita 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10012,7 +10152,8 @@ BEGIN
       AND TIMESTAMP '2022-11-06 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-11-06 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -10033,7 +10174,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Colheita Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Macieira Fuji Colheita 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10069,7 +10210,8 @@ BEGIN
       AND TIMESTAMP '2022-11-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-11-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -10081,7 +10223,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega Poda 102: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10117,7 +10259,8 @@ BEGIN
       AND TIMESTAMP '2022-11-10 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-11-10 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -10129,7 +10272,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Poda Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10165,7 +10308,8 @@ BEGIN
       AND TIMESTAMP '2022-11-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-11-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -10186,7 +10330,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega 102 Colheita: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10222,7 +10366,8 @@ BEGIN
       AND TIMESTAMP '2022-11-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-11-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -10243,7 +10388,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Colheita Oliveira Picual: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10279,7 +10424,8 @@ BEGIN
       AND TIMESTAMP '2022-11-15 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-11-15 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -10300,7 +10446,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Nabo Greleiro Senhora Conceicao 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Nabo Greleiro Senhora Conceicao Colheita 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10336,7 +10482,8 @@ BEGIN
       AND TIMESTAMP '2022-12-04 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-12-04 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -10348,7 +10495,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Macieira Royal Gala Poda 104: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda Macieira Royal Gala 104: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10384,7 +10531,8 @@ BEGIN
       AND TIMESTAMP '2022-12-07 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-12-07 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -10432,7 +10580,8 @@ BEGIN
       AND TIMESTAMP '2022-12-11 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-12-11 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -10470,7 +10619,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Fertilizacao Oliveira Galega 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in Oliveira Galega 102 Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10506,7 +10655,8 @@ BEGIN
       AND TIMESTAMP '2022-12-11 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-12-11 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -10544,7 +10694,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Fertilizacao Oliveira Picual 102: '
+      DBMS_OUTPUT.PUT_LINE('Error in 102 Oliveira Picual Fertilizacao: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10580,7 +10730,8 @@ BEGIN
       AND TIMESTAMP '2022-12-16 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-12-16 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -10592,7 +10743,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10628,7 +10779,8 @@ BEGIN
       AND TIMESTAMP '2022-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -10649,7 +10801,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Nabo Greleiro Senhora Conceicao 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Nabo Greleiro Senhora Conceicao Colheita 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10685,7 +10837,8 @@ BEGIN
       AND TIMESTAMP '2022-12-18 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2022-12-18 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -10697,7 +10850,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Poda Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Poda Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10733,7 +10886,8 @@ BEGIN
       AND TIMESTAMP '2023-01-12 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2023-01-12 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PODA (
       OPERACAO_ID,
       CULTURA_ID,
@@ -10745,7 +10899,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in 104 Poda Macieira Fuji: '
+      DBMS_OUTPUT.PUT_LINE('Error in Poda 104 Macieira Fuji: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10781,7 +10935,8 @@ BEGIN
       AND TIMESTAMP '2023-01-14 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2023-01-14 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO PRODUTO (
       DESIGNACAO,
       PLANTA_ID
@@ -10802,7 +10957,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Colheita Nabo Greleiro Senhora Conceicao 106: '
+      DBMS_OUTPUT.PUT_LINE('Error in Nabo Greleiro Senhora Conceicao Colheita 106: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10838,7 +10993,8 @@ BEGIN
       AND TIMESTAMP '2023-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2023-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -10861,7 +11017,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco 107 Videira Dona Maria: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Dona Maria: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10897,7 +11053,8 @@ BEGIN
       AND TIMESTAMP '2023-01-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2023-01-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO APLICACAO_FP (
       OPERACAO_ID
     ) VALUES (
@@ -10920,7 +11077,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Aplicacao Fitofarmaco Videira Cardinal 107: '
+      DBMS_OUTPUT.PUT_LINE('Error in 107 Aplicacao Fitofarmaco Videira Cardinal: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;
@@ -10956,7 +11113,8 @@ BEGIN
       AND TIMESTAMP '2023-03-20 00:00:00' > C.DATA_INICIAL)
       OR (P.TIPO_PLANTACAO='Temporaria'
       AND TIMESTAMP '2023-03-20 00:00:00' BETWEEN C.DATA_INICIAL
-      AND C.DATA_FINAL));
+      AND C.DATA_FINAL))
+      AND ROWNUM=1;
     INSERT INTO MOVIMENTACAO_SOLO (
       OPERACAO_ID,
       PARCELA_ID,
@@ -10968,7 +11126,7 @@ BEGIN
     );
   EXCEPTION
     WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error in Tremoco Amarelo 103 Incorporacao No Solo: '
+      DBMS_OUTPUT.PUT_LINE('Error in 103 Incorporacao No Solo Tremoco Amarelo: '
                            || DBMS_UTILITY.FORMAT_ERROR_STACK
                            ||DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
   END;

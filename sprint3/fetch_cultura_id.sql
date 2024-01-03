@@ -1,12 +1,32 @@
--- Declare a variable to store the result
-DECLARE
-    V_RESULT NUMBER;
-
+CREATE OR REPLACE FUNCTION FETCH_CULTURA_ID(
+    V_PLANTA_ID IN INTEGER,
+    V_PARCELA_ID IN INTEGER,
+    V_DATA IN DATE
+) RETURN NUMBER IS
+    V_CULTURA_ID NUMBER;
 BEGIN
-    -- Call the function and store the result in the variable
-    V_RESULT := FETCH_CULTURA_ID(1, 2, SYSDATE);
-
-    -- Print the result
-    DBMS_OUTPUT.PUT_LINE('Cultura ID: ' || V_RESULT);
+    SELECT
+        C.ID INTO V_CULTURA_ID
+    FROM
+        CULTURA C
+        LEFT JOIN PLANTA P
+        ON P.ID = C.PLANTA_ID
+        LEFT JOIN PARCELA_AGRICOLA PA
+        ON PA.ID = C.PARCELA_ID
+    WHERE
+        P.ID = V_PLANTA_ID
+        AND PA.ID = V_PARCELA_ID
+        AND ((P.TIPO_PLANTACAO='Permanente'
+        AND V_DATA > C.DATA_INICIAL)
+        OR (P.TIPO_PLANTACAO='Temporaria'
+        AND V_DATA BETWEEN C.DATA_INICIAL
+        AND C.DATA_FINAL))
+        AND ROWNUM = 1;
+ -- Return the cultura_id
+        RETURN V_CULTURA_ID;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    WHEN OTHERS THEN
+        RAISE;
 END;
-/

@@ -26,9 +26,6 @@ Nesta Us foram criados triggers para cada um dos tipos de operacao (semeadura, p
 ### Rega
 ![Rega](./img/trigger_rega.png)
 
-### Fertirrega
-![Fertirrega](./img/trigger_fertirrega.png)
-
 ### Aplicacao de fator de producao no solo
 ![Aplicacao de fator de producao no solo](./img/trigger_AFP_solo.png)
 
@@ -61,10 +58,6 @@ Nesta Us foram criados triggers para cada um dos tipos de operacao (semeadura, p
 ### Insercao de uma operacao de rega
 ![Exemplo de insert de operacao de rega](./img/insert_rega.png)
 ![Exemplo de log de operacao de rega](./img/log_rega.png)
-
-### Insercao de uma operacao de fertirrega
-![Exemplo de insert de operacao de fertirrega](./img/insert_fertirrega.png)
-![Exemplo de log de operacao de fertirrega](./img/log_fertirrega.png)
 
 ### Insercao de uma operacao de aplicacao de fator de producao no solo
 ![Exemplo de insert de operacao de aplicacao de fator de producao no solo](./img/insert_aplicacao_fp_solo.png)
