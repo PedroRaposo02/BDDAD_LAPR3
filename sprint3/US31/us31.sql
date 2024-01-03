@@ -1,5 +1,7 @@
 --US31 Registar uma receita de fertirrega para usar em operações de rega.
 
+
+--if for example num_receita 10 already has one FATOR_PRODUCAO.DESIGNACAO = 'Epso Top' and FATOR_PRODUCAO.FABRICANTE = 'K+S' then it will not be inserted again
 CREATE OR REPLACE PROCEDURE CREATE_RECEITA_FERTIRREGA (
     V_NUM_RECEITA IN RECEITA_FERTIRREGA.NUM_RECEITA%TYPE,
     V_DESIGNACAO IN FATOR_PRODUCAO.DESIGNACAO%TYPE,
@@ -8,6 +10,7 @@ CREATE OR REPLACE PROCEDURE CREATE_RECEITA_FERTIRREGA (
 ) AS
     V_ID_RECEITA_FERTIRREGA INTEGER;
     V_ID_FP_RECEITA         INTEGER;
+    V_COUNT                 INTEGER;  
 BEGIN
     BEGIN
         BEGIN
@@ -33,15 +36,22 @@ BEGIN
         WHERE
             DESIGNACAO = V_DESIGNACAO
             AND FABRICANTE = V_FABRICANTE;
-        INSERT INTO FP_RECEITA (
-            RECEITA_ID,
-            FP_ID,
-            QUANTIDADE
-        ) VALUES (
-            V_ID_RECEITA_FERTIRREGA,
-            V_ID_FP_RECEITA,
-            V_QUANTIDADE
-        );
+        SELECT COUNT(*) INTO V_COUNT
+        FROM FP_RECEITA
+        WHERE RECEITA_ID = V_ID_RECEITA_FERTIRREGA
+        AND FP_ID = V_ID_FP_RECEITA;
+
+        IF V_COUNT = 0 THEN
+            INSERT INTO FP_RECEITA (
+                RECEITA_ID,
+                FP_ID,
+                QUANTIDADE
+            ) VALUES (
+                V_ID_RECEITA_FERTIRREGA,
+                V_ID_FP_RECEITA,
+                V_QUANTIDADE
+            );
+        END IF;
     EXCEPTION
         WHEN NO_DATA_FOUND THEN
             RAISE_APPLICATION_ERROR(-20001, 'Fator de produção não existe');
@@ -103,10 +113,9 @@ DELETE FROM RECEITA_FERTIRREGA
 WHERE NUM_RECEITA = 13 OR NUM_RECEITA = 14;
 */
 
+
 --USING RECEITA_FERTIRREGA_TEST TO VIEW DATA
 SELECT
     *
 FROM
     RECEITA_FERTIRREGA_TEST;
-
-
